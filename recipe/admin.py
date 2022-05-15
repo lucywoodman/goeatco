@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Recipe, Unit, Category, Ingredient
+from .models import Recipe, Unit, Category, Ingredient, RecipeRequirement
 
 
 @admin.register(Recipe)
@@ -17,3 +17,4 @@ class IngredientAdmin(admin.ModelAdmin):
 
 admin.site.register(Unit)
 admin.site.register(Category)
+admin.site.register(RecipeRequirement)

@@ -17,6 +17,48 @@ MEAL = (
 )
 
 
+class LowerCaseField(models.CharField):
+    def __init__(self, *args, **kwargs):
+        super(LowerCaseField, self).__init__(*args, **kwargs)
+
+    def get_prep_value(self, value):
+        return str(value).lower()
+
+
+class Unit(models.Model):
+    name = LowerCaseField(max_length=30, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = LowerCaseField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Ingredient(models.Model):
+    name = LowerCaseField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
+    unit = models.ForeignKey(
+        Unit, on_delete=models.CASCADE, null=True, blank=True)
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class RecipeRequirement(models.Model):
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    qty = models.DecimalField(max_digits=4, decimal_places=2)
+
+    def __str__(self):
+        return f'{self.qty} {self.ingredient}{"s" if self.qty>1 else ""}'
+
+
 class Recipe(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -24,34 +66,8 @@ class Recipe(models.Model):
     source = models.URLField()
     cooking_time = models.DurationField()
     meal = models.IntegerField(choices=MEAL, default=2)
-
+    ingredients = models.ManyToManyField(RecipeRequirement)
     instructions = models.TextField()
 
     def __str__(self):
         return self.title
-
-
-class Unit(models.Model):
-    name = models.CharField(max_length=30, unique=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=50, unique=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Ingredient(models.Model):
-    name = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True, default={name})
-    unit = models.ForeignKey(
-        Unit, on_delete=models.SET_NULL, null=True, blank=True)
-    category = models.ForeignKey(
-        Category, on_delete=models.SET_NULL, null=True)
-
-    def __str__(self):
-        return self.name
