@@ -24,7 +24,34 @@ class Recipe(models.Model):
     source = models.URLField()
     cooking_time = models.DurationField()
     meal = models.IntegerField(choices=MEAL, default=2)
+
     instructions = models.TextField()
 
     def __str__(self):
         return self.title
+
+
+class Unit(models.Model):
+    name = models.CharField(max_length=30, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Ingredient(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, default={name})
+    unit = models.ForeignKey(
+        Unit, on_delete=models.SET_NULL, null=True, blank=True)
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.name
