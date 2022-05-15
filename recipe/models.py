@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 DIET = (
     (0, ''),
@@ -21,13 +20,11 @@ MEAL = (
 class Recipe(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='recipes')
     diet = models.IntegerField(choices=DIET, default=0)
     source = models.URLField()
-    time = models.DurationField()
+    cooking_time = models.DurationField()
     meal = models.IntegerField(choices=MEAL, default=2)
-    content = models.TextField()
+    instructions = models.TextField()
 
     def __str__(self):
         return self.title
