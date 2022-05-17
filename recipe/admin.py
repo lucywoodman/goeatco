@@ -2,6 +2,9 @@ from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
 from .models import Recipe, Unit, Category, Ingredient, RecipeRequirement
 
+admin.site.register(Unit)
+admin.site.register(Category)
+
 
 @admin.register(Recipe)
 class RecipeAdmin(SummernoteModelAdmin):
@@ -19,10 +22,6 @@ class IngredientAdmin(admin.ModelAdmin):
     search_fields = ['name']
     list_filter = ['category']
     prepopulated_fields = {'slug': ('name',)}
-
-
-admin.site.register(Unit)
-admin.site.register(Category)
 
 
 @admin.register(RecipeRequirement)
