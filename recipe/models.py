@@ -42,8 +42,6 @@ class Category(models.Model):
 class Ingredient(models.Model):
     name = LowerCaseField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    unit = models.ForeignKey(
-        Unit, on_delete=models.CASCADE, null=True, blank=True)
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, null=True, blank=True)
 
@@ -52,11 +50,13 @@ class Ingredient(models.Model):
 
 
 class RecipeRequirement(models.Model):
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     qty = models.DecimalField(max_digits=4, decimal_places=2)
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
+    ingredient = models.ForeignKey(
+        Ingredient, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return f'{self.qty} {self.ingredient}{"s" if self.qty>1 else ""}'
+        return f'{self.qty} {self.unit} {self.ingredient}'
 
 
 class Recipe(models.Model):
@@ -66,7 +66,8 @@ class Recipe(models.Model):
     source = models.URLField()
     cooking_time = models.DurationField()
     meal = models.IntegerField(choices=MEAL, default=2)
-    ingredients = models.ManyToManyField(RecipeRequirement)
+    ingredients = models.ManyToManyField(
+        RecipeRequirement)
     instructions = models.TextField()
 
     def __str__(self):
