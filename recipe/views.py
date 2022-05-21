@@ -16,7 +16,7 @@ class RecipeAdd(TemplateView):
     def get(self, *args, **kwargs):
         recipeform = RecipeForm(queryset=Recipe.objects.none())
         formset = IngredientFormset(queryset=Ingredient.objects.none())
-        return self.render_to_response({'ingredient_formset': formset})
+        return self.render_to_response({'recipe_form': recipeform, 'ingredient_formset': formset})
 
     def post(self, *args, **kwargs):
         recipeform = RecipeForm(data=self.request.POST)
@@ -29,7 +29,7 @@ class RecipeAdd(TemplateView):
                 ingredient.save()
             return redirect(reverse_lazy('recipe_list'))
 
-        return self.render_to_response({'ingredient_formset': formset})
+        return self.render_to_response({'recipe_form': recipeform, 'ingredient_formset': formset})
 
 
 class RecipeDetail(TemplateView):
