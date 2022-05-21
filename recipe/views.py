@@ -10,6 +10,14 @@ class RecipeList(ListView):
     template_name = 'recipe/recipe_list.html'
 
 
+class RecipeDetail(TemplateView):
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Recipe.objects.all()
+        recipe = get_object_or_404(queryset, slug=slug)
+
+        return render(request, 'recipe/recipe_detail.html', {'recipe': recipe, })
+
+
 class RecipeAdd(TemplateView):
     template_name = 'recipe/recipe_add.html'
 
@@ -18,7 +26,7 @@ class RecipeAdd(TemplateView):
         formset = IngredientFormset(queryset=Ingredient.objects.none())
         return self.render_to_response({'recipe_form': recipeform, 'ingredient_formset': formset})
 
-    def post(self, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         recipeform = RecipeForm(data=self.request.POST)
         formset = IngredientFormset(data=self.request.POST)
         if recipeform.is_valid() and formset.is_valid():
@@ -27,14 +35,6 @@ class RecipeAdd(TemplateView):
                 ingredient = form.save(commit=False)
                 ingredient.recipe = recipe
                 ingredient.save()
-            return redirect(reverse_lazy('recipe_list'))
+            return redirect('recipe_list')
 
-        return self.render_to_response({'recipe_form': recipeform, 'ingredient_formset': formset})
-
-
-class RecipeDetail(TemplateView):
-
-    def get(self, request, slug):
-        recipe = get_object_or_404(Recipe, slug=slug)
-
-        return render(request, 'recipe/recipe_detail.html', {'recipe': recipe})
+        return redirect('recipe_list')
