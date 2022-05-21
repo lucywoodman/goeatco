@@ -5,9 +5,10 @@
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
                 <!-- Recipe title goes in these h1 tags -->
-                <h1 class="post-title">{{ recipe.title }}</h1>
+                <h1 class="post-title">{{ recipe.name }}</h1>
+                <p>Meal: {{ recipe.get_meal_display }}</p>
                 <!-- Recipe meta -->
-                <p>{{ recipe.source }}</p>
+                <p>Author: {{ recipe.author }} | Cooking time: {{ recipe.cooking_time }}</p>
             </div>
         </div>
     </div>
@@ -20,13 +21,13 @@
             {% for item in recipe.ingredients.all %}
             <div class="ingredient">
                 <div class="ingredient-qty">
-                    {{ item.qty }}
+                    {{ item.name }}
                 </div>
                 <div class="ingredient-unit">
-                    {{ item.unit }}
+                    
                 </div>
                 <div class="ingredient-name">
-                    {{ item.ingredient }}
+                    
                 </div>
             </div>
             {% endfor %}
