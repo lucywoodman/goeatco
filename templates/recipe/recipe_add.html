@@ -6,6 +6,7 @@
 <form id="form-container" method="POST">
     {% csrf_token %}
     {{ recipe_form }}
+    <h2>Add ingredients</h2>
     {{ ingredient_formset.management_form }}
     {% for form in ingredient_formset %}
         <div class="ingredient-form">
