@@ -15,29 +15,27 @@
 
 <div class="container">
     <div class="row">
-        <div class="col card mb-4  mt-3 left top">
-            <div class="card-body">
-                <h2>Ingredients</h2>
-                {% for item in recipe.ingredients.all %}
-                <div class="ingredient">
-                    <div class="ingredient-qty">
-                        {{ item.qty }}
-                    </div>
-                    <div class="ingredient-unit">
-                        {{ item.unit }}
-                    </div>
-                    <div class="ingredient-name">
-                        {{ item.ingredient }}
-                    </div>
+        <div class="col mb-4 mt-3">
+            <h2>Ingredients</h2>
+            {% for item in recipe.ingredients.all %}
+            <div class="ingredient">
+                <div class="ingredient-qty">
+                    {{ item.qty }}
                 </div>
-                {% endfor %}
+                <div class="ingredient-unit">
+                    {{ item.unit }}
+                </div>
+                <div class="ingredient-name">
+                    {{ item.ingredient }}
+                </div>
             </div>
-            <div class="card-body">
-                <h2>Instructions</h2>
-                <p class="card-text">
-                    {{ recipe.instructions | safe }}
-                </p>
-            </div>
+            {% endfor %}
+        </div>
+        <div class="col mb-4 mt-3">
+            <h2>Instructions</h2>
+            <p class="card-text">
+                {{ recipe.instructions | safe }}
+            </p>
         </div>
     </div>
 </div>
