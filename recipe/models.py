@@ -35,7 +35,6 @@ class Recipe(models.Model):
 
 class Ingredient(models.Model):
     name = LowerCaseField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
     recipe = models.ForeignKey(
         Recipe, related_name='ingredients', on_delete=models.SET_NULL, null=True)
 
