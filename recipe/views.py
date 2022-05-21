@@ -14,7 +14,7 @@ class RecipeAdd(TemplateView):
     template_name = 'recipe/recipe_add.html'
 
     def get(self, *args, **kwargs):
-        recipeform = RecipeForm(queryset=Recipe.objects.none())
+        recipeform = RecipeForm()
         formset = IngredientFormset(queryset=Ingredient.objects.none())
         return self.render_to_response({'recipe_form': recipeform, 'ingredient_formset': formset})
 
