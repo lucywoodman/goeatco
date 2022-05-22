@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import IntegerField
 
 MEAL = (
     (0, 'Breakfast'),
@@ -7,6 +8,13 @@ MEAL = (
     (2, 'Dinner'),
     (3, 'Snack'),
     (4, 'Other'),
+)
+
+UNIT = (
+    (0, 'g'),
+    (1, 'kg'),
+    (2, 'cups'),
+    (3, 'ml'),
 )
 
 
@@ -40,3 +48,10 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class IngredientMeta(models.Model):
+    qty = models.IntegerField()
+    unit = models.IntegerField(choices=UNIT, default=0)
+    ingredient = models.ForeignKey(
+        Ingredient, related_name='meta', on_delete=models.CASCADE, null=True)
