@@ -18,21 +18,23 @@
     <div class="row">
         <div class="col mb-4 mt-3">
             <h2>Ingredients</h2>
-            <table class="table">
+            <ul class="list-group list-group-flush">
                 {% for item in recipe.ingredients.all %}
-                <tr>
-                    <td>
+                    <li class="list-group-item">
                         {{ item.qty }} {{ item.get_unit_display }} <strong>{{ item.ingredient }}</strong>
-                    </td>
-                </tr>
+                    </li>
                 {% endfor %}
-            </table>
+            </ul>
         </div>
         <div class="col mb-4 mt-3">
             <h2>Instructions</h2>
-            <p class="card-text">
-                {{ recipe.instructions | safe }}
-            </p>
+            <ol class="list-group list-group-flush list-group-numbered">
+                {% for step in recipe.instructions.all %}
+                    <li class="list-group-item">
+                        {{ step.description }}
+                    </li>
+                {% endfor %}
+            </ol>
         </div>
     </div>
 </div>
