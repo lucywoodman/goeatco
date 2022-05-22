@@ -21,13 +21,13 @@
             {% for item in recipe.ingredients.all %}
             <div class="ingredient">
                 <div class="ingredient-qty">
-                    {{ item.name }}
+                    
                 </div>
                 <div class="ingredient-unit">
                     
                 </div>
                 <div class="ingredient-name">
-                    
+                    {{ item.name }}
                 </div>
             </div>
             {% endfor %}
