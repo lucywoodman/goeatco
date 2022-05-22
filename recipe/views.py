@@ -1,8 +1,8 @@
 from django.shortcuts import redirect, get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, TemplateView
-from .models import Recipe, Ingredient
-from .forms import RecipeForm, IngredientFormset
+from .models import Recipe, Ingredient, IngredientMeta
+from .forms import IngredientMetaFormset, RecipeForm, IngredientFormset
 
 
 class RecipeList(ListView):
@@ -23,18 +23,29 @@ class RecipeAdd(TemplateView):
 
     def get(self, *args, **kwargs):
         recipeform = RecipeForm()
-        formset = IngredientFormset(queryset=Ingredient.objects.none())
-        return self.render_to_response({'recipe_form': recipeform, 'ingredient_formset': formset})
+        formset1 = IngredientFormset(queryset=Ingredient.objects.none())
+        formset2 = IngredientMetaFormset(
+            queryset=IngredientMeta.objects.none())
+        return self.render_to_response({
+            'recipe_form': recipeform,
+            'ingredient_formset': formset1,
+            'ingredient_meta_formset': formset2
+        })
 
     def post(self, request, *args, **kwargs):
         recipeform = RecipeForm(data=self.request.POST)
-        formset = IngredientFormset(data=self.request.POST)
-        if recipeform.is_valid() and formset.is_valid():
+        formset1 = IngredientFormset(data=self.request.POST)
+        formset2 = IngredientMetaFormset(data=self.request.POST)
+        if recipeform.is_valid() and formset1.is_valid() and formset2.is_valid():
             recipe = recipeform.save()
-            for form in formset:
+            for form in formset1:
                 ingredient = form.save(commit=False)
                 ingredient.recipe = recipe
                 ingredient.save()
+                for form in formset2:
+                    meta = form.save(commit=False)
+                    meta.ingredient = ingredient
+                    meta.save()
             return redirect('recipe_list')
 
         return redirect('recipe_list')
