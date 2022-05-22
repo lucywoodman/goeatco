@@ -59,3 +59,10 @@ class IngredientMeta(models.Model):
 
     def __str__(self):
         return f'{self.qty} {self.unit} {self.ingredient}'
+
+
+class Instructions(models.Model):
+    step_no = models.PositiveSmallIntegerField()
+    description = models.CharField()
+    recipe = models.ForeignKey(
+        Recipe, relate_name='instructions', on_delete=models.CASCADE, null=True)
