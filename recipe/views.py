@@ -26,17 +26,17 @@ class RecipeAdd(TemplateView):
         ingredient_formset = IngredientFormset(
             queryset=IngredientMeta.objects.none())
         instructions_formset = InstructionFormset(
-            queryset=Instructions.objects.non())
+            queryset=Instructions.objects.none())
         return self.render_to_response({
             'recipe_form': recipeform,
             'ingredient_formset': ingredient_formset,
-            'instruction_formset': instructions_formset,
+            'instructions_formset': instructions_formset,
         })
 
     def post(self, request, *args, **kwargs):
         recipeform = RecipeForm(data=self.request.POST)
         ingredient_formset = IngredientFormset(data=self.request.POST)
-        instructions_formset = Instructions(data=self.request.POST)
+        instructions_formset = InstructionFormset(data=self.request.POST)
         if recipeform.is_valid() and ingredient_formset.is_valid() and instructions_formset.is_valid():
             recipe = recipeform.save()
             for form in ingredient_formset:
