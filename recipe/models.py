@@ -44,8 +44,6 @@ class Recipe(models.Model):
 
 class Ingredient(models.Model):
     name = LowerCaseField(max_length=200, unique=True)
-    recipe = models.ForeignKey(
-        Recipe, related_name='ingredients', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.name
@@ -56,6 +54,8 @@ class IngredientMeta(models.Model):
     unit = models.IntegerField(choices=UNIT, default=0)
     ingredient = models.ForeignKey(
         Ingredient, related_name='meta', on_delete=models.CASCADE, null=True)
+    recipe = models.ForeignKey(
+        Recipe, related_name='ingredients', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return f'{self.qty} {self.unit} {self.ingredient}'
