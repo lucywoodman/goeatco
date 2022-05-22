@@ -1,35 +1,62 @@
 /**
- * Creating dynamic formsets with Django and JavaScript to allow adding of
- * extra ingredients to recipes.
+ * Creating dynamic formsets with Django and jQuery to allow 
+ * adding of ingredients and instructions to recipes.
  * 
  * Credit: https://www.brennantymrak.com/articles/django-dynamic-formsets-javascript.html
  *  */
 
-// create variables from form elements.
-let ingredientForm = document.querySelectorAll(".ingredient-form")
-let container = document.querySelector("#form-container")
-let addButton = document.querySelector("#add-form")
-let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
-let formNum = ingredientForm.length-1
+$(document).ready(() => {
+    // check for the current number of forms then minus 1
+    let ingredientFormNum = $('.ingredient-form').length-1;
+    let instructionFormNum = $('.instruction-form').length-1;
 
-// add event listener on the relevant button.
-addButton.addEventListener('click', addForm)
+    /**
+     * Adds extra ingredient fields to the add recipe form to 
+     * allow the connecting of multiple ingredients to one recipe.
+     * 
+     * @param {event} e - the button click event
+     */
+    $('#add-ingredient').on('click', (e) => {
+        e.preventDefault();
 
-/**
- * Adds extra ingredient fields to the add recipe form to allow
- * the connecting of multiple ingredients to one recipe.
- * 
- * @param {event} e - prevents default button behaviour.
- */
-function addForm(e){
-    e.preventDefault()
+        // clone the initial ingredient form
+        let newForm = $('.ingredient-form:first').clone();
+        // create regex object for updating new form html later
+        let formRegex = RegExp(`form-(\\d){1}-`,'g');
 
-    let newForm = ingredientForm[0].cloneNode(true)
-    let formRegex = RegExp(`form-(\\d){1}-`,'g')
+        // increment formNum to create a unique-to-this-form integer
+        ingredientFormNum++
+        // update html using the earlier regex to update the for, name and id attributes
+        newForm.html(newForm.html().replace(formRegex, 'form-' + ingredientFormNum + '-'));
+        // add the new form as the last child in the fieldset
+        newForm.appendTo('#ingredient-fieldset');
 
-    formNum++
-    newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
-    container.insertBefore(newForm, addButton)
-    
-    totalForms.setAttribute('value', `${formNum+1}`)
-}
+        // lastly, update Django's form management TOTAL_FORMS
+        $('#ingredient-fieldset > #id_form-TOTAL_FORMS').attr('value', ingredientFormNum+1);
+    });
+
+    /**
+     * Adds extra instruction fields to the add recipe form to 
+     * allow the connecting of multiple instructions for one recipe.
+     * 
+     * @param {event} e - the button click event
+     */
+     $('#add-instruction').on('click', (e) => {
+        e.preventDefault();
+
+        // clone the initial instruction form
+        let newForm = $('.instruction-form:first').clone();
+        // create regex object for updating new form html later
+        let formRegex = RegExp(`form-(\\d){1}-`,'g');
+
+        // increment formNum to create a unique-to-this-form integer
+        instructionFormNum++
+        // update html using the earlier regex to update the for, name and id attributes
+        newForm.html(newForm.html().replace(formRegex, 'form-' + instructionFormNum + '-'));
+        // add the new form as the last child in the fieldset
+        newForm.appendTo('#instruction-fieldset');
+
+        // lastly, update Django's form management TOTAL_FORMS
+        $('#instruction-fieldset > #id_form-TOTAL_FORMS').attr('value', instructionFormNum+1);
+    });
+});
