@@ -3,33 +3,29 @@
 {% block content %}
 
 <h1>Add a new recipe</h1>
-<form id="form-container" method="POST">
+<form id="create-recipe-container" method="POST">
     {% csrf_token %}
     {{ recipe_form }}
-    <fieldset>
+    <fieldset id="ingredient-fieldset">
         <legend>Add ingredients</legend>
         {{ ingredient_formset.management_form }}
         {% for form in ingredient_formset %}
-            {{ form.id }}
             <div class="ingredient-form">
-                {{ form.qty }}
-                {{ form.unit }}
-                {{ form.ingredient }}
+                {{ form.as_p }}
             </div>
         {% endfor %}
     </fieldset>
-    <fieldset>
+    <fieldset id="instruction-fieldset">
         <legend>Add instructions</legend>
         {{ instructions_formset.management_form }}
         {% for form in instructions_formset %}
-            {{ form.id }}
-            <div class="ingredient-form">
-                {{ form.step_no }}
-                {{ form.description }}
+            <div class="instruction-form">
+                {{ form.as_p }}
             </div>
         {% endfor %}
     </fieldset>
-    <button id="add-form" type="button">Add another ingredient</button>
+    <button id="add-ingredient" type="button">Add another ingredient</button>
+    <button id="add-instruction" type="button">Add another instruction step</button>
     <button type="submit">Create recipe</button>
 </form>
 
