@@ -18,19 +18,15 @@
     <div class="row">
         <div class="col mb-4 mt-3">
             <h2>Ingredients</h2>
-            {% for item in recipe.ingredients.all %}
-            <div class="ingredient">
-                <div class="ingredient-qty">
-                    {{ item.qty }}
-                </div>
-                <div class="ingredient-unit">
-                    {{ item.unit }}
-                </div>
-                <div class="ingredient-name">
-                    {{ item.ingredient }}
-                </div>
-            </div>
-            {% endfor %}
+            <table class="table">
+                {% for item in recipe.ingredients.all %}
+                <tr>
+                    <td>
+                        {{ item.qty }} {{ item.get_unit_display }} <strong>{{ item.ingredient }}</strong>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
         </div>
         <div class="col mb-4 mt-3">
             <h2>Instructions</h2>
