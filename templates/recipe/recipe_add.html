@@ -10,12 +10,11 @@
         <legend>Add ingredients</legend>
         {{ ingredient_formset.management_form }}
         {% for form in ingredient_formset %}
+            {{ form.id }}
             <div class="ingredient-form">
-                {{ ingredient_meta_formset.management_form }}
-                {% for form in ingredient_meta_formset %}
-                    {{ form.as_p }}
-                {% endfor %}
-                {{ form.as_p }}
+                {{ form.qty }}
+                {{ form.unit }}
+                {{ form.ingredient }}
             </div>
         {% endfor %}
     </fieldset>
