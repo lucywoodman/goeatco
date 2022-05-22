@@ -18,6 +18,17 @@
             </div>
         {% endfor %}
     </fieldset>
+    <fieldset>
+        <legend>Add instructions</legend>
+        {{ instructions_formset.management_form }}
+        {% for form in instructions_formset %}
+            {{ form.id }}
+            <div class="ingredient-form">
+                {{ form.step_no }}
+                {{ form.description }}
+            </div>
+        {% endfor %}
+    </fieldset>
     <button id="add-form" type="button">Add another ingredient</button>
     <button type="submit">Create recipe</button>
 </form>
