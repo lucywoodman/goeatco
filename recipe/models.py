@@ -65,4 +65,4 @@ class Instructions(models.Model):
     step_no = models.PositiveSmallIntegerField()
     description = models.CharField()
     recipe = models.ForeignKey(
-        Recipe, relate_name='instructions', on_delete=models.CASCADE, null=True)
+        Recipe, related_name='instructions', on_delete=models.CASCADE, null=True)
