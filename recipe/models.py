@@ -11,10 +11,11 @@ MEAL = (
 )
 
 UNIT = (
-    (0, 'g'),
-    (1, 'kg'),
-    (2, 'cups'),
-    (3, 'ml'),
+    (0, 'item'),
+    (1, 'g'),
+    (2, 'kg'),
+    (3, 'cups'),
+    (4, 'ml'),
 )
 
 
@@ -55,3 +56,6 @@ class IngredientMeta(models.Model):
     unit = models.IntegerField(choices=UNIT, default=0)
     ingredient = models.ForeignKey(
         Ingredient, related_name='meta', on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return f'{self.qty} {self.unit} {self.ingredient}'
