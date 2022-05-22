@@ -1,8 +1,8 @@
 from django.shortcuts import redirect, get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, TemplateView
-from .models import Recipe, IngredientMeta
-from .forms import RecipeForm, IngredientFormset
+from .models import Recipe, IngredientMeta, Instructions
+from .forms import RecipeForm, IngredientFormset, InstructionFormset
 
 
 class RecipeList(ListView):
@@ -23,21 +23,30 @@ class RecipeAdd(TemplateView):
 
     def get(self, *args, **kwargs):
         recipeform = RecipeForm()
-        formset = IngredientFormset(queryset=IngredientMeta.objects.none())
+        ingredient_formset = IngredientFormset(
+            queryset=IngredientMeta.objects.none())
+        instructions_formset = InstructionFormset(
+            queryset=Instructions.objects.non())
         return self.render_to_response({
             'recipe_form': recipeform,
-            'ingredient_formset': formset,
+            'ingredient_formset': ingredient_formset,
+            'instruction_formset': instructions_formset,
         })
 
     def post(self, request, *args, **kwargs):
         recipeform = RecipeForm(data=self.request.POST)
-        formset = IngredientFormset(data=self.request.POST)
-        if recipeform.is_valid() and formset.is_valid():
+        ingredient_formset = IngredientFormset(data=self.request.POST)
+        instructions_formset = Instructions(data=self.request.POST)
+        if recipeform.is_valid() and ingredient_formset.is_valid() and instructions_formset.is_valid():
             recipe = recipeform.save()
-            for form in formset:
+            for form in ingredient_formset:
                 ingredient = form.save(commit=False)
                 ingredient.recipe = recipe
                 ingredient.save()
+            for form in instructions_formset:
+                instruction = form.save(commit=False)
+                instruction.recipe = recipe
+                instruction.save()
             return redirect('recipe_list')
 
         return redirect('recipe_list')
