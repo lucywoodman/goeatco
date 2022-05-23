@@ -1,5 +1,4 @@
 from django.shortcuts import redirect, get_object_or_404, render
-from django.urls import reverse_lazy
 from django.views.generic import ListView, TemplateView
 from .models import Recipe, IngredientMeta, Instructions
 from .forms import RecipeForm, IngredientFormset, InstructionFormset
