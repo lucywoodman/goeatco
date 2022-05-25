@@ -12,6 +12,8 @@
         <form id="create-recipe-container" method="POST" class="form fs-6 fw-light">
             {% csrf_token %}
             {% bootstrap_field recipe_form.name %}
+            {% bootstrap_field recipe_form.slug %}
+            {% bootstrap_field recipe_form.author %}
             {% bootstrap_field recipe_form.meal %}
             {% bootstrap_field recipe_form.cooking_time %}
             <div class="row">
