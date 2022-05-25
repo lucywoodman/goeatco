@@ -4,36 +4,58 @@
 
 {% block content %}
 
-<div class="col-6 mx-auto">
-    <h1>Add a new recipe</h1>
-    <form id="create-recipe-container" method="POST" class="form">
-        {% csrf_token %}
-        {% bootstrap_form recipe_form %}
-        <fieldset id="ingredient-fieldset">
-            <legend>Add ingredients</legend>
-            {{ ingredient_formset.management_form }}
-            {% for form in ingredient_formset %}
-                <div class="ingredient-form">
-                    {% bootstrap_field form.qty %}
-                    {% bootstrap_field form.unit %}
-                    {% bootstrap_field form.ingredient %}
+<div class="card p-0 mb-5">
+    <div class="card-header">
+        <h1>Add a new recipe</h1>
+    </div>
+    <div class="card-body p-4">
+        <form id="create-recipe-container" method="POST" class="form fs-6 fw-light">
+            {% csrf_token %}
+            {% bootstrap_field recipe_form.name %}
+            {% bootstrap_field recipe_form.meal %}
+            {% bootstrap_field recipe_form.cooking_time %}
+            <div class="row">
+                <div class="card p-0 col-sm-6 mt-3">
+                    <div class="card-header">
+                        <h3>Add ingredients</h3>
+                    </div>
+                    <div class="card-body">
+                        <fieldset id="ingredient-fieldset">
+                            {{ ingredient_formset.management_form }}
+                            {% for form in ingredient_formset %}
+                                <div class="ingredient-form">
+                                    {% bootstrap_field form.qty layout="horizontal" %}
+                                    {% bootstrap_field form.unit layout="horizontal" %}
+                                    {% bootstrap_field form.ingredient layout="horizontal" %}
+                                </div>
+                            {% endfor %}
+                        </fieldset>
+                        {% bootstrap_button button_type="button" content="Add another ingredient" button_class="btn-secondary" id="add-ingredient" %}
+                    </div>
                 </div>
-            {% endfor %}
-        </fieldset>
-        <fieldset id="instruction-fieldset">
-            <legend>Add instructions</legend>
-            {{ instructions_formset.management_form }}
-            {% for form in instructions_formset %}
-                <div class="instruction-form">
-                    {% bootstrap_field form.step_no %}
-                    {% bootstrap_field form.description %}
+                <div class="card p-0 col-sm-6 mt-3">
+                    <div class="card-header">
+                        <h3>Add instructions</h3>
+                    </div>
+                    <div class="card-body">
+                        <fieldset id="instruction-fieldset">
+                            {{ instructions_formset.management_form }}
+                            {% for form in instructions_formset %}
+                                <div class="instruction-form">
+                                    {% bootstrap_field form.step_no layout="horizontal" %}
+                                    {% bootstrap_field form.description layout="horizontal" %}
+                                </div>
+                            {% endfor %}
+                        </fieldset>
+                        {% bootstrap_button button_type="button" content="Add another instruction step" button_class="btn-secondary" id="add-instruction" %}
+                    </div>
                 </div>
-            {% endfor %}
-        </fieldset>
-        {% bootstrap_button button_type="button" content="Add another ingredient" button_class="btn-secondary" id="add-ingredient" %}
-        {% bootstrap_button button_type="button" content="Add another instruction step" button_class="btn-secondary" id="add-instruction" %}
-        {% bootstrap_button button_type="submit" content="Create recipe" %}
-    </form>
-
+            </div>
+            <div class="row d-flex justify-content-center m-5">
+                {% bootstrap_button button_type="submit" content="Create recipe" size="lg" %}
+            </div>
+        </form>
+    </div>
 </div>
+
 {% endblock %}
