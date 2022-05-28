@@ -72,7 +72,6 @@ class IngredientMeta(models.Model):
 
 
 class Instructions(models.Model):
-    step_no = models.PositiveSmallIntegerField()
-    description = models.CharField(max_length=255)
+    step = models.CharField(max_length=255)
     recipe = models.ForeignKey(
         Recipe, related_name='instructions', on_delete=models.CASCADE, null=True)

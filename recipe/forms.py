@@ -16,4 +16,4 @@ class RecipeForm(ModelForm):
 IngredientFormset = modelformset_factory(
     IngredientMeta, fields=('qty', 'unit', 'ingredient'), extra=1)
 InstructionFormset = modelformset_factory(
-    Instructions, fields=('step_no', 'description'), extra=1)
+    Instructions, fields=('step', ), extra=1)
