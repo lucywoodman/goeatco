@@ -12,8 +12,6 @@
         <form id="create-recipe-container" method="POST" class="form fs-6 fw-light">
             {% csrf_token %}
             {% bootstrap_field recipe_form.name %}
-            {% bootstrap_field recipe_form.slug %}
-            {% bootstrap_field recipe_form.author %}
             {% bootstrap_field recipe_form.meal %}
             {% bootstrap_field recipe_form.cooking_time %}
             <div class="row">
@@ -41,8 +39,8 @@
                     </div>
                     <div class="card-body">
                         <fieldset id="instruction-fieldset">
-                            {{ instructions_formset.management_form }}
-                            {% for form in instructions_formset %}
+                            {{ instruction_formset.management_form }}
+                            {% for form in instruction_formset %}
                                 <div class="instruction-form">
                                     {% bootstrap_field form.step_no layout="horizontal" %}
                                     {% bootstrap_field form.description layout="horizontal" %}
