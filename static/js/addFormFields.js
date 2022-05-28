@@ -54,7 +54,7 @@ $(document).ready(() => {
         // update html using the earlier regex to update the for, name and id attributes
         newForm.html(newForm.html().replace(formRegex, 'form-' + instructionFormNum + '-'));
         // add the new form as the last child in the fieldset
-        newForm.appendTo('#instruction-fieldset');
+        newForm.appendTo('#instruction-fieldset>ol');
 
         // lastly, update Django's form management TOTAL_FORMS
         $('#instruction-fieldset > #id_form-TOTAL_FORMS').attr('value', instructionFormNum+1);
