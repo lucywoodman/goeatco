@@ -1,51 +1,62 @@
-from django.shortcuts import redirect, get_object_or_404, render
-from django.views.generic import ListView, TemplateView
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views import generic, View
 from .models import Recipe, IngredientMeta, Instructions
 from .forms import RecipeForm, IngredientFormset, InstructionFormset
 
 
-class RecipeList(ListView):
+class RecipeList(generic.ListView):
     model = Recipe
     template_name = 'recipe/recipe_list.html'
 
 
-class RecipeDetail(TemplateView):
+class RecipeDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Recipe.objects.all()
         recipe = get_object_or_404(queryset, slug=slug)
 
-        return render(request, 'recipe/recipe_detail.html', {'recipe': recipe, })
+        return render(
+            request,
+            'recipe/recipe_detail.html',
+            {
+                'recipe': recipe,
+            })
 
 
-class RecipeAdd(TemplateView):
-    template_name = 'recipe/recipe_add.html'
-
-    def get(self, *args, **kwargs):
-        recipeform = RecipeForm()
+class RecipeAdd(View):
+    def get(self, request, *args, **kwargs):
+        recipe_form = RecipeForm()
         ingredient_formset = IngredientFormset(
             queryset=IngredientMeta.objects.none())
-        instructions_formset = InstructionFormset(
+        instruction_formset = InstructionFormset(
             queryset=Instructions.objects.none())
-        return self.render_to_response({
-            'recipe_form': recipeform,
-            'ingredient_formset': ingredient_formset,
-            'instructions_formset': instructions_formset,
-        })
+
+        return render(
+            request,
+            'recipe/recipe_add.html',
+            {
+                'recipe_form': recipe_form,
+                'ingredient_formset': ingredient_formset,
+                'instruction_formset': instruction_formset,
+            })
 
     def post(self, request, *args, **kwargs):
-        recipeform = RecipeForm(data=self.request.POST)
-        ingredient_formset = IngredientFormset(data=self.request.POST)
-        instructions_formset = InstructionFormset(data=self.request.POST)
-        if recipeform.is_valid() and ingredient_formset.is_valid() and instructions_formset.is_valid():
-            recipe = recipeform.save()
+        recipe_form = RecipeForm(data=request.POST)
+        ingredient_formset = IngredientFormset(data=request.POST)
+        instruction_formset = InstructionFormset(data=request.POST)
+
+        if recipe_form.is_valid() and ingredient_formset.is_valid() and instruction_formset.is_valid():
+            recipe_form.instance.author = request.user
+            recipe = recipe_form.save(commit=False)
+            recipe.save()
             for form in ingredient_formset:
                 ingredient = form.save(commit=False)
                 ingredient.recipe = recipe
                 ingredient.save()
-            for form in instructions_formset:
+            for form in instruction_formset:
                 instruction = form.save(commit=False)
                 instruction.recipe = recipe
                 instruction.save()
-            return redirect('recipe_list')
+        else:
+            recipe_form = RecipeForm()
 
         return redirect('recipe_list')
