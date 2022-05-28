@@ -6,7 +6,8 @@ from .models import IngredientMeta, Recipe, Instructions
 class RecipeForm(ModelForm):
     class Meta:
         model = Recipe
-        fields = ('name', 'slug', 'author', 'meal', 'cooking_time')
+        fields = ('name', 'meal', 'cooking_time')
+        exclude = ('slug', 'author')
         labels = {
             'name': _('Recipe name'),
         }
