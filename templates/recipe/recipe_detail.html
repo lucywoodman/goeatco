@@ -31,7 +31,7 @@
             <ol class="list-group list-group-flush list-group-numbered">
                 {% for step in recipe.instructions.all %}
                     <li class="list-group-item">
-                        {{ step.description }}
+                        {{ step.step }}
                     </li>
                 {% endfor %}
             </ol>
