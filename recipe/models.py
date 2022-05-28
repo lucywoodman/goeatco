@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import pre_save
+from django.utils.text import slugify
 
 MEAL = (
     (0, 'Breakfast'),
@@ -28,7 +31,7 @@ class LowerCaseField(models.CharField):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True, null=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='recipes')
     cooking_time = models.DurationField()
@@ -39,6 +42,14 @@ class Recipe(models.Model):
 
     def get_ingredients(self):
         return self.ingredients.all()
+
+
+def recipe_pre_save(instance, *args, **kwargs):
+    if instance.slug is None:
+        instance.slug = slugify(instance.name)
+
+
+pre_save.connect(recipe_pre_save, sender=Recipe)
 
 
 class Ingredient(models.Model):
