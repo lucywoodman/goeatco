@@ -24,8 +24,18 @@
                             {{ ingredient_formset.management_form }}
                             {% for form in ingredient_formset %}
                                 <div class="ingredient-form">
-                                    {% bootstrap_field form.qty layout="horizontal" %}
-                                    {% bootstrap_field form.unit layout="horizontal" %}
+                                    <div class="row">
+                                    <div class="col-md">
+                                        <div class="form-floating">
+                                            {% bootstrap_field form.qty layout="horizontal" %}
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-floating">
+                                            {% bootstrap_field form.unit layout="horizontal" %}
+                                        </div>
+                                    </div>
+                                    </div>
                                     {% bootstrap_field form.ingredient layout="horizontal" %}
                                 </div>
                             {% endfor %}
@@ -40,14 +50,15 @@
                     <div class="card-body">
                         <fieldset id="instruction-fieldset">
                             {{ instruction_formset.management_form }}
-                            {% for form in instruction_formset %}
-                                <div class="instruction-form">
-                                    {% bootstrap_field form.step_no layout="horizontal" %}
-                                    {% bootstrap_field form.description layout="horizontal" %}
-                                </div>
-                            {% endfor %}
+                            <ol>
+                                {% for form in instruction_formset %}
+                                    <li class="instruction-form">
+                                        {% bootstrap_field form.step layout="horizontal" placeholder="Describe this step" %}
+                                    </li>
+                                {% endfor %}
+                            </ol>
                         </fieldset>
-                        {% bootstrap_button button_type="button" content="Add another instruction step" button_class="btn-secondary" id="add-instruction" %}
+                        {% bootstrap_button button_type="button" content="Add another step" button_class="btn-secondary" id="add-instruction" %}
                     </div>
                 </div>
             </div>
