@@ -8,18 +8,25 @@ from django.template.defaultfilters import slugify
 
 class TestRecipeModel(TestCase):
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
         # Set up a user and recipe for the tests
-        self.user = User.objects.create(
+        cls.user = User.objects.create(
             username='test',
             email='test@test.com',
             password='super_secret_password',
         )
-        self.recipe = Recipe.objects.create(
+
+        cls.recipe = Recipe.objects.create(
             name='A test recipe',
-            author=self.user,
+            author=cls.user,
             cooking_time=datetime.timedelta(minutes=5),
         )
+
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
 
     def test_recipe_has_an_author(self):
         """Recipes are correctly assigned a user"""
@@ -71,21 +78,27 @@ class TestRecipeModel(TestCase):
 
 class TestIngredientMetaModel(TestCase):
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
         # Set up a user, ingredient and recipe for the tests
-        self.user = User.objects.create(
+        cls.user = User.objects.create(
             username='test',
             email='test@test.com',
             password='super_secret_password',
         )
-        self.ingredient = Ingredient.objects.create(
+        cls.ingredient = Ingredient.objects.create(
             name="A test ingredient"
         )
-        self.recipe = Recipe.objects.create(
+        cls.recipe = Recipe.objects.create(
             name='A test recipe',
-            author=self.user,
+            author=cls.user,
             cooking_time=datetime.timedelta(minutes=5),
         )
+
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
 
     def test_ingredient_meta_string_returns_qty_unit_name(self):
         """Ingredient meta string returns qty, unit and name"""
