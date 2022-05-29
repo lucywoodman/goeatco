@@ -1,6 +1,6 @@
 from django.db import IntegrityError
 from django.test import TestCase
-from recipe.models import Recipe
+from recipe.models import Recipe, Ingredient
 import datetime
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
@@ -35,6 +35,7 @@ class TestModels(TestCase):
         self.assertEqual(recipe.slug, slugify(recipe.name))
 
     def test_recipe_has_unique_name(self):
+        """Recipes raise an error if the name is not unique"""
         recipe1 = Recipe.objects.create(
             name='A test recipe',
             author=self.user,
@@ -50,9 +51,26 @@ class TestModels(TestCase):
             recipe2.save()
 
     def test_recipe_string_returns_name(self):
+        """Recipe string returns the recipe name"""
         recipe = Recipe.objects.create(
             name='A test recipe',
             author=self.user,
             cooking_time=datetime.timedelta(minutes=5),
         )
         self.assertEqual(str(recipe), 'A test recipe')
+
+    def test_recipe_meal_defaults_to_2(self):
+        """Recipe meal defauls to choice 2: Dinner"""
+        recipe = Recipe.objects.create(
+            name='A test recipe',
+            author=self.user,
+            cooking_time=datetime.timedelta(minutes=5),
+        )
+        self.assertEqual(recipe.meal, 2)
+
+    def test_ingredient_string_returns_name(self):
+        """Ingredient string returns the ingredient name"""
+        ingredient = Ingredient.objects.create(
+            name='A test ingredient'
+        )
+        self.assertEqual(str(ingredient), 'A test ingredient')
