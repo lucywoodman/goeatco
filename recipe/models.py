@@ -31,9 +31,6 @@ class Recipe(models.Model):
     def __str__(self):
         return self.name
 
-    def get_ingredients(self):
-        return self.ingredients.all()
-
 
 def recipe_pre_save(instance, *args, **kwargs):
     if instance.slug is None:
