@@ -110,7 +110,7 @@ class TestIngredientMetaModel(TestCase):
         self.assertEqual(str(ingredient_meta), f'1 item a test ingredient')
 
     def test_ingredient_has_unique_name(self):
-        """Recipes raise an error if the name is not unique"""
+        """Ingredient raise an error if the name is not unique"""
         ingredient1 = self.ingredient
         ingredient1.save()
         with self.assertRaises(IntegrityError):
