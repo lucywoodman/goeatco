@@ -68,7 +68,7 @@ class IngredientMeta(models.Model):
         Recipe, related_name='ingredients', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return f'{self.qty} {self.unit} {self.ingredient}'
+        return f'{self.qty} {self.get_unit_display()} {self.ingredient}'
 
 
 class Instructions(models.Model):
