@@ -1,3 +1,4 @@
+from django.db import IntegrityError
 from django.test import TestCase
 from recipe.models import Recipe
 import datetime
@@ -31,5 +32,19 @@ class TestModels(TestCase):
             author=self.user,
             cooking_time=datetime.timedelta(minutes=5),
         )
-        recipe.save()
         self.assertEqual(recipe.slug, slugify(recipe.name))
+
+    def test_recipe_has_unique_name(self):
+        recipe1 = Recipe.objects.create(
+            name='A test recipe',
+            author=self.user,
+            cooking_time=datetime.timedelta(minutes=5),
+        )
+        recipe1.save()
+        with self.assertRaises(IntegrityError):
+            recipe2 = Recipe.objects.create(
+                name='A test recipe',
+                author=self.user,
+                cooking_time=datetime.timedelta(minutes=5),
+            )
+            recipe2.save()
