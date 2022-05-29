@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.dispatch import receiver
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
 
@@ -19,14 +18,6 @@ UNIT = (
     (3, 'cups'),
     (4, 'ml'),
 )
-
-
-class LowerCaseField(models.CharField):
-    def __init__(self, *args, **kwargs):
-        super(LowerCaseField, self).__init__(*args, **kwargs)
-
-    def get_prep_value(self, value):
-        return str(value).lower()
 
 
 class Recipe(models.Model):
@@ -53,7 +44,11 @@ pre_save.connect(recipe_pre_save, sender=Recipe)
 
 
 class Ingredient(models.Model):
-    name = LowerCaseField(max_length=200, unique=True)
+    name = models.CharField(max_length=200, unique=True)
+
+    def save(self, *args, **kwargs):
+        self.name = self.name.lower()
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name

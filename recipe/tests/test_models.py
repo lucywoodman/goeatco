@@ -58,7 +58,15 @@ class TestRecipeModel(TestCase):
         ingredient = Ingredient.objects.create(
             name='A test ingredient'
         )
-        self.assertEqual(str(ingredient), 'A test ingredient')
+        self.assertEqual(str(ingredient), 'a test ingredient')
+
+    def test_ingredient_name_converts_to_lowercase(self):
+        """Ingredient string is lowercase"""
+        ingredient = Ingredient.objects.create(
+            name='A TEST INGREDIENT'
+        )
+        ingredient.save()
+        self.assertEqual(ingredient.name, 'a test ingredient')
 
 
 class TestIngredientMetaModel(TestCase):
@@ -86,4 +94,4 @@ class TestIngredientMetaModel(TestCase):
             ingredient=self.ingredient,
             recipe=self.recipe,
         )
-        self.assertEqual(str(ingredient_meta), f'1 item A test ingredient')
+        self.assertEqual(str(ingredient_meta), f'1 item a test ingredient')
