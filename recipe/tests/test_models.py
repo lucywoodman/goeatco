@@ -48,3 +48,11 @@ class TestModels(TestCase):
                 cooking_time=datetime.timedelta(minutes=5),
             )
             recipe2.save()
+
+    def test_recipe_string_returns_name(self):
+        recipe = Recipe.objects.create(
+            name='A test recipe',
+            author=self.user,
+            cooking_time=datetime.timedelta(minutes=5),
+        )
+        self.assertEqual(str(recipe), 'A test recipe')
