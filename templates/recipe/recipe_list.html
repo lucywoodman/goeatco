@@ -14,6 +14,7 @@
                                 <h2 class="card-title">{{ recipe.name }}</h2>
                             </a>
                             <a href="{% url 'recipe_update' recipe.slug %}">Update recipe</a>
+                            <a href="{% url 'recipe_delete' recipe.slug %}">Delete recipe</a>
                         </div>
                     </div>
                 </div>
