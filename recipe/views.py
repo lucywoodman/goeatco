@@ -1,62 +1,69 @@
-from django.shortcuts import get_object_or_404, redirect, render
-from django.views import generic, View
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
+from django.views.generic import ListView, DetailView, CreateView, TemplateView
 from .models import Recipe, IngredientMeta, Instructions
 from .forms import RecipeForm, IngredientFormset, InstructionFormset
 
 
-class RecipeList(generic.ListView):
+class SuccessView(TemplateView):
+    template_name = 'recipe/success.html'
+
+
+class RecipeListView(ListView):
     model = Recipe
-    template_name = 'recipe/recipe_list.html'
+    context_object_name = 'recipes'
 
 
-class RecipeDetail(View):
-    def get(self, request, slug, *args, **kwargs):
-        queryset = Recipe.objects.all()
-        recipe = get_object_or_404(queryset, slug=slug)
-
-        return render(
-            request,
-            'recipe/recipe_detail.html',
-            {
-                'recipe': recipe,
-            })
+class RecipeDetailView(DetailView):
+    model = Recipe
+    context_object_name = 'recipe'
 
 
-class RecipeAdd(View):
-    def get(self, request, *args, **kwargs):
-        recipe_form = RecipeForm()
-        ingredient_formset = IngredientFormset(
+class RecipeAddView(CreateView):
+    model = Recipe
+    form_class = RecipeForm
+    success_url = 'success/'
+
+    def get(self, *args, **kwargs):
+        # clear reference to self
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        ingredient_form = IngredientFormset(
             queryset=IngredientMeta.objects.none())
-        instruction_formset = InstructionFormset(
+        instruction_form = InstructionFormset(
             queryset=Instructions.objects.none())
-
-        return render(
-            request,
-            'recipe/recipe_add.html',
-            {
-                'recipe_form': recipe_form,
-                'ingredient_formset': ingredient_formset,
-                'instruction_formset': instruction_formset,
-            })
+        return self.render_to_response(
+            self.get_context_data(
+                form=form,
+                ingredient_form=ingredient_form,
+                instruction_form=instruction_form
+            )
+        )
 
     def post(self, request, *args, **kwargs):
-        recipe_form = RecipeForm(data=request.POST)
-        ingredient_formset = IngredientFormset(data=request.POST)
-        instruction_formset = InstructionFormset(data=request.POST)
-
-        if recipe_form.is_valid() and ingredient_formset.is_valid() and instruction_formset.is_valid():
-            recipe_form.instance.author = request.user
-            recipe = recipe_form.save(commit=False)
-            recipe.save()
-            for form in ingredient_formset:
-                ingredient = form.save(commit=False)
-                ingredient.recipe = recipe
-                ingredient.save()
-            for form in instruction_formset:
-                instruction = form.save(commit=False)
-                instruction.recipe = recipe
-                instruction.save()
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        ingredient_form = IngredientFormset(self.request.POST)
+        instruction_form = InstructionFormset(self.request.POST)
+        if (form.is_valid() and ingredient_form.is_valid() and
+                instruction_form.is_valid()):
+            return self.form_valid(form, ingredient_form, instruction_form)
         else:
-            recipe_form = RecipeForm()
+            return self.form_invalid(form, ingredient_form, instruction_form)
 
-        return redirect('recipe_list')
+    def form_valid(self, form, ingredient_form, instruction_form):
+        form.instance.author = self.request.user
+        self.object = form.save()
+        ingredient_form.instance = self.object
+        ingredient_form.save()
+        instruction_form.instance = self.object
+        instruction_form.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def form_invalid(self, form, ingredient_form, instruction_form):
+        return self.render_to_response(
+            self.get_context_data(form=form,
+                                  ingredient_form=ingredient_form,
+                                  instruction_form=instruction_form))
