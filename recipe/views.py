@@ -1,6 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render
-from django.views.generic import ListView, DetailView, CreateView, TemplateView
+from django.views.generic import ListView, DetailView, CreateView, TemplateView, UpdateView
 from .models import Recipe, IngredientMeta, Instructions
 from .forms import RecipeForm, IngredientFormset, InstructionFormset
 
@@ -55,6 +54,53 @@ class RecipeAddView(CreateView):
 
     def form_valid(self, form, ingredient_form, instruction_form):
         form.instance.author = self.request.user
+        self.object = form.save()
+        ingredient_form.instance = self.object
+        ingredient_form.save()
+        instruction_form.instance = self.object
+        instruction_form.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def form_invalid(self, form, ingredient_form, instruction_form):
+        return self.render_to_response(
+            self.get_context_data(form=form,
+                                  ingredient_form=ingredient_form,
+                                  instruction_form=instruction_form))
+
+
+class RecipeUpdateView(UpdateView):
+    model = Recipe
+    form_class = RecipeForm
+    template_name_suffix = '_update_form'
+    success_url = '/'
+
+    def get(self, *args, **kwargs):
+        self.object = self.get_object()
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        ingredient_form = IngredientFormset(instance=self.object)
+        instruction_form = InstructionFormset(instance=self.object)
+        return self.render_to_response(
+            self.get_context_data(
+                form=form,
+                ingredient_form=ingredient_form,
+                instruction_form=instruction_form
+            )
+        )
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        ingredient_form = IngredientFormset(self.request.POST)
+        instruction_form = InstructionFormset(self.request.POST)
+        if (form.is_valid() and ingredient_form.is_valid() and
+                instruction_form.is_valid()):
+            return self.form_valid(form, ingredient_form, instruction_form)
+        else:
+            return self.form_invalid(form, ingredient_form, instruction_form)
+
+    def form_valid(self, form, ingredient_form, instruction_form):
         self.object = form.save()
         ingredient_form.instance = self.object
         ingredient_form.save()
