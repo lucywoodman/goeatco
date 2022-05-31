@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+<div class="card p-0 mb-5">
+    <div class="card-header">
+        <h1>Add a new recipe</h1>
+    </div>
+    <div class="card-body p-4">
+        <form id="create-recipe-container" method="POST" class="form fs-6 fw-light">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <div class="row">
+                <div class="card p-0 col-sm-6 mt-3">
+                    <div class="card-header">
+                        <h3>Add ingredients</h3>
+                    </div>
+                    <div class="card-body">
+                        <fieldset id="ingredient-fieldset">
+                            {{ ingredient_form.management_form }}
+                            {% for form in ingredient_form %}
+                                {{ form.id }}
+                                <div class="ingredient-form">
+                                    <div class="row">
+                                    <div class="col-md">
+                                        <div class="form-floating">
+                                            {% bootstrap_field form.qty layout="horizontal" %}
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-floating">
+                                            {% bootstrap_field form.unit layout="horizontal" %}
+                                        </div>
+                                    </div>
+                                    </div>
+                                    {% bootstrap_field form.ingredient layout="horizontal" %}
+                                </div>
+                            {% endfor %}
+                        </fieldset>
+                        {% bootstrap_button button_type="button" content="Add another ingredient" button_class="btn-secondary" id="add-ingredient" %}
+                    </div>
+                </div>
+                <div class="card p-0 col-sm-6 mt-3">
+                    <div class="card-header">
+                        <h3>Add instructions</h3>
+                    </div>
+                    <div class="card-body">
+                        <fieldset id="instruction-fieldset">
+                            {{ instruction_form.management_form }}
+                            <ol>
+                                {% for form in instruction_form %}
+                                {{ form.id }}
+                                    <li class="instruction-form">
+                                        {% bootstrap_field form.step layout="horizontal" placeholder="Describe this step" %}
+                                    </li>
+                                {% endfor %}
+                            </ol>
+                        </fieldset>
+                        {% bootstrap_button button_type="button" content="Add another step" button_class="btn-secondary" id="add-instruction" %}
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center m-5">
+                {% bootstrap_button button_type="submit" content="Create recipe" size="lg" %}
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
