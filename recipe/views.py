@@ -19,7 +19,7 @@ class RecipeDetailView(generic.DetailView):
     context_object_name = 'recipe'
 
 
-class RecipeAddView(generic.CreateView):
+class RecipeCreateView(generic.CreateView):
     model = Recipe
     form_class = RecipeForm
     success_url = 'success/'
