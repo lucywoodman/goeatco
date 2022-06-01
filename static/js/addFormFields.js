@@ -30,6 +30,10 @@ $(document).ready(() => {
         newForm.html(newForm.html().replace(formRegex, 'ingredients-' + ingredientFormNum + '-'));
         // add the new form as the last child in the fieldset
         newForm.appendTo('#ingredient-fieldset');
+        // clear any cloned value
+        $('#id_ingredients-' + ingredientFormNum + '-qty').val('');
+        $('#id_ingredients-' + ingredientFormNum + '-ingredient').val('');
+        $('#id_ingredients-' + ingredientFormNum + '-unit').val('0');
 
         // lastly, update Django's form management TOTAL_FORMS
         $('#ingredient-fieldset > #id_ingredients-TOTAL_FORMS').attr('value', ingredientFormNum+1);
@@ -55,6 +59,8 @@ $(document).ready(() => {
         newForm.html(newForm.html().replace(formRegex, 'instructions-' + instructionFormNum + '-'));
         // add the new form as the last child in the fieldset
         newForm.appendTo('#instruction-fieldset>ol');
+        // clear any cloned value
+        $('#id_instructions-' + instructionFormNum + '-step').val('');
 
         // lastly, update Django's form management TOTAL_FORMS
         $('#instruction-fieldset > #id_instructions-TOTAL_FORMS').attr('value', instructionFormNum+1);
