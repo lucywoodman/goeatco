@@ -24,6 +24,7 @@ UNIT = (
 class Recipe(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='recipes')
+    public = models.BooleanField(default=False)
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True, null=True)
     cooking_time = models.PositiveSmallIntegerField(default=0, blank=True)
