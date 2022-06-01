@@ -42,7 +42,7 @@
         <div class="container-fluid">
             <div class="navbar-nav">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'recipe_add' %}" class="nav-link">Add a new recipe</a>
+                    <a href="{% url 'recipe_create' %}" class="nav-link">Create a new recipe</a>
                 {% endif %}
             </div>
         </div>
