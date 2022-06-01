@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
 
 MEAL = (
     (0, 'Breakfast'),
@@ -29,6 +30,7 @@ class Recipe(models.Model):
     slug = models.SlugField(max_length=200, unique=True, blank=True, null=True)
     cooking_time = models.PositiveSmallIntegerField(default=0, blank=True)
     meal = models.IntegerField(choices=MEAL, default=2)
+    featured_image = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
         return self.name
