@@ -13,7 +13,19 @@ class RecipeForm(ModelForm):
         }
 
 
+class IngredientForm(ModelForm):
+    class Meta:
+        model = IngredientMeta
+        fields = ('__all__')
+
+
+class InstructionForm(ModelForm):
+    class Meta:
+        model = Instructions
+        fields = ('__all__')
+
+
 IngredientFormset = inlineformset_factory(
-    Recipe, IngredientMeta, fields=('qty', 'unit', 'ingredient'), extra=1)
+    Recipe, IngredientMeta, form=IngredientForm, extra=1)
 InstructionFormset = inlineformset_factory(
-    Recipe, Instructions, fields=('step', ), extra=1)
+    Recipe, Instructions, form=InstructionForm, extra=1)
