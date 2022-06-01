@@ -4,16 +4,16 @@
 
 <div class="card p-0 mb-5">
     <div class="card-header">
-        <h1>Create a new recipe</h1>
+        <h1>Recipe</h1>
     </div>
     <div class="card-body p-4">
-        <form id="create-recipe-container" method="POST" class="form fs-6 fw-light">
+        <form id="create-recipe-container" action="" method="POST" class="form fs-6 fw-light">
             {% csrf_token %}
             {% bootstrap_form form %}
             <div class="row">
                 <div class="card p-0 col-sm-6 mt-3">
                     <div class="card-header">
-                        <h3>Add ingredients</h3>
+                        <h3>Ingredients</h3>
                     </div>
                     <div class="card-body">
                         <fieldset id="ingredient-fieldset">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="card p-0 col-sm-6 mt-3">
                     <div class="card-header">
-                        <h3>Add instructions</h3>
+                        <h3>Instructions</h3>
                     </div>
                     <div class="card-body">
                         <fieldset id="instruction-fieldset">
@@ -49,7 +49,7 @@
                             <ol>
                                 {% for form in instructions %}
                                     <li class="instruction-form">
-                                        {% bootstrap_field form.step layout="horizontal" placeholder="Describe this step" %}
+                                        {% bootstrap_field form.step layout="horizontal" %}
                                     </li>
                                 {% endfor %}
                             </ol>
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-center m-5">
-                {% bootstrap_button button_type="submit" content="Create recipe" size="lg" %}
+                {% bootstrap_button button_type="submit" content="Save recipe" size="lg" %}
             </div>
         </form>
     </div>
