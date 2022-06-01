@@ -1,0 +1,72 @@
+[
+    {
+        "model": "recipe.ingredient",
+        "pk": 1,
+        "fields": {
+            "name": "tea"
+        }
+    },
+    {
+        "model": "recipe.ingredient",
+        "pk": 2,
+        "fields": {
+            "name": "coffee"
+        }
+    },
+    {
+        "model": "recipe.ingredient",
+        "pk": 3,
+        "fields": {
+            "name": "honey"
+        }
+    },
+    {
+        "model": "recipe.ingredient",
+        "pk": 4,
+        "fields": {
+            "name": "milk"
+        }
+    },
+    {
+        "model": "recipe.ingredient",
+        "pk": 5,
+        "fields": {
+            "name": "banana"
+        }
+    },
+    {
+        "model": "recipe.ingredient",
+        "pk": 6,
+        "fields": {
+            "name": "oats"
+        }
+    },
+    {
+        "model": "recipe.ingredient",
+        "pk": 7,
+        "fields": {
+            "name": "egg"
+        }
+    },
+    {
+        "model": "recipe.ingredient",
+        "pk": 8,
+        "fields": {
+            "name": "peanut butter"
+        }
+    },
+    {
+        "model": "recipe.ingredient",
+        "pk": 9,
+        "fields": {
+            "name": "blueberries"
+        }
+    },
+    {
+        "model": "recipe.ingredient",
+        "pk": 10,
+        "fields": {
+            "name": "shredded coconut"
+        }
+    }
+]
