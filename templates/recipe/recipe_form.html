@@ -19,6 +19,7 @@
                         <fieldset id="ingredient-fieldset">
                             {{ ingredients.management_form }}
                             {% for form in ingredients %}
+                            {{ form.id }}
                                 <div class="ingredient-form">
                                     <div class="row">
                                     <div class="col-md">
@@ -48,6 +49,7 @@
                             {{ instructions.management_form }}
                             <ol>
                                 {% for form in instructions %}
+                                {{ form.id }}
                                     <li class="instruction-form">
                                         {% bootstrap_field form.step layout="horizontal" %}
                                     </li>
