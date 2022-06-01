@@ -16,16 +16,17 @@ UNIT = (
     (1, 'g'),
     (2, 'kg'),
     (3, 'cups'),
-    (4, 'ml'),
+    (4, 'tsp'),
+    (5, 'tbsp'),
 )
 
 
 class Recipe(models.Model):
-    name = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True, blank=True, null=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='recipes')
-    cooking_time = models.DurationField()
+    name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True, null=True)
+    cooking_time = models.PositiveSmallIntegerField(default=0, blank=True)
     meal = models.IntegerField(choices=MEAL, default=2)
 
     def __str__(self):
@@ -52,18 +53,18 @@ class Ingredient(models.Model):
 
 
 class IngredientMeta(models.Model):
-    qty = models.IntegerField()
-    unit = models.IntegerField(choices=UNIT, default=0)
     ingredient = models.ForeignKey(
         Ingredient, related_name='meta', on_delete=models.CASCADE, null=True)
     recipe = models.ForeignKey(
         Recipe, related_name='ingredients', on_delete=models.CASCADE, null=True)
+    qty = models.IntegerField()
+    unit = models.IntegerField(choices=UNIT, default=0)
 
     def __str__(self):
         return f'{self.qty} {self.get_unit_display()} {self.ingredient}'
 
 
 class Instructions(models.Model):
-    step = models.CharField(max_length=255)
     recipe = models.ForeignKey(
         Recipe, related_name='instructions', on_delete=models.CASCADE, null=True)
+    step = models.CharField(max_length=255)
