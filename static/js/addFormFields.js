@@ -22,17 +22,17 @@ $(document).ready(() => {
         // clone the initial ingredient form
         let newForm = $('.ingredient-form:first').clone();
         // create regex object for updating new form html later
-        let formRegex = RegExp(`form-(\\d){1}-`,'g');
+        let formRegex = RegExp(`ingredients-(\\d){1}-`,'g');
 
         // increment formNum to create a unique-to-this-form integer
         ingredientFormNum++
         // update html using the earlier regex to update the for, name and id attributes
-        newForm.html(newForm.html().replace(formRegex, 'form-' + ingredientFormNum + '-'));
+        newForm.html(newForm.html().replace(formRegex, 'ingredients-' + ingredientFormNum + '-'));
         // add the new form as the last child in the fieldset
         newForm.appendTo('#ingredient-fieldset');
 
         // lastly, update Django's form management TOTAL_FORMS
-        $('#ingredient-fieldset > #id_form-TOTAL_FORMS').attr('value', ingredientFormNum+1);
+        $('#ingredient-fieldset > #id_ingredients-TOTAL_FORMS').attr('value', ingredientFormNum+1);
     });
 
     /**
@@ -47,16 +47,16 @@ $(document).ready(() => {
         // clone the initial instruction form
         let newForm = $('.instruction-form:first').clone();
         // create regex object for updating new form html later
-        let formRegex = RegExp(`form-(\\d){1}-`,'g');
+        let formRegex = RegExp(`instructions-(\\d){1}-`,'g');
 
         // increment formNum to create a unique-to-this-form integer
         instructionFormNum++
         // update html using the earlier regex to update the for, name and id attributes
-        newForm.html(newForm.html().replace(formRegex, 'form-' + instructionFormNum + '-'));
+        newForm.html(newForm.html().replace(formRegex, 'instructions-' + instructionFormNum + '-'));
         // add the new form as the last child in the fieldset
         newForm.appendTo('#instruction-fieldset>ol');
 
         // lastly, update Django's form management TOTAL_FORMS
-        $('#instruction-fieldset > #id_form-TOTAL_FORMS').attr('value', instructionFormNum+1);
+        $('#instruction-fieldset > #id_instructions-TOTAL_FORMS').attr('value', instructionFormNum+1);
     });
 });
