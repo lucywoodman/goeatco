@@ -17,9 +17,8 @@
                     </div>
                     <div class="card-body">
                         <fieldset id="ingredient-fieldset">
-                            {{ ingredient_form.management_form }}
-                            {% for form in ingredient_form %}
-                                {{ form.id }}
+                            {{ ingredients.management_form }}
+                            {% for form in ingredients %}
                                 <div class="ingredient-form">
                                     <div class="row">
                                     <div class="col-md">
@@ -46,10 +45,9 @@
                     </div>
                     <div class="card-body">
                         <fieldset id="instruction-fieldset">
-                            {{ instruction_form.management_form }}
+                            {{ instructions.management_form }}
                             <ol>
-                                {% for form in instruction_form %}
-                                {{ form.id }}
+                                {% for form in instructions %}
                                     <li class="instruction-form">
                                         {% bootstrap_field form.step layout="horizontal" placeholder="Describe this step" %}
                                     </li>

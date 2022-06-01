@@ -19,8 +19,8 @@
                     </div>
                     <div class="card-body">
                         <fieldset id="ingredient-fieldset">
-                            {{ ingredient_form.management_form }}
-                            {% for form in ingredient_form %}
+                            {{ ingredients.management_form }}
+                            {% for form in ingredients %}
                                 {{ form.id }}
                                 <div class="ingredient-form">
                                     <div class="row">
@@ -39,7 +39,7 @@
                                 </div>
                             {% endfor %}
                         </fieldset>
-                        {% bootstrap_button button_type="button" content="Add another ingredient" button_class="btn-secondary" id="add-ingredient" %}
+                        {% bootstrap_button button_type="button" content="Add ingredient" button_class="btn-secondary" id="add-ingredient" %}
                     </div>
                 </div>
                 <div class="card p-0 col-sm-6 mt-3">
@@ -48,9 +48,9 @@
                     </div>
                     <div class="card-body">
                         <fieldset id="instruction-fieldset">
-                            {{ instruction_form.management_form }}
+                            {{ instructions.management_form }}
                             <ol>
-                                {% for form in instruction_form %}
+                                {% for form in instructions %}
                                 {{ form.id }}
                                     <li class="instruction-form">
                                         {% bootstrap_field form.step layout="horizontal" placeholder="Describe this step" %}
