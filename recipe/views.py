@@ -1,13 +1,8 @@
-from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views import generic
 from django.db import transaction
-from .models import Recipe, IngredientMeta, Instructions
+from .models import Recipe
 from .forms import RecipeForm, IngredientFormset, InstructionFormset
-
-
-class SuccessView(generic.TemplateView):
-    template_name = 'recipe/success.html'
 
 
 class RecipeListView(generic.ListView):
@@ -23,7 +18,7 @@ class RecipeDetailView(generic.DetailView):
 class RecipeCreateView(generic.CreateView):
     model = Recipe
     form_class = RecipeForm
-    success_url = 'success/'
+    success_url = reverse_lazy('recipe_list')
 
     def get_context_data(self, **kwargs):
         data = super(RecipeCreateView, self).get_context_data(**kwargs)
@@ -54,8 +49,7 @@ class RecipeCreateView(generic.CreateView):
 class RecipeUpdateView(generic.UpdateView):
     model = Recipe
     form_class = RecipeForm
-    template_name_suffix = '_update_form'
-    success_url = '/'
+    success_url = reverse_lazy('recipe_list')
 
     def get_context_data(self, **kwargs):
         data = super(RecipeUpdateView, self).get_context_data(**kwargs)
