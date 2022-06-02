@@ -2,25 +2,27 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<div class="col-9 mt-3 left">
     <div class="row">
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for recipe in recipes %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
-                                <h2 class="card-title">{{ recipe.name }}</h2>
-                            </a>
-                            <a href="{% url 'recipe_update' recipe.slug %}">Update recipe</a>
-                            <a href="{% url 'recipe_delete' recipe.slug %}">Delete recipe</a>
-                        </div>
-                    </div>
+        {% for recipe in recipes %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <!-- The featured image URL goes in the src attribute -->
+                {% if "placeholder" in recipe.featured_image.url %}
+                    <img src="https://res.cloudinary.com/go-eat-co/image/upload/v1654093874/cld-sample-4.jpg" class="card-img-top">
+                {% else %}
+                    <img src="{{ recipe.featured_image.url }}" class="card-img-top">
+                {% endif %}
+                <div class="card-body">
+                    <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
+                        <h2 class="card-title">{{ recipe.name }}</h2>
+                    </a>
+                    <a href="{% url 'recipe_update' recipe.slug %}">Update recipe</a>
+                    <a href="{% url 'recipe_delete' recipe.slug %}">Delete recipe</a>
                 </div>
-                {% endfor %}
             </div>
         </div>
+        {% endfor %}
     </div>
 </div>
 
