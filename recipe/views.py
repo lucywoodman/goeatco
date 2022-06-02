@@ -1,8 +1,16 @@
+from multiprocessing import get_context
 from django.urls import reverse_lazy
 from django.views import generic
 from django.db import transaction
 from .models import Recipe
 from .forms import RecipeForm, IngredientFormset, InstructionFormset
+
+
+class HomeListView(generic.ListView):
+    model = Recipe
+    context_object_name = 'recipes'
+    queryset = Recipe.objects.filter(public=True)
+    template_name = 'recipe/recipe_list.html'
 
 
 class RecipeListView(generic.ListView):
