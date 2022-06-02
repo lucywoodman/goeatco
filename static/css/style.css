@@ -1,0 +1,63 @@
+/* GLOBAL */
+
+body {
+    font-family: 'Quattrocento Sans', sans-serif;
+    color: #212529;
+    line-height: 1.4rem;
+}
+
+a {
+    transition: all .25s ease-in-out;
+}
+
+/* NAVIGATION */
+
+.navbar-brand {
+    font-family: 'Ovo', serif;
+}
+
+.navbar {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* CARDS */
+
+.card {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 10px;
+}
+
+.card-header {
+    background-color: #fff;
+    margin-bottom: 0;
+    padding: 0.75rem 1.5rem;
+}
+
+.card a:not(btn), .if-author a:not(btn) {
+    color: inherit;
+    text-decoration: none;
+}
+
+.card-meta {
+    font-size: 0.85rem;
+}
+
+.card-title {
+    margin-top: 0.4rem;
+    margin-bottom: 0.75rem;
+}
+
+/* AUTHOR */
+
+.if-author {
+    background-color: #f0bb39;
+    font-size: 0.8rem;
+}
+
+/* SITE FOOTER */
+
+.site-footer .copy {
+    color: #92969a;
+}
