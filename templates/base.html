@@ -15,44 +15,56 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ovo&family=Quattrocento+Sans:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body class="d-flex flex-column h-100 pt-5">
 
-    <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a href="{% url 'home' %}" class="navbar-brand">Go Eat Co.</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <div class="navbar-nav">
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'recipe_list' %}" class="nav-link">View recipes</a>
-                        <a href="{% url 'recipe_create' %}" class="nav-link">Create recipe</a>
-                        <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
-                    {% else %}
-                        <a href="{% url 'account_signup' %}" class="nav-link">Register</a>
-                        <a href="{% url 'account_login' %}" class="nav-link">Login</a>
-                    {% endif %}
+    <header>
+        <!-- Navigation -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a href="{% url 'home' %}" class="navbar-brand">Go Eat Co.</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <div class="navbar-nav">
+                        <a href="{% url 'home' %}" class="nav-link">Home</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'recipe_list' %}" class="nav-link">View recipes</a>
+                            <a href="{% url 'recipe_create' %}" class="nav-link">Create recipe</a>
+                            <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
+                        {% else %}
+                            <a href="{% url 'account_signup' %}" class="nav-link">Register</a>
+                            <a href="{% url 'account_login' %}" class="nav-link">Login</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <main class="flex-shrink-0">
+    <main class="flex-shrink-0 mt-4">
         <div class="container">
-            <div class="row">
-                {% block content %}
-                <!-- Content Goes here -->
-                {% endblock content %}
-            </div>
+            {% block content %}
+            <!-- Content Goes here -->
+            {% endblock content %}
         </div>
     </main>
 
     <!-- Footer -->
-    <footer>
+    <footer class="site-footer bg-dark">
+        <div class="container">
+            <div class="copy p-4 mx-auto">
+                &copy; Go Eat Co. {% now "Y" %}<br>
+                For educational purposes only
+            </div>
+        </div>
     </footer>
 
     <!-- Vendor scripts -->
