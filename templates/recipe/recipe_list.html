@@ -22,7 +22,10 @@
                     <img src="{{ recipe.featured_image.url }}" class="card-img">
                 {% endif %}
             </a>
-            <div class="card-body">
+            <div class="card-body px-4">
+                <div class="card-meta mb-3">
+                    Course: {{ recipe.get_meal_display }} | Cooking time: {{ recipe.cooking_time }} mins
+                </div>
                 <p class="card-text">Description? Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm.</p>
             </div>
         </article>
