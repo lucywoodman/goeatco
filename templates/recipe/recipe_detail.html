@@ -1,47 +1,61 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="col-4 mt-5">
-    <p>{{ recipe.author|upper }}</p>
-    <!-- Recipe title goes in these h1 tags -->
-    <h1 class="post-title">{{ recipe.name }}</h1>
-    <p>Meal: {{ recipe.get_meal_display }}</p>
-    <!-- Recipe meta -->
-    <p>Author: {{ recipe.author }} | Cooking time: {{ recipe.cooking_time }}</p>
-    <p>Public: {% if recipe.public %}Yes{% else %}No{% endif %}</p>
-</div>
-<div class="col-8">
-    <div>
-        <!-- The featured image URL goes in the src attribute -->
-        {% if "placeholder" in recipe.featured_image.url %}
-            <img src="https://res.cloudinary.com/go-eat-co/image/upload/v1654093874/cld-sample-4.jpg" class="img-fluid">
-        {% else %}
-            <img src="{{ recipe.featured_image.url }}" class="img-fluid">
-        {% endif %}
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col mb-4 mt-3">
-            <h2>Ingredients</h2>
-            <ul class="list-group list-group-flush">
-                {% for item in recipe.ingredients.all %}
-                    <li class="list-group-item">
-                        {{ item.qty }} {{ item.get_unit_display }} <strong>{{ item.ingredient }}</strong>
-                    </li>
-                {% endfor %}
+<div class="row">
+    {% if user.is_authenticated and user == recipe.author %}
+        <div class="if-author p-2">
+            <div class="text-center pb-2 pt-2">
+                {% if recipe.public %}
+                This recipe can be seen by everyone
+                {% else %}
+                This recipe can only be seen by logged-in users
+                {% endif %}
+            </div>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a href="{% url 'recipe_update' recipe.slug %}" class="nav-link">Edit recipe</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'recipe_delete' recipe.slug %}" class="nav-link">Delete recipe</a>
+                </li>
             </ul>
         </div>
-        <div class="col mb-4 mt-3">
-            <h2>Instructions</h2>
-            <ol class="list-group list-group-flush list-group-numbered">
-                {% for step in recipe.instructions.all %}
-                    <li class="list-group-item">
-                        {{ step.step }}
-                    </li>
-                {% endfor %}
-            </ol>
-        </div>
+    {% endif %}
+    <div class="col-md-9">
+        <article class="card mb-4">
+            <header class="card-header text-center">
+                <a href="{% url 'recipe_detail' recipe.slug %}">
+                    <h1 class="card-title">{{ recipe.name }}</h1>
+                </a>
+                <div class="card-meta">
+                    Course: {{ recipe.get_meal_display }} | Cooking time: {{ recipe.cooking_time }}<br>
+                    <!-- TODO turn this into a link for all author's recipes -->
+                    Written by {{ recipe.author }}
+                </div>
+            </header>
+            <a href="{% url 'recipe_detail' recipe.slug %}">
+                {% if "placeholder" in recipe.featured_image.url %}
+                    <img src="https://res.cloudinary.com/go-eat-co/image/upload/v1654093874/cld-sample-4.jpg" class="card-img">
+                {% else %}
+                    <img src="{{ recipe.featured_image.url }}" class="card-img">
+                {% endif %}
+            </a>
+            <div class="card-body mt-3">
+                <h4>Ingredients</h4>
+                <ul class="list-unstyled">
+                    {% for item in recipe.ingredients.all %}
+                        <li>{{ item.qty }} {{ item.get_unit_display }} <strong>{{ item.ingredient }}</strong></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="card-body">
+                <h4>Instructions</h4>
+                <ol class="list-unstyled">
+                    {% for step in recipe.instructions.all %}
+                        <li>{{ step.step }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </article>
     </div>
 </div>
 
