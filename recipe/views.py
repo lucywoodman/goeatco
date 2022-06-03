@@ -94,3 +94,14 @@ class IngredientCreateView(generic.CreateView):
     model = Ingredient
     form_class = IngredientForm
     success_url = reverse_lazy('ingredient_list')
+
+
+class IngredientUpdateView(generic.UpdateView):
+    model = Ingredient
+    form_class = IngredientForm
+    success_url = reverse_lazy('ingredient_list')
+
+
+class IngredientDeleteView(generic.DeleteView):
+    model = Ingredient
+    success_url = reverse_lazy('ingredient_list')

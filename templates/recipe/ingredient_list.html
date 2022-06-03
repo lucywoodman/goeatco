@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load django_bootstrap5 %}
 {% block content %}
 
 <div class="row">
@@ -17,7 +17,14 @@
                     <tr>
                         <td>{{ item.name }}</td>
                         <td>Category</td>
-                        <td>Buttons</td>
+                        <td>
+                            <a href="{% url 'ingredient_update' item.pk %}">
+                                {% bootstrap_button button_type="button" content="Edit" %}
+                            </a>
+                            <a href="{% url 'ingredient_delete' item.pk %}">
+                                {% bootstrap_button button_type="button" content="Delete" %}
+                            </a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
