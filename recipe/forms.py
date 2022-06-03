@@ -1,6 +1,6 @@
 from django.forms import ModelForm, inlineformset_factory
 from django.utils.translation import gettext_lazy as _
-from .models import IngredientMeta, Recipe, Instructions
+from .models import Ingredient, IngredientMeta, Recipe, Instructions
 
 
 class RecipeForm(ModelForm):
@@ -29,3 +29,9 @@ IngredientFormset = inlineformset_factory(
     Recipe, IngredientMeta, form=IngredientForm, extra=1)
 InstructionFormset = inlineformset_factory(
     Recipe, Instructions, form=InstructionForm, extra=1)
+
+
+class IngredientForm(ModelForm):
+    class Meta:
+        model = Ingredient
+        fields = ('__all__')
