@@ -3,70 +3,80 @@
         "model": "recipe.ingredient",
         "pk": 1,
         "fields": {
-            "name": "tea"
+            "name": "tea",
+            "category": 9
         }
     },
     {
         "model": "recipe.ingredient",
         "pk": 2,
         "fields": {
-            "name": "coffee"
+            "name": "coffee",
+            "category": 9
         }
     },
     {
         "model": "recipe.ingredient",
         "pk": 3,
         "fields": {
-            "name": "honey"
+            "name": "honey",
+            "category": 8
         }
     },
     {
         "model": "recipe.ingredient",
         "pk": 4,
         "fields": {
-            "name": "milk"
+            "name": "milk",
+            "category": 4
         }
     },
     {
         "model": "recipe.ingredient",
         "pk": 5,
         "fields": {
-            "name": "banana"
+            "name": "banana",
+            "category": 2
         }
     },
     {
         "model": "recipe.ingredient",
         "pk": 6,
         "fields": {
-            "name": "oats"
+            "name": "oats",
+            "category": 5
         }
     },
     {
         "model": "recipe.ingredient",
         "pk": 7,
         "fields": {
-            "name": "egg"
+            "name": "egg",
+            "category": 4
         }
     },
     {
         "model": "recipe.ingredient",
         "pk": 8,
         "fields": {
-            "name": "peanut butter"
+            "name": "peanut butter",
+            "category": 7
         }
     },
     {
         "model": "recipe.ingredient",
         "pk": 9,
         "fields": {
-            "name": "blueberries"
+            "name": "blueberries",
+            "category": 2
         }
     },
     {
         "model": "recipe.ingredient",
         "pk": 10,
         "fields": {
-            "name": "shredded coconut"
+            "name": "shredded coconut",
+            "category": 7
         }
     }
 ]
