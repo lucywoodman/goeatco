@@ -4,6 +4,9 @@
 
 <div class="row">
     <div class="col-md-9 mx-auto">
+        <form action="{% url 'ingredient_list' %}" method="get">
+            <input name="query" type="text" placeholder="Search...">
+        </form>
         <table class="table">
             <thead>
                 <tr>
@@ -16,7 +19,7 @@
                 {% for item in ingredients %}
                     <tr>
                         <td>{{ item.name }}</td>
-                        <td>Category</td>
+                        <td>{{ item.category }}</td>
                         <td>
                             <a href="{% url 'ingredient_update' item.pk %}">
                                 {% bootstrap_button button_type="button" content="Edit" %}

@@ -89,6 +89,15 @@ class IngredientListView(generic.ListView):
     model = Ingredient
     context_object_name = 'ingredients'
 
+    def get_queryset(self):
+        query = self.request.GET.get("query")
+        if query is None:
+            object_list = Ingredient.objects.all()
+        else:
+            object_list = Ingredient.objects.filter(
+                category__name__icontains=query)
+        return object_list
+
 
 class IngredientCreateView(generic.CreateView):
     model = Ingredient
