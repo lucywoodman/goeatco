@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.views import generic
 from django.db import transaction
-from .models import Recipe
+from .models import Ingredient, Recipe
 from .forms import RecipeForm, IngredientFormset, InstructionFormset
 
 
@@ -83,3 +83,8 @@ class RecipeUpdateView(generic.UpdateView):
 class RecipeDeleteView(generic.DeleteView):
     model = Recipe
     success_url = reverse_lazy('recipe_list')
+
+
+class IngredientListView(generic.ListView):
+    model = Ingredient
+    context_object_name = 'ingredients'
