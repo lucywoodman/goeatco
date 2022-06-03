@@ -9,12 +9,7 @@ class HomeListView(generic.ListView):
     model = Recipe
     context_object_name = 'recipes'
     queryset = Recipe.objects.filter(public=True)
-    template_name = 'recipe/recipe_list.html'
-
-
-class RecipeListView(generic.ListView):
-    model = Recipe
-    context_object_name = 'recipes'
+    template_name = 'index.html'
 
 
 class RecipeDetailView(generic.DetailView):
