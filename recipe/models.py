@@ -21,18 +21,6 @@ UNIT = (
     (5, 'tbsp'),
 )
 
-CATEGORY = (
-    (0, 'other'),
-    (1, 'vegetables'),
-    (2, 'fruits'),
-    (3, 'meat/fish'),
-    (4, 'dairy'),
-    (5, 'grains/legumes'),
-    (6, 'herbs/spices'),
-    (7, 'nuts/seeds/oils'),
-    (8, 'stocks/condiments'),
-)
-
 
 class Recipe(models.Model):
     author = models.ForeignKey(
@@ -56,9 +44,21 @@ def recipe_pre_save(instance, *args, **kwargs):
 pre_save.connect(recipe_pre_save, sender=Recipe)
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=80, unique=True)
+
+    def save(self, *args, **kwargs):
+        self.name = self.name.lower()
+        return super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
 class Ingredient(models.Model):
-    name = models.CharField(max_length=200, unique=True)
-    category = models.IntegerField(choices=CATEGORY, default=0)
+    name = models.CharField(max_length=80, unique=True)
+    category = models.ForeignKey(
+        Category, related_name='categories', on_delete=models.CASCADE, null=True)
 
     def save(self, *args, **kwargs):
         self.name = self.name.lower()
