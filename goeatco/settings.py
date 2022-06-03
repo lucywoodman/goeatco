@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'django_bootstrap5',
-    'django_filters',
+    'django_generic_filters',
 
     # apps
     'recipe',
