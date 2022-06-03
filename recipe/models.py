@@ -22,15 +22,15 @@ UNIT = (
 )
 
 CATEGORY = (
-    (0, 'vegetables'),
-    (1, 'fruits'),
-    (2, 'meat/fish'),
-    (3, 'dairy'),
-    (4, 'grains/legumes'),
-    (5, 'herbs/spices'),
-    (6, 'nuts/seeds/oils'),
-    (7, 'stocks/condiments'),
-    (8, 'other'),
+    (0, 'other'),
+    (1, 'vegetables'),
+    (2, 'fruits'),
+    (3, 'meat/fish'),
+    (4, 'dairy'),
+    (5, 'grains/legumes'),
+    (6, 'herbs/spices'),
+    (7, 'nuts/seeds/oils'),
+    (8, 'stocks/condiments'),
 )
 
 
