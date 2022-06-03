@@ -1,45 +1,29 @@
-{% extends "base.html" %}
-
-{% block content %}
-
-<div class="row">
-    {% for recipe in recipes %}
-    <div class="col-md-4">
-        <!-- Recipe card -->
-        <article class="card mb-4">
-            <header class="card-header">
-                <div class="card-meta">
-                    Tags here?
-                </div>
-                <a href="{% url 'recipe_detail' recipe.slug %}">
-                    <h2 class="card-title">{{ recipe.name }}</h2>
-                </a>
-            </header>
+{% for recipe in recipes %}
+<div class="col-md-4">
+    <!-- Recipe card -->
+    <article class="card mb-4">
+        <header class="card-header">
+            <div class="card-meta">
+                Tags here?
+            </div>
             <a href="{% url 'recipe_detail' recipe.slug %}">
-                {% if "placeholder" in recipe.featured_image.url %}
-                    <img src="https://res.cloudinary.com/go-eat-co/image/upload/v1654093874/cld-sample-4.jpg" class="card-img">
-                {% else %}
-                    <img src="{{ recipe.featured_image.url }}" class="card-img">
-                {% endif %}
+                <h2 class="card-title">{{ recipe.name }}</h2>
             </a>
-            <div class="card-body px-4">
-                <div class="card-meta mb-3">
-                    Course: {{ recipe.get_meal_display }} | Cooking time: {{ recipe.cooking_time }} mins
-                </div>
-                <p class="card-text">Description? Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm.</p>
+        </header>
+        <a href="{% url 'recipe_detail' recipe.slug %}">
+            {% if "placeholder" in recipe.featured_image.url %}
+                <img src="https://res.cloudinary.com/go-eat-co/image/upload/v1654093874/cld-sample-4.jpg" class="card-img">
+            {% else %}
+                <img src="{{ recipe.featured_image.url }}" class="card-img">
+            {% endif %}
+        </a>
+        <div class="card-body px-4">
+            <div class="card-meta mb-3">
+                Course: {{ recipe.get_meal_display }} | Cooking time: {{ recipe.cooking_time }} mins
             </div>
-        </article>
-        <!-- End card -->
-    </div>
-    {% endfor %}
-    <div class="col-md-4 ms-auto">
-        <aside class="sidebar">
-            <div class="card mb-4">
-                <h4 class="card-title">Welcome</h4>
-                <p class="card-text"></p>
-            </div>
-        </aside>
-    </div>
+            <p class="card-text">Description? Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm.</p>
+        </div>
+    </article>
+    <!-- End card -->
 </div>
-
-{%endblock%}
+{% endfor %}
