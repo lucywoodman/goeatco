@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
-
+{% load django_bootstrap5 %}
 {% block content %}
 
 <div class="row">
     {% include 'recipe/_recipe_list.html' %}
     <div class="col-md-4 ms-auto">
         <aside class="sidebar">
+            {% if user.is_authenticated %}
+            <div class="card mb-4">
+                <h4 class="card-title">Welcome {{ user.username }}!</h4>
+                <p class="card-text"></p>
+                <a href="{% url 'recipe_create' %}">
+                    {% bootstrap_button button_type="button" content="Create new recipe" %}
+                </a>
+            </div>
+            {% else %}
             <div class="card mb-4">
                 <h4 class="card-title">Welcome</h4>
                 <p class="card-text"></p>
             </div>
+            {% endif %}
         </aside>
     </div>
 </div>
