@@ -20,7 +20,7 @@ class RecipeDetailView(generic.DetailView):
 class RecipeCreateView(generic.CreateView):
     model = Recipe
     form_class = RecipeForm
-    success_url = reverse_lazy('recipe_list')
+    success_url = reverse_lazy('home')
 
     def get_context_data(self, **kwargs):
         data = super(RecipeCreateView, self).get_context_data(**kwargs)
@@ -51,7 +51,7 @@ class RecipeCreateView(generic.CreateView):
 class RecipeUpdateView(generic.UpdateView):
     model = Recipe
     form_class = RecipeForm
-    success_url = reverse_lazy('recipe_list')
+    success_url = reverse_lazy('home')
 
     def get_context_data(self, **kwargs):
         data = super(RecipeUpdateView, self).get_context_data(**kwargs)
