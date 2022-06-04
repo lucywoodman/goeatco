@@ -1,9 +1,19 @@
 from django.forms import ModelForm, inlineformset_factory
 from django.utils.translation import gettext_lazy as _
+from cloudinary.forms import CloudinaryFileField
 from .models import Category, Ingredient, IngredientMeta, Recipe, Instructions
 
 
 class RecipeForm(ModelForm):
+    featured_image = CloudinaryFileField(
+        options={
+            'crop': 'crop',
+            'aspect_ratio': '16:9',
+            'width': 1000,
+            'folder': 'featured-images'
+        }
+    )
+
     class Meta:
         model = Recipe
         fields = ('public', 'name', 'description', 'meal',
