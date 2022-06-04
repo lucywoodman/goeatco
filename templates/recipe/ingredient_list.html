@@ -3,20 +3,22 @@
 {% block content %}
 
 <div class="row">
-    <div class="col-md-3 me-auto">
+    <div class="col-md-4 me-auto">
         <aside class="sidebar">
             <div class="card mb-4">
-                <h4 class="card-title">Filters</h4>
-                <form action="{% url 'ingredient_list' %}" method="get">
-                    {{ form.id }}
-                    {% bootstrap_field form.category %}
-                    {% bootstrap_button button_type="submit" content="Apply filter" %}
-                    {% bootstrap_button button_type="link" content="Reset filter" href="/ingredients" %}
-                </form>
+                <div class="card-body px-4">
+                    <h4 class="card-title">Filters</h4>
+                    <form action="{% url 'ingredient_list' %}" method="get">
+                        {{ form.id }}
+                        {% bootstrap_field form.category %}
+                        {% bootstrap_button button_type="submit" content="Apply filter" %}
+                        {% bootstrap_button button_type="link" content="Reset filter" href="/ingredients" %}
+                    </form>
+                </div>
             </div>
         </aside>
     </div>
-    <div class="col-md-9 mx-auto">
+    <div class="col-md-8 mx-auto">
         <table class="table">
             <thead>
                 <tr>
