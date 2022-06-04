@@ -15,7 +15,7 @@
                     {% with url_name=request.resolver_match.url_name %}
                     <a href="{% url 'home' %}" class="nav-link {% if url_name == 'home' %}active{% endif %}">All Recipes</a>
                     {% if user.is_authenticated %}
-                        <a href="{% url 'cookbook' %}" class="nav=link {% if url_name == 'ingredient_list' %}active{% endif %}">My Cookbook</a>
+                        <a href="{% url 'cookbook' %}" class="nav-link {% if url_name == 'ingredient_list' %}active{% endif %}">My Cookbook</a>
                         <a href="{% url 'ingredient_list' %}" class="nav-link {% if url_name == 'ingredient_list' %}active{% endif %}">Ingredients</a>
                         <a href="{% url 'account_logout' %}" class="nav-link {% if url_name == 'account_logout' %}active{% endif %}">Logout</a>
                     {% else %}
