@@ -2,6 +2,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from .models import Ingredient, Recipe
 from .forms import IngredientCategoryForm, IngredientForm, RecipeForm, IngredientFormset, InstructionFormset
@@ -10,8 +12,14 @@ from .forms import IngredientCategoryForm, IngredientForm, RecipeForm, Ingredien
 class HomeListView(generic.ListView):
     model = Recipe
     context_object_name = 'recipes'
-    queryset = Recipe.objects.filter(public=True)
     template_name = 'index.html'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        if self.request.user.is_authenticated:
+            return qs
+        else:
+            return qs.filter(public=True)
 
 
 class RecipeDetailView(generic.DetailView):
@@ -30,6 +38,7 @@ class RecipeDetailView(generic.DetailView):
         return data
 
 
+@login_required
 def RecipeSave(request, slug):
     recipe = get_object_or_404(Recipe, slug=request.POST.get('recipe_save'))
     if recipe.saves.filter(id=request.user.id).exists():
@@ -40,7 +49,7 @@ def RecipeSave(request, slug):
     return HttpResponseRedirect(reverse('recipe_detail', kwargs={'slug': slug}))
 
 
-class RecipeCreateView(generic.CreateView):
+class RecipeCreateView(LoginRequiredMixin, generic.CreateView):
     model = Recipe
     form_class = RecipeForm
     success_url = reverse_lazy('home')
@@ -71,7 +80,7 @@ class RecipeCreateView(generic.CreateView):
         return super(RecipeCreateView, self).form_valid(form)
 
 
-class RecipeUpdateView(generic.UpdateView):
+class RecipeUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Recipe
     form_class = RecipeForm
     success_url = reverse_lazy('home')
@@ -103,12 +112,12 @@ class RecipeUpdateView(generic.UpdateView):
         return super(RecipeUpdateView, self).form_valid(form)
 
 
-class RecipeDeleteView(generic.DeleteView):
+class RecipeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Recipe
     success_url = reverse_lazy('recipe_list')
 
 
-class IngredientListView(generic.ListView):
+class IngredientListView(LoginRequiredMixin, generic.ListView):
     model = Ingredient
 
     def get_queryset(self):
@@ -125,24 +134,24 @@ class IngredientListView(generic.ListView):
         return context
 
 
-class IngredientCreateView(generic.CreateView):
+class IngredientCreateView(LoginRequiredMixin, generic.CreateView):
     model = Ingredient
     form_class = IngredientForm
     success_url = reverse_lazy('ingredient_list')
 
 
-class IngredientUpdateView(generic.UpdateView):
+class IngredientUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Ingredient
     form_class = IngredientForm
     success_url = reverse_lazy('ingredient_list')
 
 
-class IngredientDeleteView(generic.DeleteView):
+class IngredientDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Ingredient
     success_url = reverse_lazy('ingredient_list')
 
 
-class CookbookView(generic.ListView):
+class CookbookView(LoginRequiredMixin, generic.ListView):
     model = Recipe
     context_object_name = 'recipes'
     template_name = 'recipe/cookbook.html'
