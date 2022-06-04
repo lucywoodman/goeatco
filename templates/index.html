@@ -8,21 +8,29 @@
         <aside class="sidebar">
             {% if user.is_authenticated %}
             <div class="card mb-4">
-                <h4 class="card-title">Welcome {{ user.username }}!</h4>
-                <p class="card-text">As a member, you can peruse through the full collection of recipes, including those exclusive to our community.</p>
-                <p class="card-text">Feel free to submit your own recipes too!</p>
-                <a href="{% url 'recipe_create' %}">
-                    {% bootstrap_button button_type="button" content="Create new recipe" %}
-                </a>
+                <header class="card-header">
+                    <h4 class="card-title">Welcome {{ user.username }}!</h4>
+                </header>
+                <div class="card-body px-4">
+                    <p class="card-text">As a member, you can peruse through the full collection of recipes, including those exclusive to our community.</p>
+                    <p class="card-text">Feel free to submit your own recipes too!</p>
+                    <a href="{% url 'recipe_create' %}">
+                        {% bootstrap_button button_type="button" content="Create new recipe" %}
+                    </a>
+                </div>
             </div>
             {% else %}
             <div class="card mb-4">
-                <h4 class="card-title">Welcome!</h4>
-                <p class="card-text">Come and explore the wide range of recipes submitted by Go Eat Co. members.</p>
-                <p class="card-text">To save them to your personal cookbook, or submit your own recipes, do join our growing community by registering an account - it's free!</p>
-                <a href="{% url 'account_signup' %}">
-                    {% bootstrap_button button_type="button" content="Register" %}
-                </a>
+                <header class="card-header">
+                    <h4 class="card-title">Welcome friend!</h4>
+                </header>
+                <div class="card-body px-4">
+                    <p class="card-text">Come and explore the wide range of recipes submitted by Go Eat Co. members.</p>
+                    <p class="card-text">To save them to your personal cookbook, or submit your own recipes, join our growing community by registering an account - it's free!</p>
+                    <a href="{% url 'account_signup' %}">
+                        {% bootstrap_button button_type="button" content="Register" %}
+                    </a>
+                </div>
             </div>
             {% endif %}
         </aside>
