@@ -11,6 +11,7 @@ class RecipeForm(ModelForm):
         exclude = ('slug', 'author')
         labels = {
             'name': _('Recipe name'),
+            'cooking_time': _('Cooking time (in minutes)'),
         }
 
 
