@@ -57,8 +57,10 @@ class RecipeCreateView(LoginRequiredMixin, generic.CreateView):
     def get_context_data(self, **kwargs):
         data = super(RecipeCreateView, self).get_context_data(**kwargs)
         if self.request.POST:
-            data['ingredients'] = IngredientFormset(self.request.POST)
-            data['instructions'] = InstructionFormset(self.request.POST)
+            data['ingredients'] = IngredientFormset(
+                self.request.POST, self.request.FILES)
+            data['instructions'] = InstructionFormset(
+                self.request.POST, self.request.FILES)
         else:
             data['ingredients'] = IngredientFormset()
             data['instructions'] = InstructionFormset()
@@ -89,9 +91,9 @@ class RecipeUpdateView(LoginRequiredMixin, generic.UpdateView):
         data = super(RecipeUpdateView, self).get_context_data(**kwargs)
         if self.request.POST:
             data['ingredients'] = IngredientFormset(
-                self.request.POST, instance=self.object)
+                self.request.POST, self.request.FILES, instance=self.object)
             data['instructions'] = InstructionFormset(
-                self.request.POST, instance=self.object)
+                self.request.POST, self.request.FILES, instance=self.object)
         else:
             data['ingredients'] = IngredientFormset(instance=self.object)
             data['instructions'] = InstructionFormset(instance=self.object)
