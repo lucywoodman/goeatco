@@ -1,25 +1,8 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% load django_bootstrap5 %}
+{% block content %}
 
 <div class="row">
-    {% if user.is_authenticated and user == recipe.author %}
-        <div class="if-author p-2">
-            <div class="text-center pb-2 pt-2">
-                {% if recipe.public %}
-                This recipe can be seen by everyone
-                {% else %}
-                This recipe can only be seen by logged-in users
-                {% endif %}
-            </div>
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a href="{% url 'recipe_update' recipe.slug %}" class="nav-link">Edit recipe</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'recipe_delete' recipe.slug %}" class="nav-link">Delete recipe</a>
-                </li>
-            </ul>
-        </div>
-    {% endif %}
     <div class="col-md-9">
         <article class="card mb-4">
             <header class="card-header text-center">
@@ -39,11 +22,8 @@
                     <img src="{{ recipe.featured_image.url }}" class="card-img">
                 {% endif %}
             </a>
-            <div class="card-body mt-3 px-4">
-                <p class="card-text">
-                    Recipe description?
-                </p>
-                <div class="mt-4">
+            <div class="row mt-4">
+                <div class="col-md-6 card-body px-5">
                     <h4 class="card-title">Ingredients</h4>
                     <ul class="list-unstyled">
                         {% for item in recipe.ingredients.all %}
@@ -51,7 +31,7 @@
                         {% endfor %}
                     </ul>
                 </div>
-                <div class="mt-4">
+                <div class="col-md-6 card-body px-5">
                     <h4 class="card-title">Instructions</h4>
                     <ol class="list-group list-group-flush list-group-numbered">
                         {% for step in recipe.instructions.all %}
@@ -64,11 +44,48 @@
     </div>
     <div class="col-md-3 ms-auto">
         <aside class="sidebar">
+            {% if user.is_authenticated and user == recipe.author %}
+            <div class="card mb-4 is-author">
+                <h4 class="card-title">Author Actions</h4>
+                {% if recipe.public %}
+                <p class="card-text">This recipe is <strong>public</strong> and can be seen by non-members as well as members.</p>
+                {% else %}
+                <p class="card-text">This recipe is exclusive to the community and can be seen only by members.</p>
+                {% endif %}
+                <a href="{% url 'recipe_update' recipe.slug %}">
+                    {% bootstrap_button button_type="button" content="Edit this recipe" %}
+                </a>
+                <a href="{% url 'recipe_delete' recipe.slug %}">
+                    {% bootstrap_button button_type="button" content="Delete this recipe" %}
+                </a>
+            </div>
+            {% endif %}
             <div class="card mb-4">
-                <div class="card-body px-4">
-                    <h4 class="card-title">Author Bio</h4>
-                    <p class="card-text">Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
+                <h4 class="card-title">About this recipe</h4>
+                <p class="card-text">{{ recipe.description }}</p>
+                {% if user.is_authenticated %}
+                <div class="save-to-cookbook py-4">
+                    <!-- Saves -->
+                    <form action="{% url 'recipe_save' object.slug %}" method="POST">
+                        {% csrf_token %}
+                        {% if recipe_is_saved %}
+                        <button type="submit" name="recipe_save" value="{{object.slug}}" class="btn btn-info">Remove from Cookbook</button>
+                        {% else %}
+                        <button type="submit" name="recipe_save" value="{{object.slug}}" class="btn btn-info">Save to Cookbook</button>
+                        {% endif %}
+                    </form>
+                    <strong class="text-secondary">This recipe has been saved {{ number_of_saves }} times.</strong>
                 </div>
+                {% endif %}
+            </div>
+            <div class="card mb-4">
+                <h4 class="card-title">About the author</h4>
+                <p class="card-text">Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm.</p>
+                {% if user.is_authenticated and user == recipe.author %}
+                <a href="{% url 'recipe_delete' recipe.slug %}">
+                    {% bootstrap_button button_type="button" content="Update bio" %}
+                </a>
+                {% endif %}
             </div>
         </aside>
     </div>
