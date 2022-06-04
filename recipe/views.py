@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.db import transaction
 from .models import Ingredient, Recipe
-from .forms import IngredientForm, RecipeForm, IngredientFormset, InstructionFormset
+from .forms import IngredientCategoryForm, IngredientForm, RecipeForm, IngredientFormset, InstructionFormset
 
 
 class HomeListView(generic.ListView):
@@ -87,16 +87,19 @@ class RecipeDeleteView(generic.DeleteView):
 
 class IngredientListView(generic.ListView):
     model = Ingredient
-    context_object_name = 'ingredients'
 
     def get_queryset(self):
-        query = self.request.GET.get("query")
-        if query is None:
-            object_list = Ingredient.objects.all()
+        qs = super().get_queryset()
+        query = self.request.GET.get('category')
+        if query != None:
+            return qs.filter(category__pk=query)
         else:
-            object_list = Ingredient.objects.filter(
-                category__name__icontains=query)
-        return object_list
+            return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(IngredientListView, self).get_context_data(**kwargs)
+        context['form'] = IngredientCategoryForm()
+        return context
 
 
 class IngredientCreateView(generic.CreateView):
