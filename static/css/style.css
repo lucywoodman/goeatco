@@ -53,9 +53,9 @@ a {
 
 /* AUTHOR */
 
-.if-author {
-    background-color: #f0bb39;
-    font-size: 0.8rem;
+.is-author {
+    background-color: #f2f4f5;
+    padding: 1.5rem;
 }
 
 /* SITE FOOTER */
