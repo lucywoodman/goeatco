@@ -32,9 +32,14 @@ class Recipe(models.Model):
     cooking_time = models.PositiveSmallIntegerField(default=0, blank=True)
     meal = models.IntegerField(choices=MEAL, default=2)
     featured_image = CloudinaryField('image', default='placeholder')
+    saves = models.ManyToManyField(
+        User, related_name='recipe_saves', blank=True)
 
     def __str__(self):
         return self.name
+
+    def number_of_saves(self):
+        return self.saves.count()
 
 
 def recipe_pre_save(instance, *args, **kwargs):
