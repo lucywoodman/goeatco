@@ -1,4 +1,6 @@
-from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.db import transaction
 from .models import Ingredient, Recipe
@@ -15,6 +17,27 @@ class HomeListView(generic.ListView):
 class RecipeDetailView(generic.DetailView):
     model = Recipe
     context_object_name = 'recipe'
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        saves_connected = get_object_or_404(
+            Recipe, slug=self.kwargs.get('slug'))
+        saved = False
+        if saves_connected.saves.filter(id=self.request.user.id).exists():
+            saved = True
+        data['number_of_saves'] = saves_connected.number_of_saves()
+        data['recipe_is_saved'] = saved
+        return data
+
+
+def RecipeSave(request, slug):
+    recipe = get_object_or_404(Recipe, slug=request.POST.get('recipe_save'))
+    if recipe.saves.filter(id=request.user.id).exists():
+        recipe.saves.remove(request.user)
+    else:
+        recipe.saves.add(request.user)
+
+    return HttpResponseRedirect(reverse('recipe_detail', kwargs={'slug': slug}))
 
 
 class RecipeCreateView(generic.CreateView):
@@ -117,3 +140,14 @@ class IngredientUpdateView(generic.UpdateView):
 class IngredientDeleteView(generic.DeleteView):
     model = Ingredient
     success_url = reverse_lazy('ingredient_list')
+
+
+class CookbookView(generic.ListView):
+    model = Recipe
+    context_object_name = 'recipes'
+    template_name = 'recipe/cookbook.html'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = qs.filter(saves__in=[self.request.user.id]).order_by('name')
+        return query
