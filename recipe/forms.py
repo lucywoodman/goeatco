@@ -6,6 +6,7 @@ from .models import Category, Ingredient, IngredientMeta, Recipe, Instructions
 
 class RecipeForm(ModelForm):
     featured_image = CloudinaryFileField(
+        required=False,
         options={
             'crop': 'crop',
             'aspect_ratio': '16:9',
