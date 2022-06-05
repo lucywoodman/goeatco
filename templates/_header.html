@@ -18,6 +18,7 @@
                         <a href="{% url 'cookbook' %}" class="nav-link {% if url_name == 'cookbook' %}active{% endif %}">My Cookbook</a>
                         <a href="{% url 'ingredient_list' %}" class="nav-link {% if url_name == 'ingredient_list' %}active{% endif %}">Ingredients</a>
                         <a href="{% url 'account_logout' %}" class="nav-link {% if url_name == 'account_logout' %}active{% endif %}">Logout</a>
+                        <a href="{% url 'profile' user.id %}" class="nav-link {% if url_name == 'profile' %}active{% endif %}">{{ user.username|title }}</a>
                     {% else %}
                         <a href="{% url 'account_signup' %}" class="nav-link {% if url_name == 'account_signup' %}active{% endif %}">Register</a>
                         <a href="{% url 'account_login' %}" class="nav-link {% if url_name == 'account_login' %}active{% endif %}">Login</a>
