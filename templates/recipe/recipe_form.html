@@ -1,10 +1,14 @@
 {% extends "base.html" %}
+
+{% load i18n %}
 {% load django_bootstrap5 %}
+
+{% block head_title %}{% trans "Save Recipe" %}{% endblock %}
 {% block content %}
 
 <div class="card p-0 mb-5">
     <div class="card-header">
-        <h1>Recipe</h1>
+        <h1>Save Recipe</h1>
     </div>
     <div class="card-body p-4">
         <form id="create-recipe-container" action="" method="POST" enctype="multipart/form-data" class="form fs-6 fw-light">
