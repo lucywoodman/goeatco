@@ -28,7 +28,7 @@ class Recipe(models.Model):
     public = models.BooleanField(default=False)
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True, null=True)
-    description = models.CharField(max_length=255)
+    description = models.CharField(max_length=500)
     cooking_time = models.PositiveSmallIntegerField(default=0, blank=True)
     meal = models.IntegerField(choices=MEAL, default=2)
     featured_image = CloudinaryField('image', default='placeholder')
