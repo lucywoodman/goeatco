@@ -5,6 +5,7 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
+from django.db.models import Q
 from .models import Ingredient, Recipe
 from .forms import IngredientCategoryForm, IngredientForm, RecipeForm, IngredientFormset, InstructionFormset
 
@@ -16,10 +17,20 @@ class HomeListView(generic.ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
+        print(qs)
+        query = self.request.GET.get('search')
+        print(query)
         if self.request.user.is_authenticated:
+            if query:
+                qs = qs.filter(Q(name__icontains=query) |
+                               Q(description__icontains=query))
             return qs
         else:
-            return qs.filter(public=True)
+            qs = qs.filter(public=True)
+            if query:
+                qs = qs.filter(Q(name__icontains=query) |
+                               Q(description__icontains=query))
+            return qs
 
 
 class RecipeDetailView(generic.DetailView):
