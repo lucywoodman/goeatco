@@ -10,6 +10,16 @@ a {
     transition: all .25s ease-in-out;
 }
 
+.btn {
+    border-radius: 0 !important;
+}
+
+.btn-primary {
+    background-color: #f0bb39;
+    border-color: #f0bb39;
+    color: #212529;
+}
+
 /* NAVIGATION */
 
 .navbar-brand {
