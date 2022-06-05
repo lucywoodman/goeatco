@@ -15,6 +15,10 @@ a {
     margin-bottom: 0.5rem;
 }
 
+.input-group-btn > button {
+    margin-bottom: 0;
+}
+
 .btn-primary {
     background-color: #f0bb39;
     border-color: #f0bb39;
