@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block head_title %}{% trans "Profile: " %}{{ profile }}{% endblock %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="card mb-4">
+            <header class="card-header text-center">
+                <h1 class="card-title">{{ profile }}</h1>
+            </header>
+            <div class="card-body">
+                <p class="card-text">Username: {{ profile.user.username}} </p>
+                <p class="card-text">Bio: {{ profile.bio }} </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 ms-auto">
+        <aside class="sidebar">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4 class="card-title">About the author</h4>
+                    <p class="card-text">Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm.</p>
+                    {% if user.is_authenticated %}
+                    <a href="#" class="btn btn-primary">Update bio</a>
+                    {% endif %}
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+
+{% endblock content %}
