@@ -12,11 +12,18 @@ a {
 
 .btn {
     border-radius: 0 !important;
+    margin-bottom: 0.5rem;
 }
 
 .btn-primary {
     background-color: #f0bb39;
     border-color: #f0bb39;
+    color: #212529;
+}
+
+.btn-primary:hover {
+    background-color: #d6a11e;
+    border-color: #d6a11e;
     color: #212529;
 }
 
@@ -45,9 +52,9 @@ a {
     padding: 0.75rem 1.5rem;
 }
 
-.card a:not(btn), 
-.if-author a:not(btn),
-.table a:not(btn) {
+.card a:not(.btn), 
+.if-author a:not(.btn),
+.table a:not(.btn) {
     color: inherit;
     text-decoration: none;
 }
