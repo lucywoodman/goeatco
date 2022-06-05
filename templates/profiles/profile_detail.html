@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block head_title %}{% trans "Profile: " %}{{ profile }}{% endblock %}
+{% block content %}
+
+<div class="row">
+    <div class="col-6 mx-auto">
+        <div class="card mb-4">
+            <header class="card-header text-center">
+                <h1 class="card-title">{{ profile|title }}</h1>
+            </header>
+            <div class="card-body">
+                <p class="card-text">Username: {{ user.username }} </p>
+                <p class="card-text">Email: {{ user.email }}</p>
+                <p class="card-text">Bio: {{ profile.bio }} </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
