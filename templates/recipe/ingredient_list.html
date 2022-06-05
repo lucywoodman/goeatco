@@ -12,7 +12,7 @@
                         {{ form.id }}
                         {% bootstrap_field form.category %}
                         {% bootstrap_button button_type="submit" content="Apply filter" %}
-                        {% bootstrap_button button_type="link" content="Reset filter" href="/ingredients" %}
+                        {% bootstrap_button button_type="link" button_class="btn-secondary" content="Reset filter" href="/ingredients" %}
                     </form>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                                 {% bootstrap_button button_type="button" content="Edit" %}
                             </a>
                             <a href="{% url 'ingredient_delete' item.pk %}">
-                                {% bootstrap_button button_type="button" content="Delete" %}
+                                {% bootstrap_button button_type="button" button_class="btn-danger" content="Delete" %}
                             </a>
                         </td>
                     </tr>
