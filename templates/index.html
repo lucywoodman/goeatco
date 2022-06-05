@@ -29,6 +29,19 @@
                 </div>
             </div>
             {% endif %}
+            <div class="card mb-4">
+                <div class="card-body px-4">
+                    <h4 class="card-title">Search recipes</h4>
+                    <form action="{% url 'home' %}">
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Search" name="search" aria-label="Search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="submit">Search</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </aside>
     </div>
 </div>
