@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', include('recipe.urls')),
-    path("robots.txt", TemplateView.as_view(
-        template_name="robots.txt", content_type="text/plain"))
+    path('profile/', include('profiles.urls')),
+    path('robots.txt', TemplateView.as_view(
+        template_name='robots.txt', content_type='text/plain'))
 ]
