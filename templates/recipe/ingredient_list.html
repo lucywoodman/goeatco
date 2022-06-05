@@ -16,6 +16,15 @@
                     </form>
                 </div>
             </div>
+            <div class="card mb-4">
+                <div class="card-body px-4">
+                    <h4 class="card-title">Add ingredients</h4>
+                    <p class="card-text">Is there something missing from our database of ingredients? If so, please go ahead and add it!</p>
+                    <a href="{% url 'ingredient_create' %}">
+                        {% bootstrap_button button_type="button" content="Add an ingredient" %}
+                    </a>
+                </div>
+            </div>
         </aside>
     </div>
     <div class="col-md-8 mx-auto">
@@ -24,7 +33,9 @@
                 <tr>
                 <th scope="col">Ingredient name</th>
                 <th scope="col">Category</th>
+                {% if user.is_superuser %}
                 <th scope="col">Actions</th>
+                {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +43,7 @@
                     <tr>
                         <td>{{ item.name }}</td>
                         <td>{{ item.category }}</td>
+                        {% if user.is_superuser %}
                         <td>
                             <a href="{% url 'ingredient_update' item.pk %}">
                                 {% bootstrap_button button_type="button" content="Edit" %}
@@ -40,6 +52,7 @@
                                 {% bootstrap_button button_type="button" button_class="btn-danger" content="Delete" %}
                             </a>
                         </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>
