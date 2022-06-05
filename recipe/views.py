@@ -14,6 +14,7 @@ class HomeListView(generic.ListView):
     model = Recipe
     context_object_name = 'recipes'
     template_name = 'index.html'
+    paginate_by = 10
 
     def get_queryset(self):
         qs = super().get_queryset()
