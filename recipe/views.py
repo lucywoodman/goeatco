@@ -128,6 +128,7 @@ class RecipeUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class RecipeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Recipe
+    template_name = '_confirm_delete.html'
     success_url = reverse_lazy('recipe_list')
 
 
@@ -162,6 +163,7 @@ class IngredientUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class IngredientDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Ingredient
+    template_name = '_confirm_delete.html'
     success_url = reverse_lazy('ingredient_list')
 
 
