@@ -1,7 +1,7 @@
 from django.forms import ModelForm, inlineformset_factory
 from django.utils.translation import gettext_lazy as _
 from cloudinary.forms import CloudinaryFileField
-from .models import Category, Ingredient, IngredientMeta, Recipe, Instructions
+from .models import IngredientMeta, Recipe, Instructions
 
 
 class RecipeForm(ModelForm):
@@ -42,22 +42,3 @@ IngredientFormset = inlineformset_factory(
     Recipe, IngredientMeta, form=IngredientForm, extra=1)
 InstructionFormset = inlineformset_factory(
     Recipe, Instructions, form=InstructionForm, extra=1)
-
-
-class IngredientForm(ModelForm):
-    class Meta:
-        model = Ingredient
-        fields = ('__all__')
-
-
-class IngredientCategoryForm(ModelForm):
-    class Meta:
-        model = Ingredient
-        fields = ('category',)
-        labels = {
-            'category': _('Filter ingredients by category'),
-        }
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['category'].queryset = Category.objects.all()
