@@ -1,0 +1,65 @@
+[
+    {
+        "model": "ingredients.category",
+        "pk": 1,
+        "fields": {
+            "name": "vegetables"
+        }
+    },
+    {
+        "model": "ingredients.category",
+        "pk": 2,
+        "fields": {
+            "name": "fruits"
+        }
+    },
+    {
+        "model": "ingredients.category",
+        "pk": 3,
+        "fields": {
+            "name": "meat/fish"
+        }
+    },
+    {
+        "model": "ingredients.category",
+        "pk": 4,
+        "fields": {
+            "name": "dairy"
+        }
+    },
+    {
+        "model": "ingredients.category",
+        "pk": 5,
+        "fields": {
+            "name": "grains/legumes"
+        }
+    },
+    {
+        "model": "ingredients.category",
+        "pk": 6,
+        "fields": {
+            "name": "herbs/spices"
+        }
+    },
+    {
+        "model": "ingredients.category",
+        "pk": 7,
+        "fields": {
+            "name": "nuts/seeds/oils"
+        }
+    },
+    {
+        "model": "ingredients.category",
+        "pk": 8,
+        "fields": {
+            "name": "stocks/condiments"
+        }
+    },
+    {
+        "model": "ingredients.category",
+        "pk": 9,
+        "fields": {
+            "name": "other"
+        }
+    }
+]

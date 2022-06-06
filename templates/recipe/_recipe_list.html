@@ -1,0 +1,30 @@
+<div class="col-md-8">
+    <div class="row" data-masonry='{"percentPosition": true }'>
+        {% for recipe in recipes %}
+            <div class="col-md-6">
+                <!-- Recipe card -->
+                <article class="card mb-4">
+                    <header class="card-header">
+                        <a href="{% url 'recipe_detail' recipe.slug %}">
+                            <h2 class="card-title">{{ recipe.name }}</h2>
+                        </a>
+                    </header>
+                    <a href="{% url 'recipe_detail' recipe.slug %}">
+                        {% if "placeholder" in recipe.featured_image.url %}
+                            <img src="https://res.cloudinary.com/go-eat-co/image/upload/v1654093874/cld-sample-4.jpg" class="card-img">
+                        {% else %}
+                            <img src="{{ recipe.featured_image.url }}" class="card-img">
+                        {% endif %}
+                    </a>
+                    <div class="card-body px-4">
+                        <p class="card-text">{{ recipe.description }}</p>
+                        <div class="card-meta mb-3">
+                            Course: {{ recipe.get_meal_display }} | Cooking time: {{ recipe.cooking_time }} mins<br>
+                        </div>
+                    </div>
+                </article>
+                <!-- End card -->
+            </div>
+        {% endfor %}
+    </div>
+</div>

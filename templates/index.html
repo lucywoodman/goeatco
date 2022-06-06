@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block head_title %}{% trans "Home" %}{% endblock %}
+{% block content %}
+
+<div class="row">
+    {% include 'recipe/_recipe_list.html' %}
+    <div class="col-md-4 ms-auto">
+        <aside class="sidebar">
+            {% if user.is_authenticated %}
+            <div class="card mb-4">
+                <div class="card-body px-4">
+                    <h4 class="card-title">Welcome {{ user.username }}!</h4>
+                    <p class="card-text">As a member, you can peruse through the full collection of recipes, including those exclusive to our community.</p>
+                    <p class="card-text">Feel free to submit your own recipes too!</p>
+                    <a href="{% url 'recipe_create' %}">
+                        {% bootstrap_button button_type="button" content="Create new recipe" %}
+                    </a>
+                </div>
+            </div>
+            {% else %}
+            <div class="card mb-4">
+                <div class="card-body px-4">
+                    <h4 class="card-title">Welcome friend!</h4>
+                    <p class="card-text">Come and explore the wide range of recipes submitted by Go Eat Co. members.</p>
+                    <p class="card-text">To save them to your personal cookbook, or submit your own recipes, join our growing community by registering an account - it's free!</p>
+                    <a href="{% url 'account_signup' %}">
+                        {% bootstrap_button button_type="button" content="Register" %}
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+            <div class="card mb-4">
+                <div class="card-body px-4">
+                    <h4 class="card-title">Search recipes</h4>
+                    <form action="{% url 'home' %}">
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Search" name="search" aria-label="Search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="submit">Search</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+{% include '_paginate.html' %}
+
+{% endblock %}

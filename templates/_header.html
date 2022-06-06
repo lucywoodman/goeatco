@@ -1,0 +1,48 @@
+<!-- Header -->
+<header>
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+        <div class="container-fluid px-5">
+            <!-- Brand -->
+            <a href="{% url 'home' %}" class="navbar-brand">Go Eat Co.</a>
+            <!-- Toggle for smaller screens -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navigation -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    {% with url_name=request.resolver_match.url_name %}
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link {% if url_name == 'home' %}active{% endif %}">All Recipes</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'ingredient_list' %}" class="nav-link {% if url_name == 'ingredient_list' %}active{% endif %}">Ingredients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'cookbook' %}" class="nav-link {% if url_name == 'cookbook' %}active{% endif %}">My Cookbook</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ user.username|title }}</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a href="{% url 'profile' user.id %}" class="dropdown-item {% if url_name == 'profile' %}active{% endif %}">My Profile</a></li>
+                            <li><a href="{% url 'account_logout' %}" class="dropdown-item {% if url_name == 'account_logout' %}active{% endif %}">Logout</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'account_signup' %}" class="nav-link {% if url_name == 'account_signup' %}active{% endif %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'account_login' %}" class="nav-link {% if url_name == 'account_login' %}active{% endif %}">Login</a>
+                    </li>
+                    {% endif %}
+                    {% endwith %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End navbar -->
+</header>
+<!-- End header -->

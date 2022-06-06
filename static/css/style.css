@@ -1,0 +1,89 @@
+/* GLOBAL */
+
+body {
+    font-family: 'Quattrocento Sans', sans-serif;
+    color: #212529;
+    line-height: 1.4rem;
+}
+
+a {
+    transition: all .25s ease-in-out;
+}
+
+.btn {
+    border-radius: 0 !important;
+    margin-bottom: 0.5rem;
+}
+
+.input-group-btn > button {
+    margin-bottom: 0;
+}
+
+.btn-primary {
+    background-color: #f0bb39;
+    border-color: #f0bb39;
+    color: #212529;
+}
+
+.btn-primary:hover {
+    background-color: #d6a11e;
+    border-color: #d6a11e;
+    color: #212529;
+}
+
+/* NAVIGATION */
+
+.navbar-brand {
+    font-family: 'Ovo', serif;
+}
+
+.navbar {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.dropdown-menu[data-bs-popper] {
+    left: -100%;
+}
+
+/* CARDS */
+
+.card {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 10px;
+}
+
+.card-header {
+    background-color: inherit;
+    margin-bottom: 0;
+    padding: 0.75rem 1.5rem;
+}
+
+.card a:not(.btn), 
+.if-author a:not(.btn),
+.table a:not(.btn) {
+    color: inherit;
+    text-decoration: none;
+}
+
+.card-meta {
+    font-size: 0.85rem;
+}
+
+.card-title {
+    margin-top: 0.4rem;
+    margin-bottom: 0.75rem;
+}
+
+/* AUTHOR */
+
+.is-author {
+    background-color: #f2f4f5;
+}
+
+/* SITE FOOTER */
+
+.site-footer .copy {
+    color: #92969a;
+}

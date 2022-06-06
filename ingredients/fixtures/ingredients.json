@@ -1,0 +1,82 @@
+[
+    {
+        "model": "ingredients.ingredient",
+        "pk": 1,
+        "fields": {
+            "name": "tea",
+            "category": 9
+        }
+    },
+    {
+        "model": "ingredients.ingredient",
+        "pk": 2,
+        "fields": {
+            "name": "coffee",
+            "category": 9
+        }
+    },
+    {
+        "model": "ingredients.ingredient",
+        "pk": 3,
+        "fields": {
+            "name": "honey",
+            "category": 8
+        }
+    },
+    {
+        "model": "ingredients.ingredient",
+        "pk": 4,
+        "fields": {
+            "name": "milk",
+            "category": 4
+        }
+    },
+    {
+        "model": "ingredients.ingredient",
+        "pk": 5,
+        "fields": {
+            "name": "banana",
+            "category": 2
+        }
+    },
+    {
+        "model": "ingredients.ingredient",
+        "pk": 6,
+        "fields": {
+            "name": "oats",
+            "category": 5
+        }
+    },
+    {
+        "model": "ingredients.ingredient",
+        "pk": 7,
+        "fields": {
+            "name": "egg",
+            "category": 4
+        }
+    },
+    {
+        "model": "ingredients.ingredient",
+        "pk": 8,
+        "fields": {
+            "name": "peanut butter",
+            "category": 7
+        }
+    },
+    {
+        "model": "ingredients.ingredient",
+        "pk": 9,
+        "fields": {
+            "name": "blueberries",
+            "category": 2
+        }
+    },
+    {
+        "model": "ingredients.ingredient",
+        "pk": 10,
+        "fields": {
+            "name": "shredded coconut",
+            "category": 7
+        }
+    }
+]

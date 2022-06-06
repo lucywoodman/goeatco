@@ -1,12 +1,9 @@
 from django.db import models
-
-DIET = (
-    (0, ''),
-    (1, 'Gluten free'),
-    (2, 'Dairy free'),
-    (3, 'Nut free'),
-    (4, 'Soy free'),
-)
+from django.contrib.auth.models import User
+from django.db.models.signals import pre_save
+from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
+from ingredients.models import Ingredient
 
 MEAL = (
     (0, 'Breakfast'),
@@ -16,59 +13,57 @@ MEAL = (
     (4, 'Other'),
 )
 
-
-class LowerCaseField(models.CharField):
-    def __init__(self, *args, **kwargs):
-        super(LowerCaseField, self).__init__(*args, **kwargs)
-
-    def get_prep_value(self, value):
-        return str(value).lower()
-
-
-class Unit(models.Model):
-    name = LowerCaseField(max_length=30, unique=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Category(models.Model):
-    name = LowerCaseField(max_length=50, unique=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Ingredient(models.Model):
-    name = LowerCaseField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
-    category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, null=True, blank=True)
-
-    def __str__(self):
-        return self.name
-
-
-class RecipeRequirement(models.Model):
-    qty = models.DecimalField(max_digits=4, decimal_places=2)
-    unit = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
-    ingredient = models.ForeignKey(
-        Ingredient, on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-        return f'{self.qty} {self.unit} {self.ingredient}'
+UNIT = (
+    (0, 'item'),
+    (1, 'g'),
+    (2, 'kg'),
+    (3, 'cups'),
+    (4, 'tsp'),
+    (5, 'tbsp'),
+)
 
 
 class Recipe(models.Model):
-    title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
-    diet = models.IntegerField(choices=DIET, default=0)
-    source = models.URLField()
-    cooking_time = models.DurationField()
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='recipes')
+    public = models.BooleanField(default=False)
+    name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True, null=True)
+    description = models.CharField(max_length=500)
+    cooking_time = models.PositiveSmallIntegerField(default=0, blank=True)
     meal = models.IntegerField(choices=MEAL, default=2)
-    ingredients = models.ManyToManyField(
-        RecipeRequirement)
-    instructions = models.TextField()
+    featured_image = CloudinaryField('image', default='placeholder')
+    saves = models.ManyToManyField(
+        User, related_name='recipe_saves', blank=True)
 
     def __str__(self):
-        return self.title
+        return self.name
+
+    def number_of_saves(self):
+        return self.saves.count()
+
+
+def recipe_pre_save(instance, *args, **kwargs):
+    if instance.slug is None:
+        instance.slug = slugify(instance.name)
+
+
+pre_save.connect(recipe_pre_save, sender=Recipe)
+
+
+class IngredientMeta(models.Model):
+    ingredient = models.ForeignKey(
+        Ingredient, related_name='meta', on_delete=models.CASCADE, null=True)
+    recipe = models.ForeignKey(
+        Recipe, related_name='ingredients', on_delete=models.CASCADE, null=True)
+    qty = models.IntegerField()
+    unit = models.IntegerField(choices=UNIT, default=0)
+
+    def __str__(self):
+        return f'{self.qty} {self.get_unit_display()} {self.ingredient}'
+
+
+class Instructions(models.Model):
+    recipe = models.ForeignKey(
+        Recipe, related_name='instructions', on_delete=models.CASCADE, null=True)
+    step = models.CharField(max_length=255)
