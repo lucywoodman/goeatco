@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
+from ingredients.models import Ingredient
 
 MEAL = (
     (0, 'Breakfast'),
@@ -48,30 +49,6 @@ def recipe_pre_save(instance, *args, **kwargs):
 
 
 pre_save.connect(recipe_pre_save, sender=Recipe)
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=80, unique=True)
-
-    def save(self, *args, **kwargs):
-        self.name = self.name.lower()
-        return super().save(*args, **kwargs)
-
-    def __str__(self):
-        return self.name
-
-
-class Ingredient(models.Model):
-    name = models.CharField(max_length=80, unique=True)
-    category = models.ForeignKey(
-        Category, related_name='categories', on_delete=models.SET_NULL, null=True)
-
-    def save(self, *args, **kwargs):
-        self.name = self.name.lower()
-        return super().save(*args, **kwargs)
-
-    def __str__(self):
-        return self.name
 
 
 class IngredientMeta(models.Model):
