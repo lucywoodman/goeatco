@@ -14,8 +14,10 @@
             </header>
             <div class="card-body">
                 <p class="card-text">Username: {{ user.username }} </p>
+                <p class="card-text">Name: {{ user.first_name }} {{ user.last_name }}</p>
                 <p class="card-text">Email: {{ user.email }}</p>
                 <p class="card-text">Bio: {{ profile.bio }} </p>
+                <a href="{% url 'profile_update' user.pk %}" class="btn btn-primary mb-3">Update profile</a>
             </div>
         </div>
     </div>
