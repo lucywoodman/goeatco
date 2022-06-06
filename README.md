@@ -117,7 +117,9 @@ User feedback|	8|	6|	need
 
 ## Structure
 
-User journeys
+User journey
+
+![Mockup image](docs/planning/user-journey.png)
 
 ---
 
