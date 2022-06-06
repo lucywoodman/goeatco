@@ -44,5 +44,4 @@ class ProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
         return super(ProfileUpdateView, self).form_valid(form)
 
     def get_success_url(self):
-        print(self.pk)
         return reverse('profile', kwargs={'pk': self.pk})

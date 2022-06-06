@@ -18,9 +18,7 @@ class HomeListView(generic.ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        print(qs)
         query = self.request.GET.get('search')
-        print(query)
         if self.request.user.is_authenticated:
             if query:
                 qs = qs.filter(Q(name__icontains=query) |
