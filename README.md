@@ -1,8 +1,9 @@
 # Go Eat Co.
 
-What will be (it's work in progress) a meal planning app to help folk to plan ahead with little effort.
+A Django blog-like site for creating recipes, sharing them with the community and saving them to a personal cookbook.  
+Helping folk to plan their meals ahead of time with little effort.
 
-[Live webpage](#)
+[Live webpage](https://goeatco.herokuapp.com/)
 
 ![Mockup image](docs/mockup.jpg)
 
@@ -10,7 +11,6 @@ What will be (it's work in progress) a meal planning app to help folk to plan ah
 
 - [Go Eat Co.](#go-eat-co)
   - [Table of contents](#table-of-contents)
-- [About](#about)
 - [UX](#ux)
   - [Strategy](#strategy)
     - [The problem](#the-problem)
@@ -42,21 +42,17 @@ What will be (it's work in progress) a meal planning app to help folk to plan ah
 - [Acknowledgements](#acknowledgements)
 - [Retrospective](#retrospective)
 
-# About
-
-Go Eat Co. is an application for creating weekly meal plans, storing recipes and keeping track of ingredients. It's designed and built to make meal planning easy for busy households.
-
 # UX
 
 ## Strategy
 
 ### The problem
 
-For busy households, there's very little time to create healthy mealplans for the family. This leads to expensive and less healthy alternatives (takeout), wasted food, extra packaging and sometimes frustrating mealtimes too!
+For busy households, there's very little time to create healthy mealplans for the family. This leads to expensive and less healthy alternatives (takeout), wasted food and sometimes frustrating mealtimes too!
 
 ### The solution
 
-Go Eat Co. (fictional client, aka me) has had an app designed and developed that makes meal planning easy. By using a shared library of recipes and ingredients, it's quick to put together a meal plan that fits dietary needs, and will even generate the shopping list. This helps to reduce waste, save time, and make meal planning a joy.
+Go Eat Co. has created an app which is designed and developed that make meal planning easy. By using a shared library of recipes it's easy to save recipes to a personal cookbook for easy finding later. With a community-updated library of ingredients, it's also quick to put together your own recipes and share them with the community. This helps to save time and make meal planning a joy!
 
 ### Target audience
 Anyone juggling multiple responsibilities but also looking to take care of their health by eating well. Especially great for busy parents who are tired of coming up with healthy solutions for fussy children.
@@ -70,14 +66,13 @@ Social and semi-active, very short on time with a full calendar of family events
 
 ### User goals
 - Be more organised in the kitchen.
-- Reduce kitchen waste, including food and packaging.
+- Reduce kitchen waste.
 - Eat healthily.
 - Save money.
 
 ### Business objectives
-- Create an MVP that allows for easy meal planning to build trust and awareness of the brand.
-- Build a community of users that will help beta test future releases and potentially pay for premium features.
-- (subgoal) Provide education on reducing waste and saving money through meal planning to create traffic to the site.
+- Create an MVP that lets people register, login, create ingredients and recipes, and save them to their personal cookbooks.
+- Build a community of users that will help beta test future releases and potentially pay for premium features, such as celebrity cooks/chefs.
 
 ---
 
@@ -87,12 +82,13 @@ Social and semi-active, very short on time with a full calendar of family events
 1. As a user I want the app to be simple to navigate so I can find my way around easily.
 2. As a user I want to login to an area of the app where I can see information that's relevant to just me.
 3. As a user I want to manage my profile so I can keep it up to date.
-4. As a user I want to manage my meal plans so I can personalise them to my needs.
-5. As a user I want to manage my own recipes and ingredients so I can include them in meal plans.
-6. As a user I want to filter recipes so I can find specific recipes easily.
-7. As a user I want to rate recipes so I can use this to filter them.
-8.  As a user I want to share my meal plans or recipes for partners/friends.
-9.  As a user I want to autogenerate meal plans based on filters to save time.
+4. As a user I want to add ingredients to the database to be added to future recipes.
+5. As a user I want to add recipes that can be shared with the community.
+6. As a user I want to manage my own recipes so I can edit or remove them as required.
+7. As a user I want to be able to save recipes to a personal cookbook to find favourites quickly.
+8. As a user I want to be able to search recipes to find something faster than just browsing.
+9. As a user I want to see recipe ratings to see how others found them.
+10. As a user I want to follow recipe authors to see when they publish new recipes.
 
 ### User expectations
 11. As a user I expect the app to be responsive.
