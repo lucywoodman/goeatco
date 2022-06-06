@@ -92,24 +92,26 @@ Social and semi-active, very short on time with a full calendar of family events
 
 ### User expectations
 11. As a user I expect the app to be responsive.
-12. As a user I expect the app to be accessibile.
+12. As a user I expect the app to be accessible.
 13. As a user I expect my data to be secure.
 14. As a user I expect the app to give me feedback on my actions.
 
 Feature	| Importance	| Feasibility/Viability | Priority
 --- | :---: | :---: | ---
-Responsive design	|10	|10 | Critical
-Accessible design	|11	|4 | Critical
-Secure data	|12	|9 | Critical
-User feedback	|9	|3 | Critical
-Simple navigation	|5	|7 | Need
-User login	|8	|12 | Need
-Profile management	|4	|6 | Need
-Manage content	|7	|11 | Need
-Recipe filters	|6	|8 | Nice to have
-Recipe ratings	|2	|5 | n/a
-Sharing	|3	|1 | n/a
-Generated meal plans	|1	|2 | n/a
+Simple navigation|	7|	10|	need
+User login|	11|	14|	critical
+Profile management|	4|	3|	nice to have
+Add ingredients|	6|	13|	need
+Add recipes|	10|	9|	need
+Edit/Delete recipes|	9|	8|	need
+Save recipes to cookbook|	5|	4|	nice to have
+Search recipes|	3|	7|	nice to have
+Recipe ratings|	2|	2|	want
+Follow authors|	1|	1|	want
+Responsive design|	14|	12|	critical
+Accessible design|	13|	5|	need
+Secure data|	12|	11|	critical
+User feedback|	8|	6|	need
 
 ---
 
