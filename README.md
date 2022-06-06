@@ -26,7 +26,7 @@ Helping folk to plan their meals ahead of time with little effort.
   - [Skeleton](#skeleton)
   - [Surface](#surface)
     - [Colours](#colours)
-    - [Fonts & icons](#fonts--icons)
+    - [Fonts](#fonts)
     - [Imagery](#imagery)
 - [Features](#features)
   - [1. Feature name](#1-feature-name)
@@ -113,6 +113,8 @@ Accessible design|	13|	5|	need
 Secure data|	12|	11|	critical
 User feedback|	8|	6|	need
 
+![Mockup image](docs/planning/priority-chart.png)
+
 ---
 
 ## Structure
@@ -144,26 +146,32 @@ Wireframes
 
 ## Surface
 
-Inspiration and design keywords
+With a potentially busy app once filled with data, I wanted the brand to stay out of the way and act more as a elegant but welcoming backdrop to the recipes, which take the center stage. I settled on the following keywords to lead the brand design.
 
-- Welcoming
-- Modern
-- Creative
-- Classy
+- Clean
+- Unobtrusive
+- Simple
+- Elegant
 
 ### Colours
 
-Description
+I wanted to keep to a neutral palette for Go Eat Co., to keep it out of the way and let the food images really shine. After all, the best thing about browsing recipes, whether on a website or in a book, is excellent photography!
 
-![Palette](docs/design/palette.png)
+I did add a golden yellow to use as the primary button colour. Enough to help it to stand out as to be used for a call to action, but keeps with the elegant theme of the brand.
 
-### Fonts & icons
+![Palette](docs/design/palette-and-fonts.png)
 
-Explanation
+### Fonts
+
+The logo uses Ovo, which is based on classical fonts, but has softened serifs to give it a warmer feel. Fits nicely with the "elegant" keyword. It's a midweight font which helps it to stay subtle and charming.
+
+The font used throughout the rest of the site is Quattrocento Sans, which is described as "a classic, elegant and sober typeface family. Warm, readable and not intrusive.". I think it fits perfectly!
+
+![Typography test](docs/design/typography-test.png)
 
 ### Imagery
 
-Explanation 
+I haven't added any imagery on this site outside of the recipes. As previously mentioned, I wanted the recipes and their photography to be of the highest priority.
 
 # Features
 
