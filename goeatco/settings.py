@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 
     # apps
     'recipe',
+    'ingredients',
     'profiles',
 ]
 
