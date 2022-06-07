@@ -5,7 +5,7 @@ Helping folk to plan their meals ahead of time with little effort.
 
 [Live webpage](https://goeatco.herokuapp.com/)
 
-![Mockup image](docs/mockup.jpg)
+![Mockup image](docs/mockup.png)
 
 ## Table of contents
 
