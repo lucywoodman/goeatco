@@ -201,7 +201,7 @@ The logo uses Ovo, which is based on classical fonts, but has softened serifs to
 
 The font used throughout the rest of the site is Quattrocento Sans, which is described as "a classic, elegant and sober typeface family. Warm, readable and not intrusive.". I think it fits perfectly!
 
-![Typography test](docs/design/typography-test.png)
+![Typography test](docs/design/typography-testing.png)
 
 ### Imagery
 
