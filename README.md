@@ -27,10 +27,10 @@ Helping folk to plan their meals ahead of time with little effort.
   - [Surface](#surface)
     - [Colours](#colours)
     - [Fonts](#fonts)
-    - [Imagery](#imagery)
 - [Features](#features)
   - [1. Feature name](#1-feature-name)
 - [Technologies used](#technologies-used)
+  - [Languages](#languages)
 - [Testing](#testing)
   - [Testing user stories](#testing-user-stories)
 - [Bugs](#bugs)
@@ -203,23 +203,24 @@ The font used throughout the rest of the site is Quattrocento Sans, which is des
 
 ![Typography test](docs/design/typography-testing.png)
 
-### Imagery
-
-I haven't added any imagery on this site outside of the recipes. As previously mentioned, I wanted the recipes and their photography to be of the highest priority.
-
 # Features
 
-Explain which features were added and which are omitted and why.
+Everything that I wanted to add to the app has been added successfully.
 
 ## 1. Feature name
 
 Description and which user stories are addressed.
 
-![Feature name](docs/features/feature_logo-and-nav.png)
+![Feature name](docs/features/)
 
 # Technologies used
 
+## Languages
 
+- HTML5 with Bootstrap 5
+- CSS3
+- Python / Django
+- JavaScript (JQuery)
 
 # Testing
 
