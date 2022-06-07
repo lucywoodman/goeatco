@@ -96,6 +96,10 @@ Social and semi-active, very short on time with a full calendar of family events
 13. As a user I expect my data to be secure.
 14. As a user I expect the app to give me feedback on my actions.
 
+I converted the above user stories into features and ranked them by order of importance and how feasible/viable they are to complete. This let me chart the resulting numbers (see priority chart below) to help work out whether or not to include the features in the project given the constraints.
+
+The priorities are "critical", "need", "nice to have", "want". I made sure to get all of the "critical" and "needed" features into the first version of the app, and any "nice to haves" that I had time for. The "wants" can wait until a later version.
+
 Feature	| Importance	| Feasibility/Viability | Priority
 --- | :---: | :---: | ---
 Simple navigation|	7|	10|	need
@@ -113,13 +117,37 @@ Accessible design|	13|	5|	need
 Secure data|	12|	11|	critical
 User feedback|	8|	6|	need
 
-![Mockup image](docs/planning/priority-chart.png)
+<details><summary>Priority chart</summary>
+<img src="docs/planning/priority-chart.png">
+</details>
+
+These user stories were created as tasks in Jira, where they were worked as 2 week sprints. 
+On the second sprint, I left accessible design and user feedback until the end. They were both mostly in place, but required some testing that was best completed once the rest of the development was complete.
+
+<details><summary>Beginning of first sprint</summary>
+<img src="docs/planning/sprint-3-start.png">
+</details>
+<details><summary>Middle of first sprint</summary>
+<img src="docs/planning/sprint-3-mid.png">
+</details>
+<details><summary>End of first sprint</summary>
+<img src="docs/planning/sprint-3-end.png">
+</details>
+<details><summary>Beginning of second sprint</summary>
+<img src="docs/planning/sprint-4-start.png">
+</details>
+<details><summary>Middle of second sprint</summary>
+<img src="docs/planning/sprint-4-mid.png">
+</details>
+<details><summary>End of second sprint</summary>
+<img src="docs/planning/sprint-4-end.png">
+</details>
 
 ---
 
 ## Structure
 
-User journey
+User journey diagram - with the help up of Lucid app.
 
 ![Mockup image](docs/planning/user-journey.png)
 
@@ -127,19 +155,25 @@ User journey
 
 ## Skeleton
 
-Wireframes
+Wireframes - these were doodled onto paper first, then drawn up in Figma.
 
-<details><summary>Home page</summary>
-<img src="docs/wireframes/home__wireframe.png">
+<details><summary>Home page (logged out)</summary>
+<img src="docs/wireframes/home-logged-out-desktop.png">
 </details>
-<details><summary>Pricing page</summary>
-<img src="docs/wireframes/pricing__wireframe.png">
+<details><summary>Home page (logged in)</summary>
+<img src="docs/wireframes/home-logged-in-desktop.png">
 </details>
-<details><summary>Gallery page</summary>
-<img src="docs/wireframes/gallery__wireframe.png">
+<details><summary>Recipe detail page (not the author)</summary>
+<img src="docs/wireframes/recipe-detail-non-author.png">
 </details>
-<details><summary>Contact page</summary>
-<img src="docs/wireframes/contact__wireframe.png">
+<details><summary>Recipe detail page (the author)</summary>
+<img src="docs/wireframes/recipe-detail-author.png">
+</details>
+<details><summary>Create or update a recipe page</summary>
+<img src="docs/wireframes/recipe-create-update-png">
+</details>
+<details><summary>Ingredient list</summary>
+<img src="docs/wireframes/ingredient-list.png">
 </details>
 
 ---
