@@ -14,7 +14,7 @@ class Category(models.Model):
 
 class Ingredient(models.Model):
     class Meta:
-        ordering = ['name']
+        ordering = ['category', 'name']
 
     name = models.CharField(max_length=80, unique=True)
     category = models.ForeignKey(
