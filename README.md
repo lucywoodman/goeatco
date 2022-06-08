@@ -255,7 +255,7 @@ Description and which user stories are addressed.
 | Navigation bar | Open any page of the app | Be able to navigate to any other page easily | Works as expected |
 
 <details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
+<img src="docs/testing/1_user_stories_navigation.png">
 </details>
 
 2. As a user I want to login to an area of the app where I can see information that's relevant to just me.
@@ -266,7 +266,7 @@ Description and which user stories are addressed.
 | User login | Click on "Login" | Be able to access logged-in areas of the site, such as Cookbook | Works as expected |
 
 <details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
+<img src="docs/testing/2_user_stories_register_login.png">
 </details>
 
 3. As a user I want to manage my profile so I can keep it up to date.
@@ -276,7 +276,7 @@ Description and which user stories are addressed.
 | My Profile page | Hover over username, click on "My Profile". Then click on "Update profile" button | Be able to update profile information                | Works as expected           |
 
 <details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
+<img src="docs/testing/3_user_stories_user_profile.png">
 </details>
 
 4. As a user I want to add ingredients to the database to be added to future recipes.
@@ -286,7 +286,7 @@ Description and which user stories are addressed.
 | Ingredient List | Click on "Ingredients". Click on "Add an ingredient" button | Create an ingredient                | Works as expected           |
 
 <details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
+<img src="docs/testing/4_user_stories_create_ingredients.png">
 </details>
 
 5. As a user I want to add recipes that can be shared with the community.
@@ -296,7 +296,7 @@ Description and which user stories are addressed.
 | Homepage sidebar | Click on "Create new recipe" button | Create a recipe                | Works as expected           |
 
 <details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
+<img src="docs/testing/5_user_stories_create_recipes.png">
 </details>
 
 6. As a user I want to manage my own recipes so I can edit or remove them as required.
@@ -307,7 +307,7 @@ Description and which user stories are addressed.
 | Recipe detail page | Go to home/"All recipes" page. Click on authored recipe. Click on "Delete this recipe" | Delete the recipe                | Works as expected           |
 
 <details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
+<img src="docs/testing/6_user_stories_update_delete_recipes.png">
 </details>
 
 7. As a user I want to be able to save recipes to a personal cookbook to find favourites quickly.
@@ -318,7 +318,7 @@ Description and which user stories are addressed.
 | Cookbook page | Open the Cookbook page | See all saved recipes in one place | Works as expected |
 
 <details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
+<img src="docs/testing/7_user_stories_cookbook.png">
 </details>
 
 8. As a user I want to be able to search recipes to find something faster than just browsing.
@@ -328,7 +328,7 @@ Description and which user stories are addressed.
 | Home page sidebar | Go to home/"All recipes" page. Add a search query to the search field in the sidebar. Click "Search" button | The relevant search results appear on the page                | Works as expected           |
 
 <details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
+<img src="docs/testing/8_user_stories_home_search.png">
 </details>
 
 ~~9. As a user I want to see recipe ratings to see how others found them.~~
@@ -336,17 +336,17 @@ Description and which user stories are addressed.
 
 User stories 9 and 10 were omitted from the MVP of the app.
 
-11.  As a user I expect the app to be responsive.
+11.   As a user I expect the app to be responsive.
 
 | **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
 | ------------ | ------------ | ------------------- | ----------------- |
 | Responsive design | View the site on different devices | Site alters to fit the different screen sizes                | Works as expected           |
 
 <details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
+<img src="docs/testing/11_user_stories_responsive.png">
 </details>
 
-12. As a user I expect the app to be accessible.
+12.  As a user I expect the app to be accessible.
 
 !!!!!!!See accessibility testing.
 
