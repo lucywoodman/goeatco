@@ -24,6 +24,9 @@ UNIT = (
 
 
 class Recipe(models.Model):
+    class Meta:
+        ordering = ['name']
+
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='recipes')
     public = models.BooleanField(default=False)
