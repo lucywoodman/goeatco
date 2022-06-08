@@ -127,7 +127,7 @@ class RecipeUpdateView(LoginRequiredMixin, generic.UpdateView):
 class RecipeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Recipe
     template_name = '_confirm_delete.html'
-    success_url = reverse_lazy('recipe_list')
+    success_url = reverse_lazy('home')
 
 
 class CookbookView(LoginRequiredMixin, generic.ListView):
