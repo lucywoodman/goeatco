@@ -8,7 +8,7 @@ class RecipeForm(ModelForm):
     featured_image = CloudinaryFileField(
         required=False,
         options={
-            'crop': 'crop',
+            'crop': 'fill',
             'aspect_ratio': '16:9',
             'width': 1000,
             'folder': 'featured-images'
