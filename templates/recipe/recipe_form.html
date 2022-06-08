@@ -28,16 +28,16 @@
                                     <div class="row">
                                     <div class="col-md">
                                         <div class="form-floating">
-                                            {% bootstrap_field form.qty layout="horizontal" %}
+                                            {% bootstrap_field form.qty %}
                                         </div>
                                     </div>
                                     <div class="col-md">
                                         <div class="form-floating">
-                                            {% bootstrap_field form.unit layout="horizontal" %}
+                                            {% bootstrap_field form.unit %}
                                         </div>
                                     </div>
                                     </div>
-                                    {% bootstrap_field form.ingredient layout="horizontal" %}
+                                    {% bootstrap_field form.ingredient %}
                                 </div>
                             {% endfor %}
                         </fieldset>
@@ -55,7 +55,7 @@
                                 {% for form in instructions %}
                                 {{ form.id }}
                                     <li class="instruction-form">
-                                        {% bootstrap_field form.step layout="horizontal" %}
+                                        {% bootstrap_field form.step %}
                                     </li>
                                 {% endfor %}
                             </ol>
