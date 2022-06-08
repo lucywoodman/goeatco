@@ -1,7 +1,6 @@
 # Go Eat Co.
 
-A Django blog-like site for creating recipes, sharing them with the community and saving them to a personal cookbook.  
-Helping folk to plan their meals ahead of time with little effort.
+A Django blog-like site for creating recipes, sharing them with the community and saving them to a personal cookbook. Helping folk to plan their meals ahead of time with little effort.
 
 [Live webpage](https://goeatco.herokuapp.com/)
 
@@ -22,6 +21,7 @@ Helping folk to plan their meals ahead of time with little effort.
   - [Scope](#scope)
     - [User stories](#user-stories)
     - [User expectations](#user-expectations)
+    - [Site owner stories](#site-owner-stories)
   - [Structure](#structure)
   - [Skeleton](#skeleton)
   - [Surface](#surface)
@@ -95,6 +95,12 @@ Social and semi-active, very short on time with a full calendar of family events
 12. As a user I expect the app to be accessible.
 13. As a user I expect my data to be secure.
 14. As a user I expect the app to give me feedback on my actions.
+
+### Site owner stories
+15. As the site owner, I want only superusers to be able to edit or remove ingredients to prevent them being accidentally removed from existing recipes.
+16. As the site owner, I want only logged in users to be able to create recipes/ingredients and save recipes.
+17. As the site owner, I want only logged in users to be able to see community exclusive recipes.
+18. As the site owner, if an error occurs, I want users to be able to navigate back to the homepage without using the back button.
 
 I converted the above user stories into features and ranked them by order of importance and how feasible/viable they are to complete. This let me chart the resulting numbers (see priority chart below) to help work out whether or not to include the features in the project given the constraints.
 
@@ -205,7 +211,7 @@ The font used throughout the rest of the site is Quattrocento Sans, which is des
 
 # Features
 
-Everything that I wanted to add to the app has been added successfully.
+Everything that was scheduled to be added to the app has been implemented.
 
 ## 1. Feature name
 
