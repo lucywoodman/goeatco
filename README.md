@@ -129,26 +129,16 @@ User feedback|	8|	6|	need
 <img src="docs/planning/priority-chart.png">
 </details>
 
-These user stories were created as tasks in Jira, where they were worked as 2 week sprints. 
-On the second sprint, I left accessible design and user feedback until the end. They were both mostly in place, but required some testing that was best completed once the rest of the development was complete.
+I used Jira to manage this project. Using Agile development methodologies, the project was broken up into Epics. Then each User Story was added to it's relevant Epic, and each User Story was further broken down into smaller tasks. These were then worked as 2 week sprints.
 
-<details><summary>Beginning of first sprint</summary>
-<img src="docs/planning/sprint-3-start.png">
+<details><summary>First sprint</summary>
+<img src="docs/planning/first-implementation-sprint.png">
 </details>
-<details><summary>Middle of first sprint</summary>
-<img src="docs/planning/sprint-3-mid.png">
+<details><summary>Second sprint</summary>
+<img src="docs/planning/second-implementation-sprint.png">
 </details>
-<details><summary>End of first sprint</summary>
-<img src="docs/planning/sprint-3-end.png">
-</details>
-<details><summary>Beginning of second sprint</summary>
-<img src="docs/planning/sprint-4-start.png">
-</details>
-<details><summary>Middle of second sprint</summary>
-<img src="docs/planning/sprint-4-mid.png">
-</details>
-<details><summary>End of second sprint</summary>
-<img src="docs/planning/sprint-4-end.png">
+<details><summary>Demonstration of Epic -> User Story -> Tasks</summary>
+<img src="docs/planning/jira-user-story-to-tasks.png">
 </details>
 
 ---
