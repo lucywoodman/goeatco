@@ -11,12 +11,19 @@ from .forms import RecipeForm, IngredientFormset, InstructionFormset
 
 
 class HomeListView(generic.ListView):
+    """
+    Class for the homepage / recipe list view
+    Paginates every 10 recipes
+    """
     model = Recipe
     context_object_name = 'recipes'
     template_name = 'index.html'
     paginate_by = 10
 
     def get_queryset(self):
+        """
+        Handles the search form
+        """
         qs = super().get_queryset()
         query = self.request.GET.get('search')
         if self.request.user.is_authenticated:
@@ -33,10 +40,16 @@ class HomeListView(generic.ListView):
 
 
 class RecipeDetailView(generic.DetailView):
+    """
+    Class for the recipe detail pages
+    """
     model = Recipe
     context_object_name = 'recipe'
 
     def get_context_data(self, **kwargs):
+        """
+        Handles the recipe save to cookbook
+        """
         data = super().get_context_data(**kwargs)
         saves_connected = get_object_or_404(
             Recipe, slug=self.kwargs.get('slug'))
@@ -50,6 +63,9 @@ class RecipeDetailView(generic.DetailView):
 
 @login_required
 def RecipeSave(request, slug):
+    """
+    Handles the recipe save to cookbook
+    """
     recipe = get_object_or_404(Recipe, slug=request.POST.get('recipe_save'))
     if recipe.saves.filter(id=request.user.id).exists():
         recipe.saves.remove(request.user)
@@ -60,11 +76,17 @@ def RecipeSave(request, slug):
 
 
 class RecipeCreateView(LoginRequiredMixin, generic.CreateView):
+    """
+    Class for the create recipe form page
+    """
     model = Recipe
     form_class = RecipeForm
     success_url = reverse_lazy('home')
 
     def get_context_data(self, **kwargs):
+        """
+        Handles the form context
+        """
         data = super(RecipeCreateView, self).get_context_data(**kwargs)
         if self.request.POST:
             data['ingredients'] = IngredientFormset(
@@ -77,6 +99,9 @@ class RecipeCreateView(LoginRequiredMixin, generic.CreateView):
         return data
 
     def form_valid(self, form):
+        """
+        Handles form validation
+        """
         form.instance.author = self.request.user
         context = self.get_context_data()
         ingredients = context['ingredients']
@@ -93,11 +118,17 @@ class RecipeCreateView(LoginRequiredMixin, generic.CreateView):
 
 
 class RecipeUpdateView(LoginRequiredMixin, generic.UpdateView):
+    """
+    Class for the update recipe form page
+    """
     model = Recipe
     form_class = RecipeForm
     success_url = reverse_lazy('home')
 
     def get_context_data(self, **kwargs):
+        """
+        Handles the form context
+        """
         data = super(RecipeUpdateView, self).get_context_data(**kwargs)
         if self.request.POST:
             data['ingredients'] = IngredientFormset(
@@ -110,6 +141,9 @@ class RecipeUpdateView(LoginRequiredMixin, generic.UpdateView):
         return data
 
     def form_valid(self, form):
+        """
+        Handles the form validation
+        """
         context = self.get_context_data()
         ingredients = context['ingredients']
         instructions = context['instructions']
@@ -125,17 +159,28 @@ class RecipeUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 
 class RecipeDeleteView(LoginRequiredMixin, generic.DeleteView):
+    """
+    Class for the recipe delete page
+    Redirects to the deletion confirmation page before
+    returning to the homepage
+    """
     model = Recipe
     template_name = '_confirm_delete.html'
     success_url = reverse_lazy('home')
 
 
 class CookbookView(LoginRequiredMixin, generic.ListView):
+    """
+    Class for the cookbook page
+    """
     model = Recipe
     context_object_name = 'recipes'
     template_name = 'recipe/cookbook.html'
 
     def get_queryset(self):
+        """
+        Filters the query set to return the recipes saved by the logged in user
+        """
         qs = super().get_queryset()
         query = qs.filter(saves__in=[self.request.user.id]).order_by('name')
         return query

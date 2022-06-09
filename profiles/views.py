@@ -7,22 +7,37 @@ from .models import Profile
 
 
 class ProfileDetailView(LoginRequiredMixin, generic.DetailView):
+    """
+    Class for the profile detail page
+    """
     model = Profile
 
     def get_object(self, *args, **kwargs):
+        """
+        Ensures that the logged in user can only see their own profile
+        """
         return self.request.user.profile
 
 
 class ProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
+    """
+    Class for the profile update form page
+    """
     model = Profile
     form_class = UserUpdateForm
     second_form_class = ProfileUpdateForm
     template_name = 'profiles/profile_form.html'
 
     def get_object(self, *args, **kwargs):
+        """
+        Ensures that the logged in user can only see their own profile
+        """
         return self.request.user.profile
 
     def get_context_data(self, **kwargs):
+        """
+        Handles the form context
+        """
         context = super(ProfileUpdateView, self).get_context_data(**kwargs)
         if self.request.POST:
             context['user_form'] = self.form_class(
@@ -36,6 +51,9 @@ class ProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
         return context
 
     def form_valid(self, form):
+        """
+        Handle form validation
+        """
         context = self.get_context_data()
         user_form = context['user_form']
         profile_form = context['profile_form']

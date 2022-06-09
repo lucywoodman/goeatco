@@ -24,6 +24,11 @@ UNIT = (
 
 
 class Recipe(models.Model):
+    """
+    Class for the recipe model
+    FK - User model (author)
+    M:M - User model (saves)
+    """
     class Meta:
         ordering = ['name']
 
@@ -47,6 +52,9 @@ class Recipe(models.Model):
 
 
 def recipe_pre_save(instance, *args, **kwargs):
+    """
+    Saves the recipe name as a slug before saving the recipe
+    """
     if instance.slug is None:
         instance.slug = slugify(instance.name)
 
@@ -55,6 +63,12 @@ pre_save.connect(recipe_pre_save, sender=Recipe)
 
 
 class IngredientMeta(models.Model):
+    """
+    Class for the ingredient meta model
+    This model is an interrim model between recipe and ingredient
+    FK - Ingredient model (ingredient)
+    FK - Recipe model (recipe)
+    """
     ingredient = models.ForeignKey(
         Ingredient, related_name='meta', on_delete=models.CASCADE, null=True)
     recipe = models.ForeignKey(
@@ -67,6 +81,10 @@ class IngredientMeta(models.Model):
 
 
 class Instructions(models.Model):
+    """
+    Class for the instructions model
+    FK - Recipe model (recipe)
+    """
     recipe = models.ForeignKey(
         Recipe, related_name='instructions', on_delete=models.CASCADE, null=True)
     step = models.CharField(max_length=255)

@@ -5,6 +5,9 @@ from .models import IngredientMeta, Recipe, Instructions
 
 
 class RecipeForm(ModelForm):
+    """
+    Class for the recipe model form
+    """
     featured_image = CloudinaryFileField(
         required=False,
         options={
@@ -27,12 +30,18 @@ class RecipeForm(ModelForm):
 
 
 class IngredientForm(ModelForm):
+    """
+    Class for the ingredient meta model form
+    """
     class Meta:
         model = IngredientMeta
         fields = ('__all__')
 
 
 class InstructionForm(ModelForm):
+    """
+    Class for the instruction model form
+    """
     class Meta:
         model = Instructions
         fields = ('__all__')

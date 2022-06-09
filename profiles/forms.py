@@ -4,6 +4,9 @@ from .models import Profile
 
 
 class ProfileUpdateForm(ModelForm):
+    """
+    Class for the profile update form
+    """
     class Meta:
         model = Profile
         fields = ('bio', )
@@ -11,6 +14,9 @@ class ProfileUpdateForm(ModelForm):
 
 
 class UserUpdateForm(ModelForm):
+    """
+    Class for the user update form
+    """
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email')
