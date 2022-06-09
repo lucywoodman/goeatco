@@ -9,9 +9,6 @@ from .models import Profile
 class ProfileDetailView(LoginRequiredMixin, generic.DetailView):
     model = Profile
 
-    def get_object(self, *args, **kwargs):
-        return self.request.user.profile
-
 
 class ProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Profile
