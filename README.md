@@ -28,7 +28,9 @@ A Django blog-like site for creating recipes, sharing them with the community an
     - [Colours](#colours)
     - [Fonts](#fonts)
 - [Features](#features)
-  - [1. Feature name](#1-feature-name)
+  - [1. Logo and Navigation bar](#1-logo-and-navigation-bar)
+  - [2. Homepage/recipe list](#2-homepagerecipe-list)
+  - [3. Homepage/recipe list sidebar](#3-homepagerecipe-list-sidebar)
 - [Technologies used](#technologies-used)
   - [Languages](#languages)
 - [Testing](#testing)
@@ -145,7 +147,7 @@ I used Jira to manage this project. Using Agile development methodologies, the p
 
 ## Structure
 
-User journey diagram - with the help up of Lucid app.
+User journey diagram - with the help of Lucid app.
 
 ![Mockup image](docs/planning/user-journey.png)
 
@@ -153,7 +155,7 @@ User journey diagram - with the help up of Lucid app.
 
 ## Skeleton
 
-Wireframes - these were doodled onto paper first, then drawn up in Figma.
+Wireframes - these were doodled onto paper first, then the main wireframes drawn up in Figma.
 
 <details><summary>Home page (logged out)</summary>
 <img src="docs/wireframes/home-logged-out-desktop.png">
@@ -209,11 +211,45 @@ The font used throughout the rest of the site is Quattrocento Sans, which is des
 
 Everything that was scheduled to be added to the app has been implemented.
 
-## 1. Feature name
+## 1. Logo and Navigation bar
 
-Description and which user stories are addressed.
+A persistent navigation bar that remains in place when scrolling. It helps users to always know where they are by showing the logo, highlighting the active page and providing links to other pages (depending on their logged-in status).
 
-![Feature name](docs/features/)
+It provides a bit of personalisation by using the user's username in the top right when they are logged in. And provides a dropdown menu from the username to access the user's profile and the logout option.
+
+The navigation bar is fully responsive, reducing the menu to a toggle menu on smaller screen sizes.
+
+- User stories covered: 1, 2, 3, 4, 7, 11, 12, 18.
+
+<details><summary>Feature images</summary>
+<img src="docs/features/1_navigation_bar.png">
+</details>
+
+## 2. Homepage/recipe list
+
+A dynamic homepage that changes depending on whether the user is logged out (only shows "public" recipes), logged in (shows all recipes) or using the search form to filter recipes.
+
+Includes pagination, loading 10 recipes per page.
+
+- User stories covered: 2, 5, 6, 7, 8, 11, 12, 13, 14, 16, 17, 18.
+
+<details><summary>Feature images</summary>
+<img src="docs/features/2_recipe_view.png">
+</details>
+
+## 3. Homepage/recipe list sidebar
+
+A dynamic sidebar section on the homepage. It will display a generic welcome message to logged out users, along with a "Register" button to encourage registration. 
+
+For logged in users, there's a more personal welcome message with more information around which recipes can be seen. There's also a "Create new recipe" button instead of "Register".
+
+Both logged in and logged out users see the search field and are able to filter recipes by search queries.
+
+- User stories covered: 2, 5, 6, 7, 8, 11, 12, 13, 16, 18.
+
+<details><summary>Feature images</summary>
+<img src="docs/features/3_homepage_sidebar.png">
+</details>
 
 *Go back to the [top](#table-of-contents)*
 
