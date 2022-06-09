@@ -16,6 +16,7 @@
                     <li class="nav-item">
                         <a href="{% url 'home' %}" class="nav-link {% if url_name == 'home' %}active{% endif %}">All Recipes</a>
                     </li>
+                    <!-- If user is logged in, show logged in menu items -->
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a href="{% url 'ingredient_list' %}" class="nav-link {% if url_name == 'ingredient_list' %}active{% endif %}">Ingredients</a>
@@ -30,6 +31,7 @@
                             <li><a href="{% url 'account_logout' %}" class="dropdown-item {% if url_name == 'account_logout' %}active{% endif %}">Logout</a></li>
                         </ul>
                     </li>
+                    <!-- If user is logged out, only show signup and login -->
                     {% else %}
                     <li class="nav-item">
                         <a href="{% url 'account_signup' %}" class="nav-link {% if url_name == 'account_signup' %}active{% endif %}">Register</a>

@@ -7,19 +7,24 @@
 {% block content %}
 
 <div class="card p-0 mb-5">
+    <!-- Header -->
     <div class="card-header">
         <h1>Save Recipe</h1>
     </div>
+    <!-- Form section start -->
     <div class="card-body p-4">
         <form id="create-recipe-container" action="" method="POST" enctype="multipart/form-data" class="form fs-6 fw-light">
             {% csrf_token %}
+            <!-- Main recipe form -->
             {% bootstrap_form form %}
             <div class="row">
+                <!-- Ingredients section -->
                 <div class="card p-0 col-sm-6 mt-3">
                     <div class="card-header">
                         <h3>Ingredients</h3>
                     </div>
                     <div class="card-body">
+                        <!-- Ingredients forms -->
                         <fieldset id="ingredient-fieldset">
                             {{ ingredients.management_form }}
                             {% for form in ingredients %}
@@ -41,14 +46,17 @@
                                 </div>
                             {% endfor %}
                         </fieldset>
+                        <!-- Button to add extra ingredients forms -->
                         {% bootstrap_button button_type="button" content="Add another ingredient" button_class="btn-secondary" id="add-ingredient" %}
                     </div>
                 </div>
+                <!-- Instructions section -->
                 <div class="card p-0 col-sm-6 mt-3">
                     <div class="card-header">
                         <h3>Instructions</h3>
                     </div>
                     <div class="card-body">
+                        <!-- Instructions forms -->
                         <fieldset id="instruction-fieldset">
                             {{ instructions.management_form }}
                             <ol>
@@ -60,15 +68,18 @@
                                 {% endfor %}
                             </ol>
                         </fieldset>
+                        <!-- Button to add extra instructions forms -->
                         {% bootstrap_button button_type="button" content="Add another step" button_class="btn-secondary" id="add-instruction" %}
                     </div>
                 </div>
             </div>
+            <!-- Final submit button -->
             <div class="row d-flex justify-content-center m-5">
                 {% bootstrap_button button_type="submit" button_class="btn-success" content="Save recipe" size="lg" %}
             </div>
         </form>
     </div>
+    <!-- Form section end -->
 </div>
 
 {% endblock %}

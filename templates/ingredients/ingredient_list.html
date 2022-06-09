@@ -8,7 +8,9 @@
 
 <div class="row">
     <div class="col-md-4 me-auto">
+        <!-- Sidebar start -->
         <aside class="sidebar">
+            <!-- Filter card -->
             <div class="card mb-4">
                 <div class="card-body px-4">
                     <h4 class="card-title">Filters</h4>
@@ -20,6 +22,7 @@
                     </form>
                 </div>
             </div>
+            <!-- Add ingredient card -->
             <div class="card mb-4">
                 <div class="card-body px-4">
                     <h4 class="card-title">Add ingredients</h4>
@@ -30,13 +33,16 @@
                 </div>
             </div>
         </aside>
+        <!-- Sidebar end -->
     </div>
     <div class="col-md-8 mx-auto">
+        <!-- Ingredient table start -->
         <table class="table">
             <thead>
                 <tr>
                 <th scope="col">Ingredient name</th>
                 <th scope="col">Category</th>
+                <!-- Only show actions column to superusers -->
                 {% if user.is_superuser %}
                 <th scope="col">Actions</th>
                 {% endif %}
@@ -47,6 +53,7 @@
                     <tr>
                         <td>{{ item.name }}</td>
                         <td>{{ item.category }}</td>
+                        <!-- Only show ingredient edit/delete to superusers -->
                         {% if user.is_superuser %}
                         <td>
                             <a href="{% url 'ingredient_update' item.pk %}">
@@ -61,6 +68,7 @@
                 {% endfor %}
             </tbody>
         </table>
+        <!-- Ingredient table end -->
     </div>
 </div>
 

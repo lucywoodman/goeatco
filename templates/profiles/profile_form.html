@@ -8,10 +8,13 @@
 
 <div class="row">
     <div class="col-6 mx-auto">
+        <!-- Profile card start -->
         <div class="card mb-4">
+            <!-- Header -->
             <header class="card-header text-center">
                 <h1 class="card-title">{{ profile|title }}</h1>
             </header>
+            <!-- Content -->
             <div class="card-body">
                 <form action="" method="POST">
                     {% csrf_token %}
@@ -23,6 +26,7 @@
                 </form>
             </div>
         </div>
+        <!-- Profile card end -->
     </div>
 </div>
 

@@ -7,9 +7,13 @@
 {% block content %}
 
 <div class="row">
+    <!-- Include the recipe list template -->
     {% include 'recipe/_recipe_list.html' %}
     <div class="col-md-4 ms-auto">
+        <!-- Sidebar start -->
         <aside class="sidebar">
+            <!-- If user is logged in, personalise the welcome message,
+            and show the option to create a recipe -->
             {% if user.is_authenticated %}
             <div class="card mb-4">
                 <div class="card-body px-4">
@@ -21,6 +25,8 @@
                     </a>
                 </div>
             </div>
+            <!-- If user is not logged in, show a generic welcome message,
+            and show the option to register as a user -->
             {% else %}
             <div class="card mb-4">
                 <div class="card-body px-4">
@@ -33,6 +39,7 @@
                 </div>
             </div>
             {% endif %}
+            <!-- Search field -->
             <div class="card mb-4">
                 <div class="card-body px-4">
                     <h4 class="card-title">Search recipes</h4>
@@ -47,8 +54,10 @@
                 </div>
             </div>
         </aside>
+        <!-- Sidebar end -->
     </div>
 </div>
+<!-- Include pagination template -->
 {% include '_paginate.html' %}
 
 {% endblock %}

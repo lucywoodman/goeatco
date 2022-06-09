@@ -4,18 +4,21 @@
             <div class="col-md-6">
                 <!-- Recipe card -->
                 <article class="card mb-4">
+                    <!-- Card header -->
                     <header class="card-header">
                         <a href="{% url 'recipe_detail' recipe.slug %}">
                             <h2 class="card-title">{{ recipe.name }}</h2>
                         </a>
                     </header>
+                    <!-- Featured image -->
                     <a href="{% url 'recipe_detail' recipe.slug %}">
                         {% if "placeholder" in recipe.featured_image.url %}
-                            <img src="https://res.cloudinary.com/go-eat-co/image/upload/v1654093874/cld-sample-4.jpg" class="card-img">
+                            <img alt="{{ recipe.name }}" src="https://res.cloudinary.com/go-eat-co/image/upload/v1654093874/cld-sample-4.jpg" class="card-img">
                         {% else %}
-                            <img src="{{ recipe.featured_image.url }}" class="card-img">
+                            <img alt="{{ recipe.name }}" src="{{ recipe.featured_image.url }}" class="card-img">
                         {% endif %}
                     </a>
+                    <!-- Recipe description and meta -->
                     <div class="card-body px-4">
                         <p class="card-text">{{ recipe.description }}</p>
                         <div class="card-meta mb-3">

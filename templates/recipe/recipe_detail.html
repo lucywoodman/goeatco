@@ -8,17 +8,19 @@
 
 <div class="row">
     <div class="col-md-9">
+        <!-- Recipe card start -->
         <article class="card mb-4">
+            <!-- Recipe header -->
             <header class="card-header text-center">
                 <a href="{% url 'recipe_detail' recipe.slug %}">
                     <h1 class="card-title">{{ recipe.name }}</h1>
                 </a>
                 <div class="card-meta">
                     Course: {{ recipe.get_meal_display }} | Cooking time: {{ recipe.cooking_time }} mins<br>
-                    <!-- TODO turn this into a link for all author's recipes -->
                     Written by {{ recipe.author.first_name }} {{ recipe.author.last_name }}
                 </div>
             </header>
+            <!-- Recipe featured image -->
             <a href="{% url 'recipe_detail' recipe.slug %}">
                 {% if "placeholder" in recipe.featured_image.url %}
                     <img alt="{{ recipe.name }}" src="https://res.cloudinary.com/go-eat-co/image/upload/v1654093874/cld-sample-4.jpg" class="card-img">
@@ -26,7 +28,9 @@
                     <img alt="{{ recipe.name }}" src="{{ recipe.featured_image.url }}" class="card-img">
                 {% endif %}
             </a>
+            <!-- Recipe content -->
             <div class="row mt-4">
+                <!-- Ingredients section -->
                 <div class="col-md-6 card-body px-5">
                     <h4 class="card-title">Ingredients</h4>
                     <ul class="list-unstyled">
@@ -35,6 +39,7 @@
                         {% endfor %}
                     </ul>
                 </div>
+                <!-- Instructions section -->
                 <div class="col-md-6 card-body px-5">
                     <h4 class="card-title">Instructions</h4>
                     <ol class="list-group list-group-flush list-group-numbered">
@@ -45,9 +50,13 @@
                 </div>
             </div>
         </article>
+        <!-- Recipe card end -->
     </div>
     <div class="col-md-3 ms-auto">
+        <!-- Sidebar start -->
         <aside class="sidebar">
+            <!-- If user is logged in and the author of the displayed recipe,
+            then display the options to edit or delete the recipe -->
             {% if user.is_authenticated and user == recipe.author %}
             <div class="card mb-4 is-author">
                 <div class="card-body px-4">
@@ -62,11 +71,12 @@
                 </div>
             </div>
             {% endif %}
+            <!-- If the user is logged in, display the option to save the recipe to their cookbook -->
             {% if user.is_authenticated %}
             <div class="card mb-4">
                 <div class="card-body">
                     <h4 class="card-title">Save for later</h4>
-                    <!-- Saves -->
+                    <!-- Total number of saves -->
                     <p class="text-secondary">This recipe has been saved by <strong>{{ number_of_saves }}</strong> member{{ number_of_saves|pluralize }}.</p>
                     <form action="{% url 'recipe_save' object.slug %}" method="POST">
                         {% csrf_token %}
@@ -79,23 +89,28 @@
                 </div>
             </div>
             {% endif %}
+            <!-- Recipe description card -->
             <div class="card mb-4">
                 <div class="card-body">
                     <h4 class="card-title">About this recipe</h4>
                     <p class="card-text">{{ recipe.description }}</p>
                 </div>
             </div>
+            <!-- Recipe author information -->
             <div class="card mb-4">
                 <div class="card-body">
                     <h4 class="card-title">About the author</h4>
                     <p class="card-text">Author: {{ recipe.author.first_name }} {{ recipe.author.last_name }}</p>
                     <p class="card-text">{{ recipe.author.profile.bio }}</p>
+                    <!-- If the user is logged in and the author of the displayed recipe,
+                    display the option to edit thier profile bio -->
                     {% if user.is_authenticated and user == recipe.author %}
                     <a href="{% url 'profile_update' %}" class="btn btn-primary">Update bio</a>
                     {% endif %}
                 </div>
             </div>
         </aside>
+        <!-- Sidebar end -->
     </div>
 </div>
 
