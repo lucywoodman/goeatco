@@ -28,7 +28,9 @@ A Django blog-like site for creating recipes, sharing them with the community an
     - [Colours](#colours)
     - [Fonts](#fonts)
 - [Features](#features)
-  - [1. Feature name](#1-feature-name)
+  - [1. Logo and Navigation bar](#1-logo-and-navigation-bar)
+  - [2. Homepage/recipe list](#2-homepagerecipe-list)
+  - [3. Homepage/recipe list sidebar](#3-homepagerecipe-list-sidebar)
 - [Technologies used](#technologies-used)
   - [Languages](#languages)
 - [Testing](#testing)
@@ -73,6 +75,8 @@ Social and semi-active, very short on time with a full calendar of family events
 ### Business objectives
 - Create an MVP that lets people register, login, create ingredients and recipes, and save them to their personal cookbooks.
 - Build a community of users that will help beta test future releases and potentially pay for premium features, such as celebrity cooks/chefs.
+
+*Go back to the [top](#table-of-contents)*
 
 ---
 
@@ -127,33 +131,23 @@ User feedback|	8|	6|	need
 <img src="docs/planning/priority-chart.png">
 </details>
 
-These user stories were created as tasks in Jira, where they were worked as 2 week sprints. 
-On the second sprint, I left accessible design and user feedback until the end. They were both mostly in place, but required some testing that was best completed once the rest of the development was complete.
+I used Jira to manage this project. Using Agile development methodologies, the project was broken up into Epics. Then each User Story was added to it's relevant Epic, and each User Story was further broken down into smaller tasks. These were then worked as 2 week sprints.
 
-<details><summary>Beginning of first sprint</summary>
-<img src="docs/planning/sprint-3-start.png">
+<details><summary>First sprint</summary>
+<img src="docs/planning/first-implementation-sprint.png">
 </details>
-<details><summary>Middle of first sprint</summary>
-<img src="docs/planning/sprint-3-mid.png">
+<details><summary>Second sprint</summary>
+<img src="docs/planning/second-implementation-sprint.png">
 </details>
-<details><summary>End of first sprint</summary>
-<img src="docs/planning/sprint-3-end.png">
-</details>
-<details><summary>Beginning of second sprint</summary>
-<img src="docs/planning/sprint-4-start.png">
-</details>
-<details><summary>Middle of second sprint</summary>
-<img src="docs/planning/sprint-4-mid.png">
-</details>
-<details><summary>End of second sprint</summary>
-<img src="docs/planning/sprint-4-end.png">
+<details><summary>Demonstration of Epic -> User Story -> Tasks</summary>
+<img src="docs/planning/jira-user-story-to-tasks.png">
 </details>
 
 ---
 
 ## Structure
 
-User journey diagram - with the help up of Lucid app.
+User journey diagram - with the help of Lucid app.
 
 ![Mockup image](docs/planning/user-journey.png)
 
@@ -161,7 +155,7 @@ User journey diagram - with the help up of Lucid app.
 
 ## Skeleton
 
-Wireframes - these were doodled onto paper first, then drawn up in Figma.
+Wireframes - these were doodled onto paper first, then the main wireframes drawn up in Figma.
 
 <details><summary>Home page (logged out)</summary>
 <img src="docs/wireframes/home-logged-out-desktop.png">
@@ -209,15 +203,57 @@ The font used throughout the rest of the site is Quattrocento Sans, which is des
 
 ![Typography test](docs/design/typography-testing.png)
 
+*Go back to the [top](#table-of-contents)*
+
+---
+
 # Features
 
 Everything that was scheduled to be added to the app has been implemented.
 
-## 1. Feature name
+## 1. Logo and Navigation bar
 
-Description and which user stories are addressed.
+A persistent navigation bar that remains in place when scrolling. It helps users to always know where they are by showing the logo, highlighting the active page and providing links to other pages (depending on their logged-in status).
 
-![Feature name](docs/features/)
+It provides a bit of personalisation by using the user's username in the top right when they are logged in. And provides a dropdown menu from the username to access the user's profile and the logout option.
+
+The navigation bar is fully responsive, reducing the menu to a toggle menu on smaller screen sizes.
+
+- User stories covered: 1, 2, 3, 4, 7, 11, 12, 18.
+
+<details><summary>Feature images</summary>
+<img src="docs/features/1_navigation_bar.png">
+</details>
+
+## 2. Homepage/recipe list
+
+A dynamic homepage that changes depending on whether the user is logged out (only shows "public" recipes), logged in (shows all recipes) or using the search form to filter recipes.
+
+Includes pagination, loading 10 recipes per page.
+
+- User stories covered: 2, 5, 6, 7, 8, 11, 12, 13, 14, 16, 17, 18.
+
+<details><summary>Feature images</summary>
+<img src="docs/features/2_recipe_view.png">
+</details>
+
+## 3. Homepage/recipe list sidebar
+
+A dynamic sidebar section on the homepage. It will display a generic welcome message to logged out users, along with a "Register" button to encourage registration. 
+
+For logged in users, there's a more personal welcome message with more information around which recipes can be seen. There's also a "Create new recipe" button instead of "Register".
+
+Both logged in and logged out users see the search field and are able to filter recipes by search queries.
+
+- User stories covered: 2, 5, 6, 7, 8, 11, 12, 13, 16, 18.
+
+<details><summary>Feature images</summary>
+<img src="docs/features/3_homepage_sidebar.png">
+</details>
+
+*Go back to the [top](#table-of-contents)*
+
+---
 
 # Technologies used
 
@@ -228,27 +264,197 @@ Description and which user stories are addressed.
 - Python / Django
 - JavaScript (JQuery)
 
+*Go back to the [top](#table-of-contents)*
+
+---
+
 # Testing
 
-Refer to the assessment guide to make sure the correct aspects are tested.
+!!!!!!Refer to the assessment guide to make sure the correct aspects are tested.
 
 ## Testing user stories
 
-1. As a... I want...
+1. As a user I want the app to be simple to navigate so I can find my way around easily.
 
 | **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
 | ------------ | ------------ | ------------------- | ----------------- |
-| Feature name | User journey | Goal                | Outcome           |
+| Navigation bar | Open any page of the app | Be able to navigate to any other page easily | Works as expected |
+
+<details><summary>Screenshots</summary>
+<img src="docs/testing/1_user_stories_navigation.png">
+</details>
+
+2. As a user I want to login to an area of the app where I can see information that's relevant to just me.
+
+| **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
+| ------------ | ------------ | ------------------- | ----------------- |
+| Register account | Click on "Register" | Register an account | Works as expected
+| User login | Click on "Login" | Be able to access logged-in areas of the site, such as Cookbook | Works as expected |
+
+<details><summary>Screenshots</summary>
+<img src="docs/testing/2_user_stories_register_login.png">
+</details>
+
+3. As a user I want to manage my profile so I can keep it up to date.
+
+| **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
+| ------------ | ------------ | ------------------- | ----------------- |
+| My Profile page | Hover over username, click on "My Profile". Then click on "Update profile" button | Be able to update profile information                | Works as expected           |
+
+<details><summary>Screenshots</summary>
+<img src="docs/testing/3_user_stories_user_profile.png">
+</details>
+
+4. As a user I want to add ingredients to the database to be added to future recipes.
+
+| **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
+| ------------ | ------------ | ------------------- | ----------------- |
+| Ingredient List | Click on "Ingredients". Click on "Add an ingredient" button | Create an ingredient                | Works as expected           |
+
+<details><summary>Screenshots</summary>
+<img src="docs/testing/4_user_stories_create_ingredients.png">
+</details>
+
+5. As a user I want to add recipes that can be shared with the community.
+
+| **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
+| ------------ | ------------ | ------------------- | ----------------- |
+| Homepage sidebar | Click on "Create new recipe" button | Create a recipe                | Works as expected           |
+
+<details><summary>Screenshots</summary>
+<img src="docs/testing/5_user_stories_create_recipes.png">
+</details>
+
+6. As a user I want to manage my own recipes so I can edit or remove them as required.
+
+| **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
+| ------------ | ------------ | ------------------- | ----------------- |
+| Recipe detail page | Go to home/"All recipes" page. Click on authored recipe. Click on "Edit this recipe" | Update the recipe details                | Works as expected           |
+| Recipe detail page | Go to home/"All recipes" page. Click on authored recipe. Click on "Delete this recipe" | Delete the recipe                | Works as expected           |
+
+<details><summary>Screenshots</summary>
+<img src="docs/testing/6_user_stories_update_delete_recipes.png">
+</details>
+
+7. As a user I want to be able to save recipes to a personal cookbook to find favourites quickly.
+
+| **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
+| ------------ | ------------ | ------------------- | ----------------- |
+| Recipe detail page | Go to home/"All recipes" page. Click on "Save to cookbook" button | Saves the recipe to the Cookbook                | Works as expected           |
+| Cookbook page | Open the Cookbook page | See all saved recipes in one place | Works as expected |
+
+<details><summary>Screenshots</summary>
+<img src="docs/testing/7_user_stories_cookbook.png">
+</details>
+
+8. As a user I want to be able to search recipes to find something faster than just browsing.
+
+| **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
+| ------------ | ------------ | ------------------- | ----------------- |
+| Home page sidebar | Go to home/"All recipes" page. Add a search query to the search field in the sidebar. Click "Search" button | The relevant search results appear on the page                | Works as expected           |
+
+<details><summary>Screenshots</summary>
+<img src="docs/testing/8_user_stories_home_search.png">
+</details>
+
+~~9. As a user I want to see recipe ratings to see how others found them.~~
+~~10. As a user I want to follow recipe authors to see when they publish new recipes.~~
+
+User stories 9 and 10 were omitted from the MVP of the app.
+
+11.   As a user I expect the app to be responsive.
+
+| **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
+| ------------ | ------------ | ------------------- | ----------------- |
+| Responsive design | View the site on different devices | Site alters to fit the different screen sizes                | Works as expected           |
+
+<details><summary>Screenshots</summary>
+<img src="docs/testing/11_user_stories_responsive.png">
+</details>
+
+12.  As a user I expect the app to be accessible.
+
+!!!!!!!See accessibility testing.
+
+13. As a user I expect my data to be secure.
+
+| **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
+| ------------ | ------------ | ------------------- | ----------------- |
+| Cross site request forgery (CSRF) protection | Submit information via any form | Data is secure                | Works as expected           |
 
 <details><summary>Screenshots</summary>
 <img src="docs/testing/user_story_workspaces_1.png">
 </details>
+
+14. As a user I expect the app to give me feedback on my actions.
+
+| **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
+| ------------ | ------------ | ------------------- | ----------------- |
+| Forms | Try to submit incorrect information in a form | The form does not submit and flags the issue                | Works as expected           |
+
+<details><summary>Screenshots</summary>
+<img src="docs/testing/user_story_workspaces_1.png">
+</details>
+
+15. As the site owner, I want only superusers to be able to edit or remove ingredients to prevent them being accidentally removed from existing recipes.
+
+| **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
+| ------------ | ------------ | ------------------- | ----------------- |
+| Ingredient list | Login as superuser and go to ingredient list | See "Edit" and "Delete" buttons for ingredients                | Works as expected           |
+| Ingredient list | Login as a normal user and go to ingredient list | See just the list of ingredients (no action buttons)                | Works as expected           |
+| Update Ingredient page | Logout or login as a normal user and go to /ingredients/update/1/ | See a 404 page                | Works as expected           |
+
+<details><summary>Screenshots</summary>
+<img src="docs/testing/user_story_workspaces_1.png">
+</details>
+
+16.  As the site owner, I want only logged in users to be able to create recipes/ingredients and save recipes.
+
+| **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
+| ------------ | ------------ | ------------------- | ----------------- |
+| Home page sidebar | Logout and go Home | Unable to see the "Create new recipe" button                | Works as expected           |
+| Create recipe page | Logout and navigate to /recipe/create | Redirected to login page                | Works as expected           |
+| Home page sidebar | Login and go Home | See the "Create new recipe" button | Works as expected |
+| Navigation bar | Logout and go to any page | Unable to see the Ingredients link in the navbar | Works as expected |
+| Ingredients page sidebar | Login and go to Ingredients page | See "Add an ingredient" button in the sidebar
+
+<details><summary>Screenshots</summary>
+<img src="docs/testing/user_story_workspaces_1.png">
+</details>
+
+17. As the site owner, I want only logged in users to be able to see community exclusive recipes.
+
+| **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
+| ------------ | ------------ | ------------------- | ----------------- |
+| Exclusive recipes | Create a recipe, leave "Public" box unchecked, logout and go Home | The new recipe won't be there or be searchable                | Works as expected           |
+
+<details><summary>Screenshots</summary>
+<img src="docs/testing/user_story_workspaces_1.png">
+</details>
+
+18. As the site owner, if an error occurs, I want users to be able to navigate back to the homepage without using the back button.
+
+| **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
+| ------------ | ------------ | ------------------- | ----------------- |
+| Custom 404 page | Go to a random URI | See custom 404 page                | Works as expected           |
+
+<details><summary>Screenshots</summary>
+<img src="docs/testing/user_story_workspaces_1.png">
+</details>
+
+*Go back to the [top](#table-of-contents)*
+
+---
 
 # Bugs
 
 | **Bug**         | **Fix** |
 | --------------- | ------- |
 | Bug explanation | Bug fix |
+
+*Go back to the [top](#table-of-contents)*
+
+---
 
 # Deployment
 
@@ -274,6 +480,10 @@ You can clone the repository by following these steps:
 6. Type git clone and paste the URL from the clipboard ($ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY)
 7. Press Enter to create your local clone.
 
+*Go back to the [top](#table-of-contents)*
+
+---
+
 # Credits
 
 ## Media
@@ -282,6 +492,10 @@ You can clone the repository by following these steps:
 
 ## Reference material
 
+*Go back to the [top](#table-of-contents)*
+
+---
+
 # Acknowledgements
 
 I would like to take the opportunity to thank:
@@ -289,6 +503,10 @@ I would like to take the opportunity to thank:
 - My family, friends and colleagues for their advice, support and help with testing.
 - My mentor for their feedback, advice and support.
 - Code Institute Slack for advice.
+
+*Go back to the [top](#table-of-contents)*
+
+---
 
 # Retrospective
 
