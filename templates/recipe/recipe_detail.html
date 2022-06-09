@@ -21,9 +21,9 @@
             </header>
             <a href="{% url 'recipe_detail' recipe.slug %}">
                 {% if "placeholder" in recipe.featured_image.url %}
-                    <img src="https://res.cloudinary.com/go-eat-co/image/upload/v1654093874/cld-sample-4.jpg" class="card-img">
+                    <img alt="{{ recipe.name }}" src="https://res.cloudinary.com/go-eat-co/image/upload/v1654093874/cld-sample-4.jpg" class="card-img">
                 {% else %}
-                    <img src="{{ recipe.featured_image.url }}" class="card-img">
+                    <img alt="{{ recipe.name }}" src="{{ recipe.featured_image.url }}" class="card-img">
                 {% endif %}
             </a>
             <div class="row mt-4">
