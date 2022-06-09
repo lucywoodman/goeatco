@@ -26,7 +26,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ user.username|title }}</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a href="{% url 'profile' user.id %}" class="dropdown-item {% if url_name == 'profile' %}active{% endif %}">My Profile</a></li>
+                            <li><a href="{% url 'profile' %}" class="dropdown-item {% if url_name == 'profile' %}active{% endif %}">My Profile</a></li>
                             <li><a href="{% url 'account_logout' %}" class="dropdown-item {% if url_name == 'account_logout' %}active{% endif %}">Logout</a></li>
                         </ul>
                     </li>

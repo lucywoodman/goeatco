@@ -91,7 +91,7 @@
                     <p class="card-text">Author: {{ recipe.author.first_name }} {{ recipe.author.last_name }}</p>
                     <p class="card-text">{{ recipe.author.profile.bio }}</p>
                     {% if user.is_authenticated and user == recipe.author %}
-                    <a href="{% url 'profile_update' user.id %}" class="btn btn-primary">Update bio</a>
+                    <a href="{% url 'profile_update' %}" class="btn btn-primary">Update bio</a>
                     {% endif %}
                 </div>
             </div>
