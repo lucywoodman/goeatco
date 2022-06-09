@@ -1,6 +1,6 @@
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
+from django.urls import reverse_lazy
 from django.db import transaction
 from .forms import ProfileUpdateForm, UserUpdateForm
 from .models import Profile
@@ -9,13 +9,18 @@ from .models import Profile
 class ProfileDetailView(LoginRequiredMixin, generic.DetailView):
     model = Profile
 
+    def get_object(self, *args, **kwargs):
+        return self.request.user.profile
+
 
 class ProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Profile
     form_class = UserUpdateForm
     second_form_class = ProfileUpdateForm
     template_name = 'profiles/profile_form.html'
-    pk = None
+
+    def get_object(self, *args, **kwargs):
+        return self.request.user.profile
 
     def get_context_data(self, **kwargs):
         context = super(ProfileUpdateView, self).get_context_data(**kwargs)
@@ -34,7 +39,6 @@ class ProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
         context = self.get_context_data()
         user_form = context['user_form']
         profile_form = context['profile_form']
-        self.pk = self.request.user.id
         with transaction.atomic():
             if user_form.is_valid() and profile_form.is_valid():
                 user_form.instance = self.request.user
@@ -44,4 +48,4 @@ class ProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
         return super(ProfileUpdateView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('profile', kwargs={'pk': self.pk})
+        return reverse_lazy('profile')
