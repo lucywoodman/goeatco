@@ -365,7 +365,7 @@ To keep the app user-friendly, and remove any deadends in the journey, I created
 
 # Testing
 
-!!!!!!Refer to the assessment guide to make sure the correct aspects are tested.
+Please see the [Testing page](TESTING.md) for information on testing and validation.
 
 ---
 
