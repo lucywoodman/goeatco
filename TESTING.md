@@ -1,5 +1,12 @@
 # Go Eat Co. Testing
 
+- [Go Eat Co. Testing](#go-eat-co-testing)
+  - [HTML validation](#html-validation)
+  - [CSS validation](#css-validation)
+  - [JS validation](#js-validation)
+  - [PEP8 validation](#pep8-validation)
+  - [Testing user stories](#testing-user-stories)
+
 ## HTML validation
 
 The [W3C Markup Validation Service](https://validator.w3.org/) was used to validate the HTML of the website. For logged in pages, the page source was copied and pasted into the validator. All pages pass with 0 errors and 0 warnings. Here are the main pages:
@@ -17,7 +24,19 @@ The [W3C Markup Validation Service](https://validator.w3.org/) was used to valid
 <img src="docs/testing/html-ingredient-list.png">
 </details>
 
+*Go back to the [top](#table-of-contents)*
+
+---
+
 ## CSS validation
+
+The [W3C Jigsaw CSS Validation Service](https://jigsaw.w3.org/css-validator/validator) was used to validate the CSS of the website. The CSS passes with 0 errors. There are 254 warnings due to Bootstrap's CSS, and 2 warnings for my custom file. The warnings are flaggin up the border and background colours being the same, but this is required to override Bootstrap's styles.
+
+![CSS validation](docs/testing/css.png)
+
+*Go back to the [top](#table-of-contents)*
+
+---
 
 ## JS validation
 
@@ -25,11 +44,19 @@ The [W3C Markup Validation Service](https://validator.w3.org/) was used to valid
 
 ![JSHint validation](docs/testing/jshint.png)
 
+*Go back to the [top](#table-of-contents)*
+
+---
+
 ## PEP8 validation
 
 [PEP8 Online](http://pep8online.com) was used to validate the Python code on the site. The only issues found were a few longer lines in the project's settings.py
 
 ![PEP8 valudation](docs/testing/pep8.png)
+
+*Go back to the [top](#table-of-contents)*
+
+---
 
 ## Testing user stories
 

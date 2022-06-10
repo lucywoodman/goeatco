@@ -367,6 +367,8 @@ To keep the app user-friendly, and remove any deadends in the journey, I created
 
 Please see the [Testing page](TESTING.md) for information on testing and validation.
 
+*Go back to the [top](#table-of-contents)*
+
 ---
 
 # Bugs
