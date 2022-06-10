@@ -34,6 +34,7 @@ A Django blog-like site for creating recipes, sharing them with the community an
   - [4. User registration and login](#4-user-registration-and-login)
   - [5. Managing recipes](#5-managing-recipes)
   - [6. Managing the cookbook](#6-managing-the-cookbook)
+  - [7. Managing ingredients](#7-managing-ingredients)
 - [Technologies used](#technologies-used)
   - [Languages](#languages)
 - [Testing](#testing)
@@ -305,6 +306,23 @@ When a user is logged in and viewing the details of a recipe, the option to save
 
 <details><summary>Feature images</summary>
 <img src="docs/features/6_manage_cookbook.png">
+</details>
+
+## 7. Managing ingredients
+
+The Ingredients page lists all of the ingredients in the database. There are categories to help organise and filter the list.
+
+- The Ingredients page is only accessible by logged in users.
+- The sidebar has an option to filter the ingredients list by category. Or reset the filter to return to the full list.
+- The sidebar also has the option to create a new recipe. The recipe name needs to be unique to help avoid duplication.
+- If the user is logged in as a superadmin, they'll also see the options to edit or delete ingredients in the ingredients list.
+- The edit page uses the same form as the create ingredient form, except it will pre-fill the fields with the information for the item to be edited.
+- When deleting an ingredient, a deletion confirmation page will appear for defensive programming.
+
+:bust_in_silhouette: User stories covered: 2, 4, 11, 12, 13, 14, 15, 16, 18
+
+<details><summary>Feature images</summary>
+<img src="docs/features/7_manage_ingredients.png">
 </details>
 
 *Go back to the [top](#table-of-contents)*
