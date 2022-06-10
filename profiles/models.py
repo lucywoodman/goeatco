@@ -18,7 +18,7 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         """
-        Automatically creates a profile object linked to 
+        Automatically creates a profile object linked to
         the user when a user is created
         """
         if created:

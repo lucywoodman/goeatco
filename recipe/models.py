@@ -72,7 +72,10 @@ class IngredientMeta(models.Model):
     ingredient = models.ForeignKey(
         Ingredient, related_name='meta', on_delete=models.CASCADE, null=True)
     recipe = models.ForeignKey(
-        Recipe, related_name='ingredients', on_delete=models.CASCADE, null=True)
+        Recipe,
+        related_name='ingredients',
+        on_delete=models.CASCADE,
+        null=True)
     qty = models.IntegerField()
     unit = models.IntegerField(choices=UNIT, default=0)
 
@@ -86,5 +89,8 @@ class Instructions(models.Model):
     FK - Recipe model (recipe)
     """
     recipe = models.ForeignKey(
-        Recipe, related_name='instructions', on_delete=models.CASCADE, null=True)
+        Recipe,
+        related_name='instructions',
+        on_delete=models.CASCADE,
+        null=True)
     step = models.CharField(max_length=255)

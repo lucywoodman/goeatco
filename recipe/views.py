@@ -72,7 +72,11 @@ def RecipeSave(request, slug):
     else:
         recipe.saves.add(request.user)
 
-    return HttpResponseRedirect(reverse('recipe_detail', kwargs={'slug': slug}))
+    return HttpResponseRedirect(
+        reverse(
+            'recipe_detail',
+            kwargs={
+                'slug': slug}))
 
 
 class RecipeCreateView(LoginRequiredMixin, generic.CreateView):

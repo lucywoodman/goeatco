@@ -29,7 +29,10 @@ class Ingredient(models.Model):
 
     name = models.CharField(max_length=80, unique=True)
     category = models.ForeignKey(
-        Category, related_name='ingredients', on_delete=models.SET_NULL, null=True)
+        Category,
+        related_name='ingredients',
+        on_delete=models.SET_NULL,
+        null=True)
 
     def save(self, *args, **kwargs):
         """

@@ -20,7 +20,7 @@ class IngredientListView(LoginRequiredMixin, generic.ListView):
         """
         qs = super().get_queryset()
         query = self.request.GET.get('category')
-        if query != None:
+        if query is not None:
             return qs.filter(category__pk=query)
         else:
             return qs

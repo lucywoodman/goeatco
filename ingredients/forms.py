@@ -25,7 +25,7 @@ class IngredientCategoryForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        Fetches the categories from the database to 
+        Fetches the categories from the database to
         list in the form's dropdown box
         """
         super().__init__(*args, **kwargs)
