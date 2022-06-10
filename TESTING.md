@@ -8,6 +8,7 @@
   - [JS validation](#js-validation)
   - [PEP8 validation](#pep8-validation)
   - [Testing user stories](#testing-user-stories)
+- [Bugs](#bugs)
 
 ## Google Chrome's Lighthouse performance
 
@@ -227,5 +228,13 @@ See [Accessibility validation](#accessibility-validation)
 | **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
 | ------------ | ------------ | ------------------- | ----------------- |
 | Custom 404 page | Go to a random URI | See custom 404 page                | Works as expected           |
+
+*Go back to the [top](#table-of-contents)*
+
+---
+
+# Bugs
+
+Bugs found throughout development have been [described in Git](https://github.com/lucywoodman/goeatco/search?q=fix&type=commits) where possible, prepending `fix` to the commit message.
 
 *Go back to the [top](#table-of-contents)*
