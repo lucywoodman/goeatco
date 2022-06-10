@@ -584,20 +584,17 @@ Note: You may need to access the Heroku console directly via the Heroku admin da
    python manage.py loaddata recipes.json
    ```
 
-You can for fork the repository by following these steps:
-
-1. Go to the GitHub repository
-2. Click on Fork button in upper right hand corner
-
 You can clone the repository by following these steps:
 
-1. Go to the GitHub repository
-2. Locate the Code button above the list of files and click it
-3. Select if you prefere to clone using HTTPS, SSH, or Github CLI and click the copy button to copy the URL to your clipboard
-4. Open Git Bash
-5. Change the current working directory to the one where you want the cloned directory
-6. Type git clone and paste the URL from the clipboard ($ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY)
+1. Go to the GitHub repository.
+2. Locate the Code button above the list of files and click it.
+3. Select if you prefere to clone using HTTPS, SSH, or Github CLI and click the copy button to copy the URL to your clipboard.
+4. Open terminal locally.
+5. Change the current working directory to the one where you want the cloned directory.
+6. Type git clone and paste the URL from the clipboard ($ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY).
 7. Press Enter to create your local clone.
+8. Once cloned, you'll need to set up a `env.py` file using the `sample-env.py` file as an example.
+9. Setup a development environment, such as `venv`, and run `pip install -r requirements.txt` to install the project's requirements.
 
 *Go back to the [top](#table-of-contents)*
 
