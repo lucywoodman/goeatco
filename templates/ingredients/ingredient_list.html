@@ -27,7 +27,7 @@
                 <div class="card-body px-4">
                     <h4 class="card-title">Add ingredients</h4>
                     <p class="card-text">Is there something missing from our database of ingredients? If so, please go ahead and add it!</p>
-                    <a class="btn btn-primary" type="button" href="{% url 'ingredient_create' %}">Add an ingredient</a>
+                    <a class="btn btn-primary" href="{% url 'ingredient_create' %}">Add an ingredient</a>
                 </div>
             </div>
         </aside>
@@ -54,8 +54,8 @@
                         <!-- Only show ingredient edit/delete to superusers -->
                         {% if user.is_superuser %}
                         <td>
-                            <a class="btn btn-primary" type="button" href="{% url 'ingredient_update' item.pk %}">Edit</a>
-                            <a class="btn btn-primary" type="button" href="{% url 'ingredient_delete' item.pk %}">Delete</a>
+                            <a class="btn btn-primary" href="{% url 'ingredient_update' item.pk %}">Edit</a>
+                            <a class="btn btn-primary" href="{% url 'ingredient_delete' item.pk %}">Delete</a>
                         </td>
                         {% endif %}
                     </tr>
