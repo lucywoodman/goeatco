@@ -9,7 +9,7 @@
             <div class="card-body px-4 text-center">
                 <h4 class="card-title">Are you sure you want to delete "{{ object }}"?</h4>
                 <p>This action is permanent.</p>
-                <form action="" method="post">
+                <form method="post">
                     {% csrf_token %}
                     <input type="submit" class="btn btn-danger" value="Delete">
                 </form>
