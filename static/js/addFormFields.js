@@ -25,7 +25,7 @@ $(document).ready(() => {
         let formRegex = RegExp(`ingredients-(\\d){1}-`,'g');
 
         // increment formNum to create a unique-to-this-form integer
-        ingredientFormNum++
+        ingredientFormNum++;
         // update html using the earlier regex to update the for, name and id attributes
         newForm.html(newForm.html().replace(formRegex, 'ingredients-' + ingredientFormNum + '-'));
         // add the new form as the last child in the fieldset
@@ -54,7 +54,7 @@ $(document).ready(() => {
         let formRegex = RegExp(`instructions-(\\d){1}-`,'g');
 
         // increment formNum to create a unique-to-this-form integer
-        instructionFormNum++
+        instructionFormNum++;
         // update html using the earlier regex to update the for, name and id attributes
         newForm.html(newForm.html().replace(formRegex, 'instructions-' + instructionFormNum + '-'));
         // add the new form as the last child in the fieldset
