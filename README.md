@@ -37,6 +37,7 @@ A Django blog-like site for creating recipes, sharing them with the community an
   - [5. Managing recipes](#5-managing-recipes)
   - [6. Managing the cookbook](#6-managing-the-cookbook)
   - [7. Managing ingredients](#7-managing-ingredients)
+  - [8. Error pages](#8-error-pages)
 - [Technologies used](#technologies-used)
   - [Languages](#languages)
 - [Testing](#testing)
@@ -347,6 +348,16 @@ The Ingredients page lists all of the ingredients in the database. There are cat
 
 <details><summary>Feature images</summary>
 <img src="docs/features/7_manage_ingredients.png">
+</details>
+
+## 8. Error pages
+
+To keep the app user-friendly, and remove any deadends in the journey, I created custom 404 and 500 pages that trigger when those errors occur. The 404 would be the most commonly seen, as that pops up if the URI is incorrect, resulting in a "page not found" error.
+
+:bust_in_silhouette: User stories covered: 1, 11, 12, 14, 18
+
+<details><summary>Feature images</summary>
+<img src="docs/features/8_error_pages.png">
 </details>
 
 *Go back to the [top](#table-of-contents)*
