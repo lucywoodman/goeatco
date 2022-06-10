@@ -39,6 +39,7 @@ A Django blog-like site for creating recipes, sharing them with the community an
   - [7. Managing ingredients](#7-managing-ingredients)
   - [8. Error pages](#8-error-pages)
 - [Testing](#testing)
+- [Future developments](#future-developments)
 - [Deployment](#deployment)
 - [Technologies used](#technologies-used)
   - [Languages](#languages)
@@ -367,6 +368,14 @@ To keep the app user-friendly, and remove any deadends in the journey, I created
 # Testing
 
 Please see the [Testing page](TESTING.md) for information on testing and validation.
+
+*Go back to the [top](#table-of-contents)*
+
+---
+
+# Future developments
+
+I have a ton of ideas on how to expand this project further! I think it has a lot of potential. I'd love to play around with Django user permissions to make a more robust system and different types of user groups. Possibly add meal planning and shopping lists. And find a way to create ingredients straight from the recipe create page - maybe modals.
 
 *Go back to the [top](#table-of-contents)*
 
