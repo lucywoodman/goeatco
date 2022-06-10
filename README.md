@@ -151,9 +151,19 @@ I used Jira to manage this project. Using Agile development methodologies, the p
 
 ## Structure
 
-User journey diagram - with the help of Lucid app.
+**User journey diagram**
+The majority of the app is best when logged in, creating a more dynamic and personalised experience.
+Thanks to Lucid app for helping me to create the diagram of the user journeys.
 
-![Mockup image](docs/planning/user-journey.png)
+![User journey](docs/planning/user-journey.png)
+
+**Database models**
+The category and ingredient models are simple and straightforward. It starts to get a little complicated with the introduction of the ingredients meta model. I started with just the ingredients and recipe models, but wanted to save the recipe requirements in a way where they wouldn't bloat out the recipe model objects.
+
+The user model has been extended by the profile model to add a bio.
+Thanks to DrawSQL for helping me to create the diagram of the models.
+
+![Database models](docs/planning/database-models.png)
 
 ---
 
