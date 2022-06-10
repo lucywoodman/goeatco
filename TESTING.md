@@ -1,11 +1,36 @@
 # Go Eat Co. Testing
 
 - [Go Eat Co. Testing](#go-eat-co-testing)
+  - [Google Chrome's Lighthouse performance](#google-chromes-lighthouse-performance)
+  - [Accessibility validation](#accessibility-validation)
   - [HTML validation](#html-validation)
   - [CSS validation](#css-validation)
   - [JS validation](#js-validation)
   - [PEP8 validation](#pep8-validation)
   - [Testing user stories](#testing-user-stories)
+
+## Google Chrome's Lighthouse performance
+
+[Google Lighthouse](https://developers.google.com/web/tools/lighthouse) was used to test the performance of the website. SEO is downgraded due to the robots.txt blocking search engines - this is deliberate due to this being an educational project.
+
+All pages scored really well, I'm suprised considering the reliance on frameworks and Heroku! The main pages scores are shown below.
+
+<details><summary>Home page</summary>
+<img src="docs/testing/lighthouse-home.png">
+</details>
+<details><summary>Recipe detail page</summary>
+<img src="docs/testing/lighthouse-recipe-detail.png">
+</details>
+<details><summary>Create/update recipe page</summary>
+<img src="docs/testing/lighthouse-recipe-create-update.png">
+</details>
+<details><summary>Ingredient list</summary>
+<img src="docs/testing/lighthouse-ingredient-list.png">
+</details>
+
+## Accessibility validation
+
+The [WAVE WebAIM web accessibility evaluation tool](https://wave.webaim.org/) was used to ensure the website met high accessibility standards. All logged out pages pass with 0 errors.
 
 ## HTML validation
 
