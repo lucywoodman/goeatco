@@ -33,6 +33,7 @@ A Django blog-like site for creating recipes, sharing them with the community an
   - [3. Homepage/recipe list sidebar](#3-homepagerecipe-list-sidebar)
   - [4. User registration and login](#4-user-registration-and-login)
   - [5. Managing recipes](#5-managing-recipes)
+  - [6. Managing the cookbook](#6-managing-the-cookbook)
 - [Technologies used](#technologies-used)
   - [Languages](#languages)
 - [Testing](#testing)
@@ -290,6 +291,20 @@ If a user is logged in and also the author of a recipe they're viewing, the "Edi
 
 <details><summary>Feature images</summary>
 <img src="docs/features/5_manage_recipes.png">
+</details>
+
+## 6. Managing the cookbook
+
+When a user is logged in and viewing the details of a recipe, the option to save the recipe to their cookbook is in the sidebar.
+
+- The button is dynamic. If the user doesn't already have the recipe saved, the button will read "Save to Cookbook". If they do already have it saved, the button will read "Remove from Cookbook".
+- There's a save count about the button, showing how many users have the recipe saved.
+- The "My Cookbook" page will display the saved recipes.
+
+:bust_in_silhouette: User stories covered: 2, 7, 8, 11, 12, 13, 14, 18
+
+<details><summary>Feature images</summary>
+<img src="docs/features/6_manage_cookbook.png">
 </details>
 
 *Go back to the [top](#table-of-contents)*
