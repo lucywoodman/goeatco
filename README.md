@@ -38,12 +38,12 @@ A Django blog-like site for creating recipes, sharing them with the community an
   - [6. Managing the cookbook](#6-managing-the-cookbook)
   - [7. Managing ingredients](#7-managing-ingredients)
   - [8. Error pages](#8-error-pages)
-- [Technologies used](#technologies-used)
-  - [Languages](#languages)
 - [Testing](#testing)
   - [Testing user stories](#testing-user-stories)
 - [Bugs](#bugs)
 - [Deployment](#deployment)
+- [Technologies used](#technologies-used)
+  - [Languages](#languages)
 - [Credits](#credits)
   - [Media](#media)
   - [Code](#code)
@@ -364,19 +364,6 @@ To keep the app user-friendly, and remove any deadends in the journey, I created
 
 ---
 
-# Technologies used
-
-## Languages
-
-- HTML5 with Bootstrap 5
-- CSS3
-- Python / Django
-- JavaScript (JQuery)
-
-*Go back to the [top](#table-of-contents)*
-
----
-
 # Testing
 
 !!!!!!Refer to the assessment guide to make sure the correct aspects are tested.
@@ -567,12 +554,35 @@ User stories 9 and 10 were omitted from the MVP of the app.
 
 # Deployment
 
-The website was deployed using GitHub Pages by following these steps:
+The website was deployed to Heroku. These steps assume that you have a [Heroku account](https://signup.heroku.com/), a [Cloudinary account](https://cloudinary.com/users/register/free) and have both [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli) installed. Here we go!:
 
-1. In the GitHub repository navigate to the Settings tab
-2. On the left hand menu select Pages
-3. For the source select Branch: master
-4. After the webpage refreshes automaticaly you will se a ribbon on the top saying: "Your site is published at..."
+1. In the development environment, make sure the requirements are up to date with `pip3 freeze --local > requirements.txt`.
+2. Also check that the `.gitignore` file lists everything that should not be pushed to production, such as env.py.
+3. In terminal, login to Heroku. Then run the following commands:
+  ```
+  heroku create fancy-new-app --region eu # to create an app called fancy-new-app
+  heroku addons:add heroku-postgresql # add postgresql database addon
+  heroku config:set SECRET_KEY='' # to add the Django secret key to Heroku's config vars
+  heroku config:set CLOUDINARY_URL='' # to link the project to a Cloudinary account
+  heroku config:set HOST='' # this will be the heroku app URL (without protocol) once you know it. E.g. `goeatco.herokuapp.com`
+  ```
+5. Create a `Procfile` to setup Heroku with gunicorn and run migrations. It should contain the following:
+   ```
+   web: gunicorn goeatco.wsgi
+   release: python manage.py migrate
+   ```
+6. Heroku should have automatically created an empty git repo in your Heroku app when the app was created above. Else you'll need to [manually add a Heroku remote](https://devcenter.heroku.com/articles/git).
+7. When the remote is good to go, run `git push heroku main` to push the main branch to Heroku. Watch the logs to make sure it deploys successfully.
+  
+Note: You may need to access the Heroku console directly via the Heroku admin dashboard to run `python manage.py makemigrations` before trying `python manage.py migrate` again.
+
+8. When the deployment has succeeded, you can optionally access the Heroku console and create a superuser with `python manage.py createsuperuser`.
+9. You can also optionally import dummy recipe data by running the following
+   ```
+   python manage.py loaddata categories.json
+   python manage.py loaddata ingredients.json
+   python manage.py loaddata recipes.json
+   ```
 
 You can for fork the repository by following these steps:
 
@@ -588,6 +598,19 @@ You can clone the repository by following these steps:
 5. Change the current working directory to the one where you want the cloned directory
 6. Type git clone and paste the URL from the clipboard ($ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY)
 7. Press Enter to create your local clone.
+
+*Go back to the [top](#table-of-contents)*
+
+---
+
+# Technologies used
+
+## Languages
+
+- HTML5 with Bootstrap 5
+- CSS3
+- Python / Django
+- JavaScript (JQuery)
 
 *Go back to the [top](#table-of-contents)*
 
