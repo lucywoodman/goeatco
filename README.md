@@ -32,6 +32,7 @@ A Django blog-like site for creating recipes, sharing them with the community an
   - [2. Homepage/recipe list](#2-homepagerecipe-list)
   - [3. Homepage/recipe list sidebar](#3-homepagerecipe-list-sidebar)
   - [4. User registration and login](#4-user-registration-and-login)
+  - [5. Managing recipes](#5-managing-recipes)
 - [Technologies used](#technologies-used)
   - [Languages](#languages)
 - [Testing](#testing)
@@ -270,9 +271,26 @@ To be able to access the exclusive (non-public) recipes of the community, or cre
 :bust_in_silhouette: User stories covered: 2, 3, 11, 12, 13, 14, 16, 17, 18
 
 <details><summary>Feature images</summary>
-<img src="docs/features/3_homepage_sidebar.png">
+<img src="docs/features/4_user_registration_and_login.png">
 </details>
 
+## 5. Managing recipes
+
+From the home page, when a user is logged in, there is a "Create new recipe" button in the sidebar to save new recipes to the database.
+
+If a user is logged in and also the author of a recipe they're viewing, the "Edit recipe" and "Delete recipe" buttons will show in the sidebar.
+
+- The create/update form requires a unique name, as this is used for the recipe slug. It will otherwise show an error.
+- There is a placeholder image for the featured image. Should a user not have an image, or not want to add one, the placeholder will be used instead.
+- The create/update form has ingredient and instruction formsets. When extra ingredients or instruction steps are required, the "Add another ingredient" or "Add another step" buttons can be used to add extra fields to the form.
+- When updating a recipe, all the fields will be pre-filled with the data from the recipe to be edited.
+- If deleting a recipe, a deletion confirmation message will appear.
+
+:bust_in_silhouette: User stories covered: 2, 5, 6, 11, 12, 13, 14, 16, 18
+
+<details><summary>Feature images</summary>
+<img src="docs/features/5_manage_recipes.png">
+</details>
 
 *Go back to the [top](#table-of-contents)*
 
