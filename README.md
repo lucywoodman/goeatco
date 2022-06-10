@@ -31,6 +31,7 @@ A Django blog-like site for creating recipes, sharing them with the community an
   - [1. Logo and Navigation bar](#1-logo-and-navigation-bar)
   - [2. Homepage/recipe list](#2-homepagerecipe-list)
   - [3. Homepage/recipe list sidebar](#3-homepagerecipe-list-sidebar)
+  - [4. User registration and login](#4-user-registration-and-login)
 - [Technologies used](#technologies-used)
   - [Languages](#languages)
 - [Testing](#testing)
@@ -155,7 +156,7 @@ User journey diagram - with the help of Lucid app.
 
 ## Skeleton
 
-Wireframes - these were doodled onto paper first, then the main wireframes drawn up in Figma.
+Wireframes - these were sketched onto paper first, then the main wireframes drawn up in Figma.
 
 <details><summary>Home page (logged out)</summary>
 <img src="docs/wireframes/home-logged-out-desktop.png">
@@ -217,7 +218,10 @@ A persistent navigation bar that remains in place when scrolling. It helps users
 
 It provides a bit of personalisation by using the user's username in the top right when they are logged in. And provides a dropdown menu from the username to access the user's profile and the logout option.
 
-The navigation bar is fully responsive, reducing the menu to a toggle menu on smaller screen sizes.
+- The logged out menu limits the navigation to just the pages that are accessible without having registered an account. These are "All Recipes" (home), "Register" and "Login".
+- The logged in menu provides links for the extra pages that become available to authorised users. These are "All Recipes", "Ingredients", "My Cookbook", and the user dropdown menu which reads as the logged in user's username.
+-  The user dropdown menu consists of "My Profile" and "Logout".
+-  The navigation bar is fully responsive. The menu is switched out for a hamburger icon to toggle the view of the navigation on smaller screens.
 
 - User stories covered: 1, 2, 3, 4, 7, 11, 12, 18.
 
@@ -229,9 +233,11 @@ The navigation bar is fully responsive, reducing the menu to a toggle menu on sm
 
 A dynamic homepage that changes depending on whether the user is logged out (only shows "public" recipes), logged in (shows all recipes) or using the search form to filter recipes.
 
-Includes pagination, loading 10 recipes per page.
+- When a user is logged out, the recipes shown on the homepage are only those marked as "public".
+- When a user is logged in, all of the recipes are shown, public or not.
+- If there are more than 10 recipes available to display, the list will paginate. This provides a navigation at the bottom of the page to click through the pages of recipes. 
 
-- User stories covered: 2, 5, 6, 7, 8, 11, 12, 13, 14, 16, 17, 18.
+- User stories covered: 1, 2, 5, 6, 7, 8, 11, 12, 13, 14, 16, 17, 18.
 
 <details><summary>Feature images</summary>
 <img src="docs/features/2_recipe_view.png">
@@ -245,11 +251,32 @@ For logged in users, there's a more personal welcome message with more informati
 
 Both logged in and logged out users see the search field and are able to filter recipes by search queries.
 
-- User stories covered: 2, 5, 6, 7, 8, 11, 12, 13, 16, 18.
+| User stories covered||
+|:-------|:--------|
+|2, 5, 6, 7, 8, 11, 12, 13, 16, 18| |
 
 <details><summary>Feature images</summary>
 <img src="docs/features/3_homepage_sidebar.png">
 </details>
+
+## 4. User registration and login
+
+To be able to access the exclusive (non-public) recipes of the community, or create recipes and use the cookbook, a user needs to register and login.
+
+  - The registration form is a straightforward form for a username, email and password. This will create a user object in the database, allowing the user to login.
+  - The login form has a link to the registration form, to encourage users to register if they stumble upon the login page.
+  - The login form has a "Forgot password" link. This goes to a further form for entering the user's email address to send a password reset link to. Which then goes to a confirmation page. (This does not actually send an email, however, as the email functionality has not been set up within the project).
+  - Once a user is logged in, they have the option to add further information to their profile. This can be accessed from the "My Profile" link in the user dropdown menu, and allows for a name and bio to be added, as well as the option to update any of the user's details.
+  - The user's bio is used as a short intro to the author in the recipe details of any recipes they've created.
+
+| User stories covered||
+|:-------|:--------|
+|2, 3, 11, 12, 13, 14, 16, 17, 18| |
+
+<details><summary>Feature images</summary>
+<img src="docs/features/3_homepage_sidebar.png">
+</details>
+
 
 *Go back to the [top](#table-of-contents)*
 
