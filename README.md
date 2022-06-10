@@ -397,11 +397,10 @@ The website was deployed to Heroku. These steps assume that you have a [Heroku a
 Note: You may need to access the Heroku console directly via the Heroku admin dashboard to run `python manage.py makemigrations` before trying `python manage.py migrate` again.
 
 8. When the deployment has succeeded, you can optionally access the Heroku console and create a superuser with `python manage.py createsuperuser`.
-9. You can also optionally import dummy recipe data by running the following
+9. You can also optionally import demo category and ingredient data by running the following
    ```
    python manage.py loaddata categories.json
    python manage.py loaddata ingredients.json
-   python manage.py loaddata recipes.json
    ```
 
 You can clone the repository by following these steps:
