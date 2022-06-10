@@ -39,7 +39,6 @@ A Django blog-like site for creating recipes, sharing them with the community an
   - [7. Managing ingredients](#7-managing-ingredients)
   - [8. Error pages](#8-error-pages)
 - [Testing](#testing)
-- [Bugs](#bugs)
 - [Deployment](#deployment)
 - [Technologies used](#technologies-used)
   - [Languages](#languages)
@@ -48,7 +47,6 @@ A Django blog-like site for creating recipes, sharing them with the community an
   - [Code](#code)
   - [Reference material](#reference-material)
 - [Acknowledgements](#acknowledgements)
-- [Retrospective](#retrospective)
 
 # UX
 
@@ -371,16 +369,6 @@ Please see the [Testing page](TESTING.md) for information on testing and validat
 
 ---
 
-# Bugs
-
-| **Bug**         | **Fix** |
-| --------------- | ------- |
-| Bug explanation | Bug fix |
-
-*Go back to the [top](#table-of-contents)*
-
----
-
 # Deployment
 
 The website was deployed to Heroku. These steps assume that you have a [Heroku account](https://signup.heroku.com/), a [Cloudinary account](https://cloudinary.com/users/register/free) and have both [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli) installed. Here we go!:
@@ -446,9 +434,18 @@ You can clone the repository by following these steps:
 
 ## Media
 
+[Unsplash](https://unsplash.com/) was used for the demo images in the screenshots.
+No other media is used in the project.
+
 ## Code
 
+[Brennan Tymrak](https://www.brennantymrak.com/articles/django-dynamic-formsets-javascript.html)'s blogpost was a reference for the dynamic formsets in the recipe create/update form.
+
 ## Reference material
+
+[Django's documentation](https://docs.djangoproject.com/en/3.2/)
+[Coderwall](https://coderwall.com/p/mvsoyg/django-dumpdata-and-loaddata)
+
 
 *Go back to the [top](#table-of-contents)*
 
@@ -460,12 +457,5 @@ I would like to take the opportunity to thank:
 
 - My family, friends and colleagues for their advice, support and help with testing.
 - My mentor for their feedback, advice and support.
-- Code Institute Slack for advice.
 
 *Go back to the [top](#table-of-contents)*
-
----
-
-# Retrospective
-
-SWOT analysis
