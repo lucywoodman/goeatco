@@ -85,6 +85,8 @@ The [W3C Jigsaw CSS Validation Service](https://jigsaw.w3.org/css-validator/vali
 
 ## Testing user stories
 
+Below is a summary of the user story testing.
+
 1. As a user I want the app to be simple to navigate so I can find my way around easily.
 
 | **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
@@ -179,35 +181,23 @@ User stories 9 and 10 were omitted from the MVP of the app.
 | ------------ | ------------ | ------------------- | ----------------- |
 | Responsive design | View the site on different devices | Site alters to fit the different screen sizes                | Works as expected           |
 
-<details><summary>Screenshots</summary>
-<img src="docs/testing/11_user_stories_responsive.png">
-</details>
+12.   As a user I expect the app to be accessible.
 
-12.  As a user I expect the app to be accessible.
+See [Accessibility validation](#accessibility-validation)
 
-!!!!!!!See accessibility testing.
-
-13. As a user I expect my data to be secure.
+13.  As a user I expect my data to be secure.
 
 | **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
 | ------------ | ------------ | ------------------- | ----------------- |
 | Cross site request forgery (CSRF) protection | Submit information via any form | Data is secure                | Works as expected           |
 
-<details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
-</details>
-
-14. As a user I expect the app to give me feedback on my actions.
+14.  As a user I expect the app to give me feedback on my actions.
 
 | **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
 | ------------ | ------------ | ------------------- | ----------------- |
 | Forms | Try to submit incorrect information in a form | The form does not submit and flags the issue                | Works as expected           |
 
-<details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
-</details>
-
-15. As the site owner, I want only superusers to be able to edit or remove ingredients to prevent them being accidentally removed from existing recipes.
+15.  As the site owner, I want only superusers to be able to edit or remove ingredients to prevent them being accidentally removed from existing recipes.
 
 | **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
 | ------------ | ------------ | ------------------- | ----------------- |
@@ -215,11 +205,7 @@ User stories 9 and 10 were omitted from the MVP of the app.
 | Ingredient list | Login as a normal user and go to ingredient list | See just the list of ingredients (no action buttons)                | Works as expected           |
 | Update Ingredient page | Logout or login as a normal user and go to /ingredients/update/1/ | See a 404 page                | Works as expected           |
 
-<details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
-</details>
-
-16.  As the site owner, I want only logged in users to be able to create recipes/ingredients and save recipes.
+16.   As the site owner, I want only logged in users to be able to create recipes/ingredients and save recipes.
 
 | **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
 | ------------ | ------------ | ------------------- | ----------------- |
@@ -229,28 +215,17 @@ User stories 9 and 10 were omitted from the MVP of the app.
 | Navigation bar | Logout and go to any page | Unable to see the Ingredients link in the navbar | Works as expected |
 | Ingredients page sidebar | Login and go to Ingredients page | See "Add an ingredient" button in the sidebar
 
-<details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
-</details>
-
-17. As the site owner, I want only logged in users to be able to see community exclusive recipes.
+17.  As the site owner, I want only logged in users to be able to see community exclusive recipes.
 
 | **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
 | ------------ | ------------ | ------------------- | ----------------- |
 | Exclusive recipes | Create a recipe, leave "Public" box unchecked, logout and go Home | The new recipe won't be there or be searchable                | Works as expected           |
 
-<details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
-</details>
 
-18. As the site owner, if an error occurs, I want users to be able to navigate back to the homepage without using the back button.
+18.  As the site owner, if an error occurs, I want users to be able to navigate back to the homepage without using the back button.
 
 | **Feature**  | **Action**   | **Expected Result** | **Actual Result** |
 | ------------ | ------------ | ------------------- | ----------------- |
 | Custom 404 page | Go to a random URI | See custom 404 page                | Works as expected           |
-
-<details><summary>Screenshots</summary>
-<img src="docs/testing/user_story_workspaces_1.png">
-</details>
 
 *Go back to the [top](#table-of-contents)*
