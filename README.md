@@ -153,6 +153,9 @@ Thanks to DrawSQL for helping me to create the diagram of the models.
 
 ![Database models](docs/planning/database-models.png)
 
+**Templates**
+I chose to use possibly unconventional naming for my template files. Those with an underscore prepended are internally accessed templates. In other words, they are only accessed via an import on another template, and are not accessed via any of the `views.py` files. An example is the `_header.html` file.
+
 ---
 
 ## Skeleton
