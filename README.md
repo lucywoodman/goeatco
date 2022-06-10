@@ -27,6 +27,8 @@ A Django blog-like site for creating recipes, sharing them with the community an
   - [Surface](#surface)
     - [Colours](#colours)
     - [Fonts](#fonts)
+    - [Images](#images)
+- [Agile development process](#agile-development-process)
 - [Features](#features)
   - [1. Logo and Navigation bar](#1-logo-and-navigation-bar)
   - [2. Homepage/recipe list](#2-homepagerecipe-list)
@@ -135,18 +137,6 @@ User feedback|	8|	6|	need
 <img src="docs/planning/priority-chart.png">
 </details>
 
-I used Jira to manage this project. Using Agile development methodologies, the project was broken up into Epics. Then each User Story was added to it's relevant Epic, and each User Story was further broken down into smaller tasks. These were then worked as 2 week sprints.
-
-<details><summary>First sprint</summary>
-<img src="docs/planning/first-implementation-sprint.png">
-</details>
-<details><summary>Second sprint</summary>
-<img src="docs/planning/second-implementation-sprint.png">
-</details>
-<details><summary>Demonstration of Epic -> User Story -> Tasks</summary>
-<img src="docs/planning/jira-user-story-to-tasks.png">
-</details>
-
 ---
 
 ## Structure
@@ -216,6 +206,30 @@ The logo uses Ovo, which is based on classical fonts, but has softened serifs to
 The font used throughout the rest of the site is Quattrocento Sans, which is described as "a classic, elegant and sober typeface family. Warm, readable and not intrusive.". I think it fits perfectly!
 
 ![Typography test](docs/design/typography-testing.png)
+
+### Images
+
+The images used in the demonstration of the app are all wonderful photographs from Unsplash.
+
+*Go back to the [top](#table-of-contents)*
+
+---
+
+# Agile development process
+
+I used Jira to manage this project. Using Agile development methodologies, the project was broken up into Epics. Then each User Story was added to it's relevant Epic, and each User Story was further broken down into smaller tasks.
+
+The first two sprints were used to plan out the project, with the following two sprints used on development. I aimed for 2 weeks per sprint, but it was not strictly kept, due to having to fit the project time around my full time job and family.
+
+<details><summary>First sprint</summary>
+<img src="docs/planning/first-implementation-sprint.png">
+</details>
+<details><summary>Second sprint</summary>
+<img src="docs/planning/second-implementation-sprint.png">
+</details>
+<details><summary>Demonstration of Epic -> User Story -> Tasks</summary>
+<img src="docs/planning/jira-user-story-to-tasks.png">
+</details>
 
 *Go back to the [top](#table-of-contents)*
 
